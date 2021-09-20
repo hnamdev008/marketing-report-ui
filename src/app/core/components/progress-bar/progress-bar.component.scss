@@ -1,0 +1,17 @@
+
+.progress{
+  height: 100%;
+  background-color: #F4F2F0;
+
+  &__bottom{
+    font-size: 14px;
+  }
+}
+
+.progress, .progress-bar {
+  border-radius: 9px;
+}
+
+.opacity-blur {
+  opacity: 0.4;
+}
