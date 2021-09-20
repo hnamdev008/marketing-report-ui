@@ -1,4 +1,3 @@
-// @import "../core/styles/styles.scss";
 @import "~src/app/core/styles/styles.scss";
 
 .home {
@@ -136,7 +135,6 @@
                 }
 
                 &__domain {
-                  
                     border-left: 2px solid $c-gallery;
                     border-right: 2px solid $c-gallery;
                 }
@@ -424,5 +422,89 @@
                 }
             }
         }
+
+        &__book-demo {
+            background-color: $c-spray;
+            border-radius: 4px;
+            flex-direction: column;
+
+            @include respond-from(md) {
+                flex-direction: row;
+            }
+
+            &__left {
+                order: 1;
+                text-align: center;
+
+                @include respond-from(sm) {
+                    padding: 20px;
+                }
+
+                @include respond-from(md) {
+                    width: 50%;
+                    order: 0;
+                }
+
+                @include respond-from(lg) {
+                    padding: 80px;
+                    text-align: left;
+                }
+
+                &__title {
+                    font-weight: bold;
+                    font-size: $font-md;
+
+                    @include respond-from(sm) {
+                        font-size: 2 * $font-sm;
+                    }
+
+                    @include respond-from(md) {
+                        margin-top: 50px;
+                        font-size: 2*$font-sm;
+                    }
+
+                    @include respond-from(lg) {
+                        font-size: $font-lg;
+                        padding-bottom: 0;
+                    }
+                }
+
+                &__sub-title {
+                    font-size: $font-sm;
+
+                    @include respond-from(sm) {
+                        font-size: $font-md;
+                    }
+
+                    @include respond-from(lg) {
+                        font-size: $font-md;
+                    }
+                }
+
+                &__btn {
+                    margin: 20px 0;
+
+                    @include respond-from(lg) {
+                        margin-top: 50px;
+                    }
+                }
+            }
+
+            &__img {
+                order: 0;
+
+                @include respond-from(sm) {
+                    padding: 0;
+                }
+
+                @include respond-from(lg) {
+                    width: 50%;
+                }
+            }
+        }
     }
+}
+
+.swiper-slide {
+    width: auto;
 }

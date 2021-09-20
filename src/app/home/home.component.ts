@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ACCESSIBILY_DATA, PriorityEnum } from './home.constant';
 
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class HomeComponent implements OnInit {
     readonly ACCESSIBILY_DATA = ACCESSIBILY_DATA;

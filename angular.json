@@ -33,7 +33,8 @@
             "styles": [
               "src/app/core/styles/styles.scss",
               "node_modules/bootstrap/dist/css/bootstrap.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/swiper/swiper-bundle.css"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
