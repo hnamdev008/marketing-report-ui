@@ -1,0 +1,14 @@
+@import 'src/app/core/styles/styles.scss';
+
+.header {
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+
+  &__btn {
+    background-color: #052942;
+    color: #ffffff;
+    font-size: 14px;
+  }
+}
