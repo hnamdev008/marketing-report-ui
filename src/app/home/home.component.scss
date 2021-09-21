@@ -67,6 +67,11 @@
                     @include respond-from(md) {
                         width: 55%;
                     }
+
+                    &__img {
+                        width: 16px;
+                        height: auto;
+                    }
                 }
 
                 &__domain {
@@ -85,6 +90,19 @@
                         display: initial;
                         width: 15%;
                     }
+                }
+            }
+
+            &__bottom {
+                border-top: 2px solid $c-gallery;
+                border-right: 2px solid $c-gallery;
+                border-bottom: 2px solid $c-gallery;
+                height: 60px;
+                width: 100%;
+                color: $c-black;
+
+                @include respond-from(md) {
+                    width: calc(55% + 3px);
                 }
             }
 
@@ -136,7 +154,6 @@
                 }
 
                 &__domain {
-                  
                     border-left: 2px solid $c-gallery;
                     border-right: 2px solid $c-gallery;
                 }
