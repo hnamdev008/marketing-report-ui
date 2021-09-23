@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ACCESSIBILY_DATA, PriorityEnum } from './home.constant';
 
 @Component({
@@ -13,10 +13,18 @@ export class HomeComponent implements OnInit {
     currentRowIndex = 0;
     currentDetail: any;
 
+    public innerWidth: any;
+
     constructor() {}
 
     ngOnInit(): void {
         this.currentDetail = ACCESSIBILY_DATA[0];
+        this.innerWidth = window.innerWidth;
+    }
+
+    @HostListener('window:resize')
+    onResize(): void {
+        this.innerWidth = window.innerWidth;
     }
 
     onShowDetail(data: any, index: number): void {

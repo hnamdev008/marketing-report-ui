@@ -1,683 +1,889 @@
 <div class="home container">
   <app-header></app-header>
-  <hr />
-
+  <!-- Banner -->
+  <div class="home__section container-fluild">
+      <div class="home__section__banner">
+          <div class="home__section__banner__left">
+              <div class="home__section__banner__left__title">
+                  Check-up<br>Report
+              </div>
+              <div class="home__section__banner__left__desc">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna Alice.
+              </div>
+              <div class="home__section__banner__left__detail d-flex justify-content-between">
+                  <div>Time of Scan: </div>
+                  <div class="fw-bold">10:45 CEST</div>
+              </div>
+              <div class="d-flex justify-content-between">
+                  <div>Date: </div>
+                  <div class="fw-bold">January 20th, 2021</div>
+              </div>
+              <div class="d-flex justify-content-between">
+                  <div>Pages scanned: </div>
+                  <div class="fw-bold">4</div>
+              </div>
+          </div>
+          <div class="home__section__banner__right">
+              <img class="img-fluid" src="./assets/images/banner.png" alt="Banner" />
+          </div>
+      </div>
+  </div>
+  <br />
   <!-- Accessibility -->
   <div class="home__section container-fluid">
-    <div class="row">
-      <div class="home__section__circular-progress">
-        <app-circular-progress-bar [value]="97.7"></app-circular-progress-bar>
-      </div>
-      <div class="home__section__content d-flex flex-column">
-        <div class="home__section__content__header d-flex flex-row align-items-center">
-          <img class="img-fluid" src="./assets/icons/human.svg" alt="human" />
-          <h3 class="home__section__content__header__title ms-3">
-            Accessibility
-          </h3>
-        </div>
-
-        <p class="home__section__content__des">
-          Great job! You are performing better than 80% of companies
-          in your industry in section. Lorem Epsom dollar its
-          amet.
-        </p>
-        <p class="home__section__content__note">
-          Would like to see more from your report and how to fix it?
-          <br />
-          Learn more
-          <span class="home__section__content__note__link">here</span>
-        </p>
-      </div>
-    </div>
-
-    <div class="home__section__information">
-      <div class="home__section__information__header row">
-        <span class="home__section__information__header__level">Level A Accessibility Checks</span>
-        <span class="home__section__information__header__domain text-center">Domain compliance</span>
-        <span class="home__section__information__header__page text-center">Pages</span>
-      </div>
-
-      <div class="home__section__information__body row" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
-        <div class="home__section__information__body__level">
-          <div class="d-flex align-items-center">
-            <span class="home__section__information__body__level__number">{{i+1}}.</span>
-            <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="icon">
-            <span class="home__section__information__body__level__text">{{data.level.text}}</span>
+      <div class="row">
+          <div class="home__section__circular-progress">
+              <app-circular-progress-bar [value]="97.7"></app-circular-progress-bar>
           </div>
-        </div>
-
-        <div class="home__section__information__body__domain justify-content-center align-items-center">
-          <div class="home__section__information__body__domain__progress">
-            <app-progress-bar [bottomText]="false" [valueMax]="100"
-              [valueNow]="data.domain.percent">
-            </app-progress-bar>
-
+          <div class="home__section__content d-flex flex-column">
+              <div class="home__section__content__header d-flex flex-row align-items-center">
+                  <img class="img-fluid" src="./assets/icons/human.svg" alt="human" />
+                  <h3 class="home__section__content__header__title ms-3">
+                      Accessibility
+                  </h3>
+              </div>
+              <p class="home__section__content__des">
+                  Great job! You are performing better than 80% of companies in your industry in accessibility.
+              </p>
+              <div class="home__section__content__note is-hide">
+                  Would like to see more from your report and how to fix it? Learn more
+                  <span class="home__section__content__note__link">here</span>
+              </div>
           </div>
-          <span class="home__section__information__body__domain__percent">{{data.domain.percent}}%</span>
-        </div>
-
-        <div class="home__section__information__body__page justify-content-center align-items-center">
-          <div class="home__section__information__body__page__box text-center"
-            [class.highlight]="currentRowIndex === i">
-            <span>{{data.pages.value}}</span>
-
-            <img class="home__section__information__body__page__box__icon ms-3"
-              [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
-              alt="arrow" (click)="onShowDetail(data, i)" />
+          <div class="home__section__content__note">
+              Would like to see more from your report and how to fix it? Learn more
+              <span class="home__section__content__note__link">here</span>
           </div>
-        </div>
       </div>
-    </div>
-
-    <div class="home__section__detail row justify-content-between align-items-center">
-      <div class="home__section__detail__left  align-items-center">
-        <span class="home__section__detail__left__title">{{currentDetail?.level?.text}}
-        </span>
-        <p class="home__section__detail__left__found">{{currentDetail?.pages?.value}} pages found</p>
-      </div>
-
-      <div class="home__section__detail__right d-flex align-items-center">
-        <div class="home__section__detail__right__progress ">
-          <app-progress-bar [valueMax]="100" [valueNow]="currentDetail.detail.percent"
-            [totalPage]="currentDetail?.detail?.totalPage" [page]="currentDetail?.pages?.value"></app-progress-bar>
-        </div>
-        <img class="home__section__detail__right__progress__icon ms-3" src="./assets/icons/down-arrow.svg"
-          alt="arrow" />
-      </div>
-    </div>
-
-    <div class="home__section__items row">
-      <div class="home__section__items__header d-flex">
-        <p class="home__section__items__header__title">Title and URL</p>
-        <p class="home__section__items__header__priority">Priority</p>
-      </div>
-
-      <div class="home__section__items__list row">
-        <div *ngFor="let item of currentDetail?.detail?.items" class="home__section__items__list__item d-flex">
-          <div class="home__section__items__list__item__left">
-            <div class="home__section__items__list__item__left__title">{{item.name}}</div>
-            <div class="home__section__items__list__item__left__link d-flex align-items-center">
-              <img class="home__section__items__list__item__left__link__icon" src="./assets/icons/open-link.png" alt="">
-              <span class="home__section__items__list__item__left__link__url ms-2">{{item.url}}</span>
-            </div>
+      <!-- Large Tablet, Laptop, Desktop -->
+      <div class="home__section__information" *ngIf="innerWidth >= 768">
+          <div class="home__section__information__header row">
+              <span class="home__section__information__header__level">Level A Accessibility Checks</span>
+              <span class="home__section__information__header__domain text-center">Domain compliance</span>
+              <span class="home__section__information__header__page text-center">Affects Pages</span>
           </div>
-          <div class="home__section__items__list__item__right align-items-center">
-            <div [style.visibility]="item.moreFunc ? 'visible' : 'hidden'"
-              class="home__section__items__list__item__right__more">more function?</div>
-            <div class="home__section__items__list__item__right__priority">
-              <div [class]="'home__section__items__list__item__right__priority__box '  + getBoxColor(item.priority)">
-                {{item.priority}}</div>
-            </div>
+          <div class="home__section__information__body row" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
+              <div class="home__section__information__body__level">
+                  <div class="d-flex align-items-center">
+                      <span class="home__section__information__body__level__number">{{i+1}}.</span>
+                      <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="icon">
+                      <span class="home__section__information__body__level__text">{{data.level.text}}</span>
+                  </div>
+              </div>
+              <div class="home__section__information__body__domain justify-content-center align-items-center">
+                  <div class="home__section__information__body__domain__progress">
+                      <app-progress-bar [bottomText]="false" [valueMax]="100"
+                      [valueNow]="data.domain.percent">
+                      </app-progress-bar>
+                  </div>
+                  <span class="home__section__information__body__domain__percent">{{data.domain.percent}}%</span>
+              </div>
+              <div class="home__section__information__body__page justify-content-center align-items-center">
+                  <div class="home__section__information__body__page__box text-center"
+                      [class.highlight]="currentRowIndex === i">
+                      <span>{{data.pages.value}}</span>
+                      <img class="home__section__information__body__page__box__icon ms-3"
+                      [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
+                      alt="arrow" (click)="onShowDetail(data, i)" />
+                  </div>
+              </div>
           </div>
-        </div>
       </div>
-    </div>
+      <!-- Mobile, Small Tablet -->
+      <div class="home__section__information" *ngIf="innerWidth <= 768">
+          <div class="home__section__information__header row">
+              <span class="home__section__information__header__level">Level A Accessibility Checks</span>
+          </div>
+          <div class="home__section__information__body row">
+              <div class="home__section__information__body__level" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
+                  <div class="d-flex align-items-center">
+                      <span class="home__section__information__body__level__number">{{i+1}}.</span>
+                      <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="icon">
+                      <span class="home__section__information__body__level__text">{{data.level.text}}</span>
+                  </div>
+              </div>
+              <div class="d-flex" style="border-top: 2px solid #eeeeee;">
+                  <span class="home__section__information__header__domain text-center">Domain compliance</span>
+                  <span class="home__section__information__header__page text-center">Affects Pages</span>
+              </div>
+              <div class="d-flex" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
+                  <div class="home__section__information__body__domain justify-content-center align-items-center">
+                      <div class="home__section__information__body__domain__progress">
+                          <app-progress-bar [bottomText]="false" [valueMax]="100"
+                          [valueNow]="data.domain.percent">
+                          </app-progress-bar>
+                      </div>
+                      <span class="home__section__information__body__domain__percent">{{data.domain.percent}}%</span>
+                  </div>
+                  <div class="home__section__information__body__page justify-content-center align-items-center">
+                      <div class="home__section__information__body__page__box text-center"
+                          [class.highlight]="currentRowIndex === i">
+                          <span>{{data.pages.value}}</span>
+                          <img class="home__section__information__body__page__box__icon ms-3"
+                          [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
+                          alt="arrow" (click)="onShowDetail(data, i)" />
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="home__section__detail row justify-content-between align-items-center">
+          <div class="home__section__detail__left  align-items-center">
+              <span class="home__section__detail__left__title">{{currentDetail?.level?.text}}
+              </span>
+              <p class="home__section__detail__left__found">{{currentDetail?.pages?.value}} pages found</p>
+          </div>
+          <div class="home__section__detail__right d-flex align-items-center">
+              <div class="home__section__detail__right__progress ">
+                  <app-progress-bar [valueMax]="100" [valueNow]="currentDetail.detail.percent"
+                  [totalPage]="currentDetail?.detail?.totalPage" [page]="currentDetail?.pages?.value"></app-progress-bar>
+              </div>
+              <img class="home__section__detail__right__progress__icon ms-3" src="./assets/icons/down-arrow.svg"
+                  alt="arrow" />
+          </div>
+      </div>
+      <div class="home__section__items row">
+          <div class="home__section__items__header d-flex">
+              <p class="home__section__items__header__title">Title and URL</p>
+              <p class="home__section__items__header__priority">Priority</p>
+          </div>
+          <div class="home__section__items__list row">
+              <div *ngFor="let item of currentDetail?.detail?.items" class="home__section__items__list__item d-flex">
+                  <div class="home__section__items__list__item__left">
+                      <div class="home__section__items__list__item__left__title">{{item.name}}</div>
+                      <div class="home__section__items__list__item__left__link d-flex align-items-center">
+                          <img class="home__section__items__list__item__left__link__icon" src="./assets/icons/open-link.png" alt="">
+                          <span class="home__section__items__list__item__left__link__url ms-2">{{item.url}}</span>
+                      </div>
+                  </div>
+                  <div class="home__section__items__list__item__right align-items-center">
+                      <div [style.visibility]="item.moreFunc ? 'visible' : 'hidden'"
+                          class="home__section__items__list__item__right__more">more function?</div>
+                      <div class="home__section__items__list__item__right__priority">
+                          <div [class]="'home__section__items__list__item__right__priority__box '  + getBoxColor(item.priority)">
+                              {{item.priority}}
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
   </div>
-
-
+  <br />
   <!-- Quality Assurance -->
   <div class="home__section container-fluid">
-    <div class="row">
-      <div class="home__section__circular-progress">
-        <app-circular-progress-bar [value]="64.4"></app-circular-progress-bar>
-      </div>
-      <div class="home__section__content d-flex flex-column">
-        <div class="home__section__content__header d-flex flex-row align-items-center">
-          <img class="img-fluid" src="./assets/icons/human.svg" alt="human" />
-          <h3 class="home__section__content__header__title ms-3">
-            Quality Assurance
-          </h3>
-        </div>
-
-        <p class="home__section__content__des">
-          Great job! You are performing better than 80% of companies
-          in your industry in section. Lorem Epsom dollar its
-          amet.
-        </p>
-        <p class="home__section__content__note">
-          Would like to see more from your report and how to fix it?
-          <br />
-          Learn more
-          <span class="home__section__content__note__link">here</span>
-        </p>
-      </div>
-    </div>
-
-    <div class="home__section__information">
-      <div class="home__section__information__header row">
-        <span class="home__section__information__header__level">Level A Accessibility Checks</span>
-        <span class="home__section__information__header__domain text-center">Domain compliance</span>
-        <span class="home__section__information__header__page text-center">Pages</span>
-      </div>
-
-      <div class="home__section__information__body row" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
-        <div class="home__section__information__body__level">
-          <div class="d-flex align-items-center">
-            <span class="home__section__information__body__level__number">{{i+1}}.</span>
-            <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="icon">
-            <span class="home__section__information__body__level__text">{{data.level.text}}</span>
+      <div class="row">
+          <div class="home__section__circular-progress">
+              <app-circular-progress-bar [value]="54.4"></app-circular-progress-bar>
           </div>
-        </div>
-
-        <div class="home__section__information__body__domain justify-content-center align-items-center">
-          <div class="home__section__information__body__domain__progress">
-            <app-progress-bar [bottomText]="false" [valueMax]="100"
-              [valueNow]="data.domain.percent">
-            </app-progress-bar>
-
+          <div class="home__section__content d-flex flex-column">
+              <div class="home__section__content__header d-flex flex-row align-items-center">
+                  <img class="img-fluid" src="./assets/icons/human.svg" alt="human" />
+                  <h3 class="home__section__content__header__title ms-3">
+                      Quality Assurance
+                  </h3>
+              </div>
+              <p class="home__section__content__des">
+                  Great job! You are performing better than 80% of companies in your industry in accessibility.
+              </p>
+              <div class="home__section__content__note is-hide">
+                  Would like to see more from your report and how to fix it? Learn more
+                  <span class="home__section__content__note__link">here</span>
+              </div>
           </div>
-          <span class="home__section__information__body__domain__percent">{{data.domain.percent}}%</span>
-        </div>
-
-        <div class="home__section__information__body__page justify-content-center align-items-center">
-          <div class="home__section__information__body__page__box text-center"
-            [class.highlight]="currentRowIndex === i">
-            <span>{{data.pages.value}}</span>
-
-            <img class="home__section__information__body__page__box__icon ms-3"
-              [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
-              alt="arrow" (click)="onShowDetail(data, i)" />
+          <div class="home__section__content__note">
+              Would like to see more from your report and how to fix it? Learn more
+              <span class="home__section__content__note__link">here</span>
           </div>
-        </div>
       </div>
-      <div class="home__section__information__bottom column d-flex align-items-center">
-        <span class="home__section__information__header__level">Readability View</span>
-        <span class="home__section__information__header__level">College
-          <img class="home__section__information__header__level__img img-fluid" src="./assets/icons/eye.svg" alt="eye" />
-        </span>
-      </div>
-    </div>
-
-    <div class="home__section__detail row justify-content-between align-items-center">
-      <div class="home__section__detail__left  align-items-center">
-        <span class="home__section__detail__left__title">{{currentDetail?.level?.text}}
-        </span>
-        <p class="home__section__detail__left__found">{{currentDetail?.pages?.value}} pages found</p>
-      </div>
-
-      <div class="home__section__detail__right d-flex align-items-center">
-        <div class="home__section__detail__right__progress ">
-          <app-progress-bar [valueMax]="100" [valueNow]="currentDetail.detail.percent"
-            [totalPage]="currentDetail?.detail?.totalPage" [page]="currentDetail?.pages?.value"></app-progress-bar>
-        </div>
-        <img class="home__section__detail__right__progress__icon ms-3" src="./assets/icons/down-arrow.svg"
-          alt="arrow" />
-      </div>
-    </div>
-
-    <div class="home__section__items row">
-      <div class="home__section__items__header d-flex">
-        <p class="home__section__items__header__title">Title and URL</p>
-        <p class="home__section__items__header__priority">Priority</p>
-      </div>
-
-      <div class="home__section__items__list row">
-        <div *ngFor="let item of currentDetail?.detail?.items" class="home__section__items__list__item d-flex">
-          <div class="home__section__items__list__item__left">
-            <div class="home__section__items__list__item__left__title">{{item.name}}</div>
-            <div class="home__section__items__list__item__left__link d-flex align-items-center">
-              <img class="home__section__items__list__item__left__link__icon" src="./assets/icons/open-link.png" alt="">
-              <span class="home__section__items__list__item__left__link__url ms-2">{{item.url}}</span>
-            </div>
+      <!-- Large Tablet, Laptop, Desktop -->
+      <div class="home__section__information" *ngIf="innerWidth >= 768">
+          <div class="home__section__information__header row">
+              <span class="home__section__information__header__level">Level A Accessibility Checks</span>
+              <span class="home__section__information__header__domain text-center">Domain compliance</span>
+              <span class="home__section__information__header__page text-center">Affects Pages</span>
           </div>
-          <div class="home__section__items__list__item__right align-items-center">
-            <div [style.visibility]="item.moreFunc ? 'visible' : 'hidden'"
-              class="home__section__items__list__item__right__more">more function?</div>
-            <div class="home__section__items__list__item__right__priority">
-              <div [class]="'home__section__items__list__item__right__priority__box '  + getBoxColor(item.priority)">
-                {{item.priority}}</div>
-            </div>
+          <div class="home__section__information__body row" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
+              <div class="home__section__information__body__level">
+                  <div class="d-flex align-items-center">
+                      <span class="home__section__information__body__level__number">{{i+1}}.</span>
+                      <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="icon">
+                      <span class="home__section__information__body__level__text">{{data.level.text}}</span>
+                  </div>
+              </div>
+              <div class="home__section__information__body__domain justify-content-center align-items-center">
+                  <div class="home__section__information__body__domain__progress">
+                      <app-progress-bar [bottomText]="false" [valueMax]="100"
+                      [valueNow]="data.domain.percent">
+                      </app-progress-bar>
+                  </div>
+                  <span class="home__section__information__body__domain__percent">{{data.domain.percent}}%</span>
+              </div>
+              <div class="home__section__information__body__page justify-content-center align-items-center">
+                  <div class="home__section__information__body__page__box text-center"
+                      [class.highlight]="currentRowIndex === i">
+                      <span>{{data.pages.value}}</span>
+                      <img class="home__section__information__body__page__box__icon ms-3"
+                      [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
+                      alt="arrow" (click)="onShowDetail(data, i)" />
+                  </div>
+              </div>
           </div>
-        </div>
+          <div class="home__section__information__bottom column d-flex align-items-center">
+              <span class="home__section__information__header__level__readability text-center">Readability Level</span>
+              <span class="home__section__information__header__level__college">College
+              <img class="home__section__information__header__level__img img-fluid" src="./assets/icons/eye.svg" alt="eye" />
+              </span>
+          </div>
       </div>
-    </div>
+      <!-- Mobile, Small Tablet -->
+      <div class="home__section__information" *ngIf="innerWidth <= 768">
+          <div class="home__section__information__header row">
+              <span class="home__section__information__header__level">Level A Accessibility Checks</span>
+          </div>
+          <div class="home__section__information__body row">
+              <div class="home__section__information__body__level" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
+                  <div class="d-flex align-items-center">
+                      <span class="home__section__information__body__level__number">{{i+1}}.</span>
+                      <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="icon">
+                      <span class="home__section__information__body__level__text">{{data.level.text}}</span>
+                  </div>
+              </div>
+              <div class="d-flex" style="border-top: 2px solid #eeeeee;">
+                  <span class="home__section__information__header__domain text-center">Domain compliance</span>
+                  <span class="home__section__information__header__page text-center">Affects Pages</span>
+              </div>
+              <div class="d-flex" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
+                  <div class="home__section__information__body__domain justify-content-center align-items-center">
+                      <div class="home__section__information__body__domain__progress">
+                          <app-progress-bar [bottomText]="false" [valueMax]="100"
+                          [valueNow]="data.domain.percent">
+                          </app-progress-bar>
+                      </div>
+                      <span class="home__section__information__body__domain__percent">{{data.domain.percent}}%</span>
+                  </div>
+                  <div class="home__section__information__body__page justify-content-center align-items-center">
+                      <div class="home__section__information__body__page__box text-center"
+                          [class.highlight]="currentRowIndex === i">
+                          <span>{{data.pages.value}}</span>
+                          <img class="home__section__information__body__page__box__icon ms-3"
+                          [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
+                          alt="arrow" (click)="onShowDetail(data, i)" />
+                      </div>
+                  </div>
+              </div>
+              <div class="home__section__information__bottom column d-flex align-items-center">
+                  <span class="home__section__information__header__level__readability text-center">Readability Level</span>
+                  <span class="home__section__information__header__level__college text-center d-flex align-items-center justify-content-center">College
+                  <img class="home__section__information__header__level__img img-fluid" src="./assets/icons/eye.svg" alt="eye" />
+                  </span>
+              </div>
+          </div>
+      </div>
+      <div class="home__section__detail row justify-content-between align-items-center">
+          <div class="home__section__detail__left  align-items-center">
+              <span class="home__section__detail__left__title">{{currentDetail?.level?.text}}
+              </span>
+              <p class="home__section__detail__left__found">{{currentDetail?.pages?.value}} pages found</p>
+          </div>
+          <div class="home__section__detail__right d-flex align-items-center">
+              <div class="home__section__detail__right__progress ">
+                  <app-progress-bar [valueMax]="100" [valueNow]="currentDetail.detail.percent"
+                  [totalPage]="currentDetail?.detail?.totalPage" [page]="currentDetail?.pages?.value"></app-progress-bar>
+              </div>
+              <img class="home__section__detail__right__progress__icon ms-3" src="./assets/icons/down-arrow.svg"
+                  alt="arrow" />
+          </div>
+      </div>
+      <div class="home__section__items row">
+          <div class="home__section__items__header d-flex">
+              <p class="home__section__items__header__title">Title and URL</p>
+              <p class="home__section__items__header__priority">Priority</p>
+          </div>
+          <div class="home__section__items__list row">
+              <div *ngFor="let item of currentDetail?.detail?.items" class="home__section__items__list__item d-flex">
+                  <div class="home__section__items__list__item__left">
+                      <div class="home__section__items__list__item__left__title">{{item.name}}</div>
+                      <div class="home__section__items__list__item__left__link d-flex align-items-center">
+                          <img class="home__section__items__list__item__left__link__icon" src="./assets/icons/open-link.png" alt="">
+                          <span class="home__section__items__list__item__left__link__url ms-2">{{item.url}}</span>
+                      </div>
+                  </div>
+                  <div class="home__section__items__list__item__right align-items-center">
+                      <div [style.visibility]="item.moreFunc ? 'visible' : 'hidden'"
+                          class="home__section__items__list__item__right__more">more function?</div>
+                      <div class="home__section__items__list__item__right__priority">
+                          <div [class]="'home__section__items__list__item__right__priority__box '  + getBoxColor(item.priority)">
+                              {{item.priority}}
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
   </div>
-
+  <br />
   <!-- SEO -->
   <div class="home__section container-fluid">
-    <div class="row">
-      <div class="home__section__circular-progress">
-        <app-circular-progress-bar [value]="97.7"></app-circular-progress-bar>
-      </div>
-      <div class="home__section__content d-flex flex-column">
-        <div class="home__section__content__header d-flex flex-row align-items-center">
-          <img class="img-fluid" src="./assets/icons/human.svg" alt="human" />
-          <h3 class="home__section__content__header__title ms-3">
-            SEO
-          </h3>
-        </div>
-
-        <p class="home__section__content__des">
-          Great job! You are performing better than 80% of companies
-          in your industry in section. Lorem Epsom dollar its
-          amet.
-        </p>
-        <p class="home__section__content__note">
-          Would like to see more from your report and how to fix it?
-          <br />
-          Learn more
-          <span class="home__section__content__note__link">here</span>
-        </p>
-      </div>
-    </div>
-
-    <div class="home__section__information">
-      <div class="home__section__information__header row">
-        <span class="home__section__information__header__level">Level A Accessibility Checks</span>
-        <span class="home__section__information__header__domain text-center">Domain compliance</span>
-        <span class="home__section__information__header__page text-center">Pages</span>
-      </div>
-
-      <div class="home__section__information__body row" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
-        <div class="home__section__information__body__level">
-          <div class="d-flex align-items-center">
-            <span class="home__section__information__body__level__number">{{i+1}}.</span>
-            <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="icon">
-            <span class="home__section__information__body__level__text">{{data.level.text}}</span>
+      <div class="row">
+          <div class="home__section__circular-progress">
+              <app-circular-progress-bar [value]="97.7"></app-circular-progress-bar>
           </div>
-        </div>
-
-        <div class="home__section__information__body__domain justify-content-center align-items-center">
-          <div class="home__section__information__body__domain__progress">
-            <app-progress-bar [bottomText]="false" [valueMax]="100"
-              [valueNow]="data.domain.percent">
-            </app-progress-bar>
-
+          <div class="home__section__content d-flex flex-column">
+              <div class="home__section__content__header d-flex flex-row align-items-center">
+                  <img class="img-fluid" src="./assets/icons/human.svg" alt="human" />
+                  <h3 class="home__section__content__header__title ms-3">
+                      SEO
+                  </h3>
+              </div>
+              <p class="home__section__content__des">
+                  Great job! You are performing better than 80% of companies in your industry in accessibility.
+              </p>
+              <div class="home__section__content__note is-hide">
+                  Would like to see more from your report and how to fix it? Learn more
+                  <span class="home__section__content__note__link">here</span>
+              </div>
           </div>
-          <span class="home__section__information__body__domain__percent">{{data.domain.percent}}%</span>
-        </div>
-
-        <div class="home__section__information__body__page justify-content-center align-items-center">
-          <div class="home__section__information__body__page__box text-center"
-            [class.highlight]="currentRowIndex === i">
-            <span>{{data.pages.value}}</span>
-
-            <img class="home__section__information__body__page__box__icon ms-3"
-              [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
-              alt="arrow" (click)="onShowDetail(data, i)" />
+          <div class="home__section__content__note">
+              Would like to see more from your report and how to fix it? Learn more
+              <span class="home__section__content__note__link">here</span>
           </div>
-        </div>
       </div>
-    </div>
-
-    <div class="home__section__detail row justify-content-between align-items-center">
-      <div class="home__section__detail__left  align-items-center">
-        <span class="home__section__detail__left__title">{{currentDetail?.level?.text}}
-        </span>
-        <p class="home__section__detail__left__found">{{currentDetail?.pages?.value}} pages found</p>
-      </div>
-
-      <div class="home__section__detail__right d-flex align-items-center">
-        <div class="home__section__detail__right__progress ">
-          <app-progress-bar [valueMax]="100" [valueNow]="currentDetail.detail.percent"
-            [totalPage]="currentDetail?.detail?.totalPage" [page]="currentDetail?.pages?.value"></app-progress-bar>
-        </div>
-        <img class="home__section__detail__right__progress__icon ms-3" src="./assets/icons/down-arrow.svg"
-          alt="arrow" />
-      </div>
-    </div>
-
-    <div class="home__section__items row">
-      <div class="home__section__items__header d-flex">
-        <p class="home__section__items__header__title">Title and URL</p>
-        <p class="home__section__items__header__priority">Priority</p>
-      </div>
-
-      <div class="home__section__items__list row">
-        <div *ngFor="let item of currentDetail?.detail?.items" class="home__section__items__list__item d-flex">
-          <div class="home__section__items__list__item__left">
-            <div class="home__section__items__list__item__left__title">{{item.name}}</div>
-            <div class="home__section__items__list__item__left__link d-flex align-items-center">
-              <img class="home__section__items__list__item__left__link__icon" src="./assets/icons/open-link.png" alt="">
-              <span class="home__section__items__list__item__left__link__url ms-2">{{item.url}}</span>
-            </div>
+      <!-- Large Tablet, Laptop, Desktop -->
+      <div class="home__section__information" *ngIf="innerWidth >= 768">
+          <div class="home__section__information__header row">
+              <span class="home__section__information__header__level">Level A Accessibility Checks</span>
+              <span class="home__section__information__header__domain text-center">Domain compliance</span>
+              <span class="home__section__information__header__page text-center">Affects Pages</span>
           </div>
-          <div class="home__section__items__list__item__right align-items-center">
-            <div [style.visibility]="item.moreFunc ? 'visible' : 'hidden'"
-              class="home__section__items__list__item__right__more">more function?</div>
-            <div class="home__section__items__list__item__right__priority">
-              <div [class]="'home__section__items__list__item__right__priority__box '  + getBoxColor(item.priority)">
-                {{item.priority}}</div>
-            </div>
+          <div class="home__section__information__body row" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
+              <div class="home__section__information__body__level">
+                  <div class="d-flex align-items-center">
+                      <span class="home__section__information__body__level__number">{{i+1}}.</span>
+                      <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="icon">
+                      <span class="home__section__information__body__level__text">{{data.level.text}}</span>
+                  </div>
+              </div>
+              <div class="home__section__information__body__domain justify-content-center align-items-center">
+                  <div class="home__section__information__body__domain__progress">
+                      <app-progress-bar [bottomText]="false" [valueMax]="100"
+                      [valueNow]="data.domain.percent">
+                      </app-progress-bar>
+                  </div>
+                  <span class="home__section__information__body__domain__percent">{{data.domain.percent}}%</span>
+              </div>
+              <div class="home__section__information__body__page justify-content-center align-items-center">
+                  <div class="home__section__information__body__page__box text-center"
+                      [class.highlight]="currentRowIndex === i">
+                      <span>{{data.pages.value}}</span>
+                      <img class="home__section__information__body__page__box__icon ms-3"
+                      [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
+                      alt="arrow" (click)="onShowDetail(data, i)" />
+                  </div>
+              </div>
           </div>
-        </div>
       </div>
-    </div>
+      <!-- Mobile, Small Tablet -->
+      <div class="home__section__information" *ngIf="innerWidth <= 768">
+          <div class="home__section__information__header row">
+              <span class="home__section__information__header__level">Level A Accessibility Checks</span>
+          </div>
+          <div class="home__section__information__body row">
+              <div class="home__section__information__body__level" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
+                  <div class="d-flex align-items-center">
+                      <span class="home__section__information__body__level__number">{{i+1}}.</span>
+                      <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="icon">
+                      <span class="home__section__information__body__level__text">{{data.level.text}}</span>
+                  </div>
+              </div>
+              <div class="d-flex" style="border-top: 2px solid #eeeeee;">
+                  <span class="home__section__information__header__domain text-center">Domain compliance</span>
+                  <span class="home__section__information__header__page text-center">Affects Pages</span>
+              </div>
+              <div class="d-flex" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
+                  <div class="home__section__information__body__domain justify-content-center align-items-center">
+                      <div class="home__section__information__body__domain__progress">
+                          <app-progress-bar [bottomText]="false" [valueMax]="100"
+                          [valueNow]="data.domain.percent">
+                          </app-progress-bar>
+                      </div>
+                      <span class="home__section__information__body__domain__percent">{{data.domain.percent}}%</span>
+                  </div>
+                  <div class="home__section__information__body__page justify-content-center align-items-center">
+                      <div class="home__section__information__body__page__box text-center"
+                          [class.highlight]="currentRowIndex === i">
+                          <span>{{data.pages.value}}</span>
+                          <img class="home__section__information__body__page__box__icon ms-3"
+                          [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
+                          alt="arrow" (click)="onShowDetail(data, i)" />
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="home__section__detail row justify-content-between align-items-center">
+          <div class="home__section__detail__left  align-items-center">
+              <span class="home__section__detail__left__title">{{currentDetail?.level?.text}}
+              </span>
+              <p class="home__section__detail__left__found">{{currentDetail?.pages?.value}} pages found</p>
+          </div>
+          <div class="home__section__detail__right d-flex align-items-center">
+              <div class="home__section__detail__right__progress ">
+                  <app-progress-bar [valueMax]="100" [valueNow]="currentDetail.detail.percent"
+                  [totalPage]="currentDetail?.detail?.totalPage" [page]="currentDetail?.pages?.value"></app-progress-bar>
+              </div>
+              <img class="home__section__detail__right__progress__icon ms-3" src="./assets/icons/down-arrow.svg"
+                  alt="arrow" />
+          </div>
+      </div>
+      <div class="home__section__items row">
+          <div class="home__section__items__header d-flex">
+              <p class="home__section__items__header__title">Title and URL</p>
+              <p class="home__section__items__header__priority">Priority</p>
+          </div>
+          <div class="home__section__items__list row">
+              <div *ngFor="let item of currentDetail?.detail?.items" class="home__section__items__list__item d-flex">
+                  <div class="home__section__items__list__item__left">
+                      <div class="home__section__items__list__item__left__title">{{item.name}}</div>
+                      <div class="home__section__items__list__item__left__link d-flex align-items-center">
+                          <img class="home__section__items__list__item__left__link__icon" src="./assets/icons/open-link.png" alt="">
+                          <span class="home__section__items__list__item__left__link__url ms-2">{{item.url}}</span>
+                      </div>
+                  </div>
+                  <div class="home__section__items__list__item__right align-items-center">
+                      <div [style.visibility]="item.moreFunc ? 'visible' : 'hidden'"
+                          class="home__section__items__list__item__right__more">more function?</div>
+                      <div class="home__section__items__list__item__right__priority">
+                          <div [class]="'home__section__items__list__item__right__priority__box '  + getBoxColor(item.priority)">
+                              {{item.priority}}
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
   </div>
-
+  <br />
   <!-- Content Policy -->
   <div class="home__section container-fluid">
-    <div class="row">
-      <div class="home__section__circular-progress">
-        <app-circular-progress-bar [value]="97.7"></app-circular-progress-bar>
-      </div>
-      <div class="home__section__content d-flex flex-column">
-        <div class="home__section__content__header d-flex flex-row align-items-center">
-          <img class="img-fluid" src="./assets/icons/human.svg" alt="human" />
-          <h3 class="home__section__content__header__title ms-3">
-            Content Policy
-          </h3>
-        </div>
-
-        <p class="home__section__content__des">
-          Great job! You are performing better than 80% of companies
-          in your industry in section. Lorem Epsom dollar its
-          amet.
-        </p>
-        <p class="home__section__content__note">
-          Would like to see more from your report and how to fix it?
-          <br />
-          Learn more
-          <span class="home__section__content__note__link">here</span>
-        </p>
-      </div>
-    </div>
-
-    <div class="home__section__information">
-      <div class="home__section__information__header row">
-        <span class="home__section__information__header__level">Level A Accessibility Checks</span>
-        <span class="home__section__information__header__domain text-center">Domain compliance</span>
-        <span class="home__section__information__header__page text-center">Pages</span>
-      </div>
-
-      <div class="home__section__information__body row" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
-        <div class="home__section__information__body__level">
-          <div class="d-flex align-items-center">
-            <span class="home__section__information__body__level__number">{{i+1}}.</span>
-            <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="icon">
-            <span class="home__section__information__body__level__text">{{data.level.text}}</span>
+      <div class="row">
+          <div class="home__section__circular-progress">
+              <app-circular-progress-bar [value]="97.7"></app-circular-progress-bar>
           </div>
-        </div>
-
-        <div class="home__section__information__body__domain justify-content-center align-items-center">
-          <div class="home__section__information__body__domain__progress">
-            <app-progress-bar [bottomText]="false" [valueMax]="100"
-              [valueNow]="data.domain.percent">
-            </app-progress-bar>
-
+          <div class="home__section__content d-flex flex-column">
+              <div class="home__section__content__header d-flex flex-row align-items-center">
+                  <img class="img-fluid" src="./assets/icons/human.svg" alt="human" />
+                  <h3 class="home__section__content__header__title ms-3">
+                      Content Policy
+                  </h3>
+              </div>
+              <p class="home__section__content__des">
+                  Great job! You are performing better than 80% of companies in your industry in accessibility.
+              </p>
+              <div class="home__section__content__note is-hide">
+                  Would like to see more from your report and how to fix it? Learn more
+                  <span class="home__section__content__note__link">here</span>
+              </div>
           </div>
-          <span class="home__section__information__body__domain__percent">{{data.domain.percent}}%</span>
-        </div>
-
-        <div class="home__section__information__body__page justify-content-center align-items-center">
-          <div class="home__section__information__body__page__box text-center"
-            [class.highlight]="currentRowIndex === i">
-            <span>{{data.pages.value}}</span>
-
-            <img class="home__section__information__body__page__box__icon ms-3"
-              [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
-              alt="arrow" (click)="onShowDetail(data, i)" />
+          <div class="home__section__content__note">
+              Would like to see more from your report and how to fix it? Learn more
+              <span class="home__section__content__note__link">here</span>
           </div>
-        </div>
       </div>
-    </div>
-
-    <div class="home__section__detail row justify-content-between align-items-center">
-      <div class="home__section__detail__left  align-items-center">
-        <span class="home__section__detail__left__title">{{currentDetail?.level?.text}}
-        </span>
-        <p class="home__section__detail__left__found">{{currentDetail?.pages?.value}} pages found</p>
-      </div>
-
-      <div class="home__section__detail__right d-flex align-items-center">
-        <div class="home__section__detail__right__progress ">
-          <app-progress-bar [valueMax]="100" [valueNow]="currentDetail.detail.percent"
-            [totalPage]="currentDetail?.detail?.totalPage" [page]="currentDetail?.pages?.value"></app-progress-bar>
-        </div>
-        <img class="home__section__detail__right__progress__icon ms-3" src="./assets/icons/down-arrow.svg"
-          alt="arrow" />
-      </div>
-    </div>
-
-    <div class="home__section__items row">
-      <div class="home__section__items__header d-flex">
-        <p class="home__section__items__header__title">Title and URL</p>
-        <p class="home__section__items__header__priority">Priority</p>
-      </div>
-
-      <div class="home__section__items__list row">
-        <div *ngFor="let item of currentDetail?.detail?.items" class="home__section__items__list__item d-flex">
-          <div class="home__section__items__list__item__left">
-            <div class="home__section__items__list__item__left__title">{{item.name}}</div>
-            <div class="home__section__items__list__item__left__link d-flex align-items-center">
-              <img class="home__section__items__list__item__left__link__icon" src="./assets/icons/open-link.png" alt="">
-              <span class="home__section__items__list__item__left__link__url ms-2">{{item.url}}</span>
-            </div>
+      <!-- Large Tablet, Laptop, Desktop -->
+      <div class="home__section__information" *ngIf="innerWidth >= 768">
+          <div class="home__section__information__header row">
+              <span class="home__section__information__header__level">Level A Accessibility Checks</span>
+              <span class="home__section__information__header__domain text-center">Domain compliance</span>
+              <span class="home__section__information__header__page text-center">Affects Pages</span>
           </div>
-          <div class="home__section__items__list__item__right align-items-center">
-            <div [style.visibility]="item.moreFunc ? 'visible' : 'hidden'"
-              class="home__section__items__list__item__right__more">more function?</div>
-            <div class="home__section__items__list__item__right__priority">
-              <div [class]="'home__section__items__list__item__right__priority__box '  + getBoxColor(item.priority)">
-                {{item.priority}}</div>
-            </div>
+          <div class="home__section__information__body row" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
+              <div class="home__section__information__body__level">
+                  <div class="d-flex align-items-center">
+                      <span class="home__section__information__body__level__number">{{i+1}}.</span>
+                      <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="icon">
+                      <span class="home__section__information__body__level__text">{{data.level.text}}</span>
+                  </div>
+              </div>
+              <div class="home__section__information__body__domain justify-content-center align-items-center">
+                  <div class="home__section__information__body__domain__progress">
+                      <app-progress-bar [bottomText]="false" [valueMax]="100"
+                      [valueNow]="data.domain.percent">
+                      </app-progress-bar>
+                  </div>
+                  <span class="home__section__information__body__domain__percent">{{data.domain.percent}}%</span>
+              </div>
+              <div class="home__section__information__body__page justify-content-center align-items-center">
+                  <div class="home__section__information__body__page__box text-center"
+                      [class.highlight]="currentRowIndex === i">
+                      <span>{{data.pages.value}}</span>
+                      <img class="home__section__information__body__page__box__icon ms-3"
+                      [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
+                      alt="arrow" (click)="onShowDetail(data, i)" />
+                  </div>
+              </div>
           </div>
-        </div>
       </div>
-    </div>
+      <!-- Mobile, Small Tablet -->
+      <div class="home__section__information" *ngIf="innerWidth <= 768">
+          <div class="home__section__information__header row">
+              <span class="home__section__information__header__level">Level A Accessibility Checks</span>
+          </div>
+          <div class="home__section__information__body row">
+              <div class="home__section__information__body__level" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
+                  <div class="d-flex align-items-center">
+                      <span class="home__section__information__body__level__number">{{i+1}}.</span>
+                      <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="icon">
+                      <span class="home__section__information__body__level__text">{{data.level.text}}</span>
+                  </div>
+              </div>
+              <div class="d-flex" style="border-top: 2px solid #eeeeee;">
+                  <span class="home__section__information__header__domain text-center">Domain compliance</span>
+                  <span class="home__section__information__header__page text-center">Affects Pages</span>
+              </div>
+              <div class="d-flex" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
+                  <div class="home__section__information__body__domain justify-content-center align-items-center">
+                      <div class="home__section__information__body__domain__progress">
+                          <app-progress-bar [bottomText]="false" [valueMax]="100"
+                          [valueNow]="data.domain.percent">
+                          </app-progress-bar>
+                      </div>
+                      <span class="home__section__information__body__domain__percent">{{data.domain.percent}}%</span>
+                  </div>
+                  <div class="home__section__information__body__page justify-content-center align-items-center">
+                      <div class="home__section__information__body__page__box text-center"
+                          [class.highlight]="currentRowIndex === i">
+                          <span>{{data.pages.value}}</span>
+                          <img class="home__section__information__body__page__box__icon ms-3"
+                          [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
+                          alt="arrow" (click)="onShowDetail(data, i)" />
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="home__section__detail row justify-content-between align-items-center">
+          <div class="home__section__detail__left  align-items-center">
+              <span class="home__section__detail__left__title">{{currentDetail?.level?.text}}
+              </span>
+              <p class="home__section__detail__left__found">{{currentDetail?.pages?.value}} pages found</p>
+          </div>
+          <div class="home__section__detail__right d-flex align-items-center">
+              <div class="home__section__detail__right__progress ">
+                  <app-progress-bar [valueMax]="100" [valueNow]="currentDetail.detail.percent"
+                  [totalPage]="currentDetail?.detail?.totalPage" [page]="currentDetail?.pages?.value"></app-progress-bar>
+              </div>
+              <img class="home__section__detail__right__progress__icon ms-3" src="./assets/icons/down-arrow.svg"
+                  alt="arrow" />
+          </div>
+      </div>
+      <div class="home__section__items row">
+          <div class="home__section__items__header d-flex">
+              <p class="home__section__items__header__title">Title and URL</p>
+              <p class="home__section__items__header__priority">Priority</p>
+          </div>
+          <div class="home__section__items__list row">
+              <div *ngFor="let item of currentDetail?.detail?.items" class="home__section__items__list__item d-flex">
+                  <div class="home__section__items__list__item__left">
+                      <div class="home__section__items__list__item__left__title">{{item.name}}</div>
+                      <div class="home__section__items__list__item__left__link d-flex align-items-center">
+                          <img class="home__section__items__list__item__left__link__icon" src="./assets/icons/open-link.png" alt="">
+                          <span class="home__section__items__list__item__left__link__url ms-2">{{item.url}}</span>
+                      </div>
+                  </div>
+                  <div class="home__section__items__list__item__right align-items-center">
+                      <div [style.visibility]="item.moreFunc ? 'visible' : 'hidden'"
+                          class="home__section__items__list__item__right__more">more function?</div>
+                      <div class="home__section__items__list__item__right__priority">
+                          <div [class]="'home__section__items__list__item__right__priority__box '  + getBoxColor(item.priority)">
+                              {{item.priority}}
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
   </div>
-
+  <br />
   <!-- Data Privacy -->
   <div class="home__section container-fluid">
-    <div class="row">
-      <div class="home__section__circular-progress">
-        <app-circular-progress-bar [value]="97.7"></app-circular-progress-bar>
-      </div>
-      <div class="home__section__content d-flex flex-column">
-        <div class="home__section__content__header d-flex flex-row align-items-center">
-          <img class="img-fluid" src="./assets/icons/human.svg" alt="human" />
-          <h3 class="home__section__content__header__title ms-3">
-            Data Privacy
-          </h3>
-        </div>
-
-        <p class="home__section__content__des">
-          Great job! You are performing better than 80% of companies
-          in your industry in section. Lorem Epsom dollar its
-          amet.
-        </p>
-        <p class="home__section__content__note">
-          Would like to see more from your report and how to fix it?
-          <br />
-          Learn more
-          <span class="home__section__content__note__link">here</span>
-        </p>
-      </div>
-    </div>
-
-    <div class="home__section__information">
-      <div class="home__section__information__header row">
-        <span class="home__section__information__header__level">Level A Accessibility Checks</span>
-        <span class="home__section__information__header__domain text-center">Domain compliance</span>
-        <span class="home__section__information__header__page text-center">Pages</span>
-      </div>
-
-      <div class="home__section__information__body row" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
-        <div class="home__section__information__body__level">
-          <div class="d-flex align-items-center">
-            <span class="home__section__information__body__level__number">{{i+1}}.</span>
-            <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="icon">
-            <span class="home__section__information__body__level__text">{{data.level.text}}</span>
+      <div class="row">
+          <div class="home__section__circular-progress">
+              <app-circular-progress-bar [value]="97.7"></app-circular-progress-bar>
           </div>
-        </div>
-
-        <div class="home__section__information__body__domain justify-content-center align-items-center">
-          <div class="home__section__information__body__domain__progress">
-            <app-progress-bar [bottomText]="false" [valueMax]="100"
-              [valueNow]="data.domain.percent">
-            </app-progress-bar>
-
+          <div class="home__section__content d-flex flex-column">
+              <div class="home__section__content__header d-flex flex-row align-items-center">
+                  <img class="img-fluid" src="./assets/icons/human.svg" alt="human" />
+                  <h3 class="home__section__content__header__title ms-3">
+                      Data Privacy
+                  </h3>
+              </div>
+              <p class="home__section__content__des">
+                  Great job! You are performing better than 80% of companies in your industry in accessibility.
+              </p>
+              <div class="home__section__content__note is-hide">
+                  Would like to see more from your report and how to fix it? Learn more
+                  <span class="home__section__content__note__link">here</span>
+              </div>
           </div>
-          <span class="home__section__information__body__domain__percent">{{data.domain.percent}}%</span>
-        </div>
-
-        <div class="home__section__information__body__page justify-content-center align-items-center">
-          <div class="home__section__information__body__page__box text-center"
-            [class.highlight]="currentRowIndex === i">
-            <span>{{data.pages.value}}</span>
-
-            <img class="home__section__information__body__page__box__icon ms-3"
-              [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
-              alt="arrow" (click)="onShowDetail(data, i)" />
+          <div class="home__section__content__note">
+              Would like to see more from your report and how to fix it? Learn more
+              <span class="home__section__content__note__link">here</span>
           </div>
-        </div>
       </div>
-    </div>
-
-    <div class="home__section__detail row justify-content-between align-items-center">
-      <div class="home__section__detail__left  align-items-center">
-        <span class="home__section__detail__left__title">{{currentDetail?.level?.text}}
-        </span>
-        <p class="home__section__detail__left__found">{{currentDetail?.pages?.value}} pages found</p>
-      </div>
-
-      <div class="home__section__detail__right d-flex align-items-center">
-        <div class="home__section__detail__right__progress ">
-          <app-progress-bar [valueMax]="100" [valueNow]="currentDetail.detail.percent"
-            [totalPage]="currentDetail?.detail?.totalPage" [page]="currentDetail?.pages?.value"></app-progress-bar>
-        </div>
-        <img class="home__section__detail__right__progress__icon ms-3" src="./assets/icons/down-arrow.svg"
-          alt="arrow" />
-      </div>
-    </div>
-
-    <div class="home__section__items row">
-      <div class="home__section__items__header d-flex">
-        <p class="home__section__items__header__title">Title and URL</p>
-        <p class="home__section__items__header__priority">Priority</p>
-      </div>
-
-      <div class="home__section__items__list row">
-        <div *ngFor="let item of currentDetail?.detail?.items" class="home__section__items__list__item d-flex">
-          <div class="home__section__items__list__item__left">
-            <div class="home__section__items__list__item__left__title">{{item.name}}</div>
-            <div class="home__section__items__list__item__left__link d-flex align-items-center">
-              <img class="home__section__items__list__item__left__link__icon" src="./assets/icons/open-link.png" alt="">
-              <span class="home__section__items__list__item__left__link__url ms-2">{{item.url}}</span>
-            </div>
+      <!-- Large Tablet, Laptop, Desktop -->
+      <div class="home__section__information" *ngIf="innerWidth >= 768">
+          <div class="home__section__information__header row">
+              <span class="home__section__information__header__level">Level A Accessibility Checks</span>
+              <span class="home__section__information__header__domain text-center">Domain compliance</span>
+              <span class="home__section__information__header__page text-center">Affects Pages</span>
           </div>
-          <div class="home__section__items__list__item__right align-items-center">
-            <div [style.visibility]="item.moreFunc ? 'visible' : 'hidden'"
-              class="home__section__items__list__item__right__more">more function?</div>
-            <div class="home__section__items__list__item__right__priority">
-              <div [class]="'home__section__items__list__item__right__priority__box '  + getBoxColor(item.priority)">
-                {{item.priority}}</div>
-            </div>
+          <div class="home__section__information__body row" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
+              <div class="home__section__information__body__level">
+                  <div class="d-flex align-items-center">
+                      <span class="home__section__information__body__level__number">{{i+1}}.</span>
+                      <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="icon">
+                      <span class="home__section__information__body__level__text">{{data.level.text}}</span>
+                  </div>
+              </div>
+              <div class="home__section__information__body__domain justify-content-center align-items-center">
+                  <div class="home__section__information__body__domain__progress">
+                      <app-progress-bar [bottomText]="false" [valueMax]="100"
+                      [valueNow]="data.domain.percent">
+                      </app-progress-bar>
+                  </div>
+                  <span class="home__section__information__body__domain__percent">{{data.domain.percent}}%</span>
+              </div>
+              <div class="home__section__information__body__page justify-content-center align-items-center">
+                  <div class="home__section__information__body__page__box text-center"
+                      [class.highlight]="currentRowIndex === i">
+                      <span>{{data.pages.value}}</span>
+                      <img class="home__section__information__body__page__box__icon ms-3"
+                      [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
+                      alt="arrow" (click)="onShowDetail(data, i)" />
+                  </div>
+              </div>
           </div>
-        </div>
       </div>
-    </div>
+      <!-- Mobile, Small Tablet -->
+      <div class="home__section__information" *ngIf="innerWidth <= 768">
+          <div class="home__section__information__header row">
+              <span class="home__section__information__header__level">Level A Accessibility Checks</span>
+          </div>
+          <div class="home__section__information__body row">
+              <div class="home__section__information__body__level" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
+                  <div class="d-flex align-items-center">
+                      <span class="home__section__information__body__level__number">{{i+1}}.</span>
+                      <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="icon">
+                      <span class="home__section__information__body__level__text">{{data.level.text}}</span>
+                  </div>
+              </div>
+              <div class="d-flex" style="border-top: 2px solid #eeeeee;">
+                  <span class="home__section__information__header__domain text-center">Domain compliance</span>
+                  <span class="home__section__information__header__page text-center">Affects Pages</span>
+              </div>
+              <div class="d-flex" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
+                  <div class="home__section__information__body__domain justify-content-center align-items-center">
+                      <div class="home__section__information__body__domain__progress">
+                          <app-progress-bar [bottomText]="false" [valueMax]="100"
+                          [valueNow]="data.domain.percent">
+                          </app-progress-bar>
+                      </div>
+                      <span class="home__section__information__body__domain__percent">{{data.domain.percent}}%</span>
+                  </div>
+                  <div class="home__section__information__body__page justify-content-center align-items-center">
+                      <div class="home__section__information__body__page__box text-center"
+                          [class.highlight]="currentRowIndex === i">
+                          <span>{{data.pages.value}}</span>
+                          <img class="home__section__information__body__page__box__icon ms-3"
+                          [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
+                          alt="arrow" (click)="onShowDetail(data, i)" />
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="home__section__detail row justify-content-between align-items-center">
+          <div class="home__section__detail__left  align-items-center">
+              <span class="home__section__detail__left__title">{{currentDetail?.level?.text}}
+              </span>
+              <p class="home__section__detail__left__found">{{currentDetail?.pages?.value}} pages found</p>
+          </div>
+          <div class="home__section__detail__right d-flex align-items-center">
+              <div class="home__section__detail__right__progress ">
+                  <app-progress-bar [valueMax]="100" [valueNow]="currentDetail.detail.percent"
+                  [totalPage]="currentDetail?.detail?.totalPage" [page]="currentDetail?.pages?.value"></app-progress-bar>
+              </div>
+              <img class="home__section__detail__right__progress__icon ms-3" src="./assets/icons/down-arrow.svg"
+                  alt="arrow" />
+          </div>
+      </div>
+      <div class="home__section__items row">
+          <div class="home__section__items__header d-flex">
+              <p class="home__section__items__header__title">Title and URL</p>
+              <p class="home__section__items__header__priority">Priority</p>
+          </div>
+          <div class="home__section__items__list row">
+              <div *ngFor="let item of currentDetail?.detail?.items" class="home__section__items__list__item d-flex">
+                  <div class="home__section__items__list__item__left">
+                      <div class="home__section__items__list__item__left__title">{{item.name}}</div>
+                      <div class="home__section__items__list__item__left__link d-flex align-items-center">
+                          <img class="home__section__items__list__item__left__link__icon" src="./assets/icons/open-link.png" alt="">
+                          <span class="home__section__items__list__item__left__link__url ms-2">{{item.url}}</span>
+                      </div>
+                  </div>
+                  <div class="home__section__items__list__item__right align-items-center">
+                      <div [style.visibility]="item.moreFunc ? 'visible' : 'hidden'"
+                          class="home__section__items__list__item__right__more">more function?</div>
+                      <div class="home__section__items__list__item__right__priority">
+                          <div [class]="'home__section__items__list__item__right__priority__box '  + getBoxColor(item.priority)">
+                              {{item.priority}}
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
   </div>
-
+  <br />
   <!-- Performance -->
   <div class="home__section container-fluid">
-    <div class="row">
-      <div class="home__section__circular-progress">
-        <app-circular-progress-bar [value]="97.7"></app-circular-progress-bar>
-      </div>
-      <div class="home__section__content d-flex flex-column">
-        <div class="home__section__content__header d-flex flex-row align-items-center">
-          <img class="img-fluid" src="./assets/icons/human.svg" alt="human" />
-          <h3 class="home__section__content__header__title ms-3">
-            Performance
-          </h3>
-        </div>
-
-        <p class="home__section__content__des">
-          Great job! You are performing better than 80% of companies
-          in your industry in section. Lorem Epsom dollar its
-          amet.
-        </p>
-        <p class="home__section__content__note">
-          Would like to see more from your report and how to fix it?
-          <br />
-          Learn more
-          <span class="home__section__content__note__link">here</span>
-        </p>
-      </div>
-    </div>
-
-    <div class="home__section__information">
-      <div class="home__section__information__header row">
-        <span class="home__section__information__header__level">Level A Accessibility Checks</span>
-        <span class="home__section__information__header__domain text-center">Domain compliance</span>
-        <span class="home__section__information__header__page text-center">Pages</span>
-      </div>
-
-      <div class="home__section__information__body row" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
-        <div class="home__section__information__body__level">
-          <div class="d-flex align-items-center">
-            <span class="home__section__information__body__level__number">{{i+1}}.</span>
-            <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="icon">
-            <span class="home__section__information__body__level__text">{{data.level.text}}</span>
+      <div class="row">
+          <div class="home__section__circular-progress">
+              <app-circular-progress-bar [value]="97.7"></app-circular-progress-bar>
           </div>
-        </div>
-
-        <div class="home__section__information__body__domain justify-content-center align-items-center">
-          <div class="home__section__information__body__domain__progress">
-            <app-progress-bar [bottomText]="false" [valueMax]="100"
-              [valueNow]="data.domain.percent">
-            </app-progress-bar>
-
+          <div class="home__section__content d-flex flex-column">
+              <div class="home__section__content__header d-flex flex-row align-items-center">
+                  <img class="img-fluid" src="./assets/icons/human.svg" alt="human" />
+                  <h3 class="home__section__content__header__title ms-3">
+                      Performance
+                  </h3>
+              </div>
+              <p class="home__section__content__des">
+                  Great job! You are performing better than 80% of companies in your industry in accessibility.
+              </p>
+              <div class="home__section__content__note is-hide">
+                  Would like to see more from your report and how to fix it? Learn more
+                  <span class="home__section__content__note__link">here</span>
+              </div>
           </div>
-          <span class="home__section__information__body__domain__percent">{{data.domain.percent}}%</span>
-        </div>
-
-        <div class="home__section__information__body__page justify-content-center align-items-center">
-          <div class="home__section__information__body__page__box text-center"
-            [class.highlight]="currentRowIndex === i">
-            <span>{{data.pages.value}}</span>
-
-            <img class="home__section__information__body__page__box__icon ms-3"
-              [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
-              alt="arrow" (click)="onShowDetail(data, i)" />
+          <div class="home__section__content__note">
+              Would like to see more from your report and how to fix it? Learn more
+              <span class="home__section__content__note__link">here</span>
           </div>
-        </div>
       </div>
-    </div>
-
-    <div class="home__section__detail row justify-content-between align-items-center">
-      <div class="home__section__detail__left  align-items-center">
-        <span class="home__section__detail__left__title">{{currentDetail?.level?.text}}
-        </span>
-        <p class="home__section__detail__left__found">{{currentDetail?.pages?.value}} pages found</p>
-      </div>
-
-      <div class="home__section__detail__right d-flex align-items-center">
-        <div class="home__section__detail__right__progress ">
-          <app-progress-bar [valueMax]="100" [valueNow]="currentDetail.detail.percent"
-            [totalPage]="currentDetail?.detail?.totalPage" [page]="currentDetail?.pages?.value"></app-progress-bar>
-        </div>
-        <img class="home__section__detail__right__progress__icon ms-3" src="./assets/icons/down-arrow.svg"
-          alt="arrow" />
-      </div>
-    </div>
-
-    <div class="home__section__items row">
-      <div class="home__section__items__header d-flex">
-        <p class="home__section__items__header__title">Title and URL</p>
-        <p class="home__section__items__header__priority">Priority</p>
-      </div>
-
-      <div class="home__section__items__list row">
-        <div *ngFor="let item of currentDetail?.detail?.items" class="home__section__items__list__item d-flex">
-          <div class="home__section__items__list__item__left">
-            <div class="home__section__items__list__item__left__title">{{item.name}}</div>
-            <div class="home__section__items__list__item__left__link d-flex align-items-center">
-              <img class="home__section__items__list__item__left__link__icon" src="./assets/icons/open-link.png" alt="">
-              <span class="home__section__items__list__item__left__link__url ms-2">{{item.url}}</span>
-            </div>
+      <!-- Large Tablet, Laptop, Desktop -->
+      <div class="home__section__information" *ngIf="innerWidth >= 768">
+          <div class="home__section__information__header row">
+              <span class="home__section__information__header__level">Level A Accessibility Checks</span>
+              <span class="home__section__information__header__domain text-center">Domain compliance</span>
+              <span class="home__section__information__header__page text-center">Affects Pages</span>
           </div>
-          <div class="home__section__items__list__item__right align-items-center">
-            <div [style.visibility]="item.moreFunc ? 'visible' : 'hidden'"
-              class="home__section__items__list__item__right__more">more function?</div>
-            <div class="home__section__items__list__item__right__priority">
-              <div [class]="'home__section__items__list__item__right__priority__box '  + getBoxColor(item.priority)">
-                {{item.priority}}</div>
-            </div>
+          <div class="home__section__information__body row" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
+              <div class="home__section__information__body__level">
+                  <div class="d-flex align-items-center">
+                      <span class="home__section__information__body__level__number">{{i+1}}.</span>
+                      <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="icon">
+                      <span class="home__section__information__body__level__text">{{data.level.text}}</span>
+                  </div>
+              </div>
+              <div class="home__section__information__body__domain justify-content-center align-items-center">
+                  <div class="home__section__information__body__domain__progress">
+                      <app-progress-bar [bottomText]="false" [valueMax]="100"
+                      [valueNow]="data.domain.percent">
+                      </app-progress-bar>
+                  </div>
+                  <span class="home__section__information__body__domain__percent">{{data.domain.percent}}%</span>
+              </div>
+              <div class="home__section__information__body__page justify-content-center align-items-center">
+                  <div class="home__section__information__body__page__box text-center"
+                      [class.highlight]="currentRowIndex === i">
+                      <span>{{data.pages.value}}</span>
+                      <img class="home__section__information__body__page__box__icon ms-3"
+                      [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
+                      alt="arrow" (click)="onShowDetail(data, i)" />
+                  </div>
+              </div>
           </div>
-        </div>
       </div>
-    </div>
+      <!-- Mobile, Small Tablet -->
+      <div class="home__section__information" *ngIf="innerWidth <= 768">
+          <div class="home__section__information__header row">
+              <span class="home__section__information__header__level">Level A Accessibility Checks</span>
+          </div>
+          <div class="home__section__information__body row">
+              <div class="home__section__information__body__level" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
+                  <div class="d-flex align-items-center">
+                      <span class="home__section__information__body__level__number">{{i+1}}.</span>
+                      <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="icon">
+                      <span class="home__section__information__body__level__text">{{data.level.text}}</span>
+                  </div>
+              </div>
+              <div class="d-flex" style="border-top: 2px solid #eeeeee;">
+                  <span class="home__section__information__header__domain text-center">Domain compliance</span>
+                  <span class="home__section__information__header__page text-center">Affects Pages</span>
+              </div>
+              <div class="d-flex" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
+                  <div class="home__section__information__body__domain justify-content-center align-items-center">
+                      <div class="home__section__information__body__domain__progress">
+                          <app-progress-bar [bottomText]="false" [valueMax]="100"
+                          [valueNow]="data.domain.percent">
+                          </app-progress-bar>
+                      </div>
+                      <span class="home__section__information__body__domain__percent">{{data.domain.percent}}%</span>
+                  </div>
+                  <div class="home__section__information__body__page justify-content-center align-items-center">
+                      <div class="home__section__information__body__page__box text-center"
+                          [class.highlight]="currentRowIndex === i">
+                          <span>{{data.pages.value}}</span>
+                          <img class="home__section__information__body__page__box__icon ms-3"
+                          [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
+                          alt="arrow" (click)="onShowDetail(data, i)" />
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="home__section__detail row justify-content-between align-items-center">
+          <div class="home__section__detail__left  align-items-center">
+              <span class="home__section__detail__left__title">{{currentDetail?.level?.text}}
+              </span>
+              <p class="home__section__detail__left__found">{{currentDetail?.pages?.value}} pages found</p>
+          </div>
+          <div class="home__section__detail__right d-flex align-items-center">
+              <div class="home__section__detail__right__progress ">
+                  <app-progress-bar [valueMax]="100" [valueNow]="currentDetail.detail.percent"
+                  [totalPage]="currentDetail?.detail?.totalPage" [page]="currentDetail?.pages?.value"></app-progress-bar>
+              </div>
+              <img class="home__section__detail__right__progress__icon ms-3" src="./assets/icons/down-arrow.svg"
+                  alt="arrow" />
+          </div>
+      </div>
+      <div class="home__section__items row">
+          <div class="home__section__items__header d-flex">
+              <p class="home__section__items__header__title">Title and URL</p>
+              <p class="home__section__items__header__priority">Priority</p>
+          </div>
+          <div class="home__section__items__list row">
+              <div *ngFor="let item of currentDetail?.detail?.items" class="home__section__items__list__item d-flex">
+                  <div class="home__section__items__list__item__left">
+                      <div class="home__section__items__list__item__left__title">{{item.name}}</div>
+                      <div class="home__section__items__list__item__left__link d-flex align-items-center">
+                          <img class="home__section__items__list__item__left__link__icon" src="./assets/icons/open-link.png" alt="">
+                          <span class="home__section__items__list__item__left__link__url ms-2">{{item.url}}</span>
+                      </div>
+                  </div>
+                  <div class="home__section__items__list__item__right align-items-center">
+                      <div [style.visibility]="item.moreFunc ? 'visible' : 'hidden'"
+                          class="home__section__items__list__item__right__more">more function?</div>
+                      <div class="home__section__items__list__item__right__priority">
+                          <div [class]="'home__section__items__list__item__right__priority__box '  + getBoxColor(item.priority)">
+                              {{item.priority}}
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
   </div>
 </div>
