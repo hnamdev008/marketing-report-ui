@@ -10,6 +10,10 @@
         }
 
         &__banner {
+            @include respond-to(xs) {
+                padding: 0 30px;
+            }
+
             @include respond-from(md) {
                 display: flex;
                 margin: 0 auto;
@@ -66,6 +70,7 @@
 
         &__circular-progress {
             width: 40%;
+            padding: 0;
 
             @include respond-from(sm) {
                 width: fit-content;
@@ -262,7 +267,7 @@
                     }
 
                     @include respond-from(md) {
-                        padding-left: 64px;
+                        padding-left: 60px;
                     }
 
                     &__number {
@@ -558,4 +563,10 @@
 
 .no-wrap {
     flex-wrap: nowrap;
+}
+
+.p-left {
+    @include respond-from(md) {
+        padding-left: 60px;
+    }
 }
