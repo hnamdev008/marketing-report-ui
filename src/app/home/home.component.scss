@@ -165,7 +165,7 @@
                 }
 
                 &__domain {
-                    width: 60%;
+                    width: calc(60% - 2px);
 
                     @include respond-from(sm) {
                         display: initial;
@@ -335,7 +335,7 @@
                         width: fit-content;
                         background-color: #f4f2f0;
                         border-radius: 3px;
-                        padding: 8px 18px;
+                        padding: 8px 18px !important;
                         font-weight: bold;
 
                         &__icon {
@@ -345,17 +345,17 @@
                             cursor: pointer;
                             height: 15px;
                         }
+
+                        &.highlight {
+                            background-color: $c-spray;
+                        }
                     }
                 }
 
-                .highlight {
-                    background-color: $c-spray;
-                }
             }
         }
 
         &__detail {
-            padding-top: 20px;
             display: none;
 
             @include respond-from(sm) {
@@ -569,4 +569,16 @@
     @include respond-from(md) {
         padding-left: 60px;
     }
+}
+
+.b-r {
+    border-right: 2px solid #eeeeee;
+}
+
+th {
+    font-weight: normal;
+}
+
+.table>:not(caption)>*>* {
+    padding: 0;
 }
