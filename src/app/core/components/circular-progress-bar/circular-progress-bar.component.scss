@@ -1,10 +1,23 @@
+@import "~src/app/core/styles/styles.scss";
+
 .circular {
     position: relative;
+    width: fit-content;
 
     &__percent {
         position: absolute;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
+    }
+}
+
+svg {
+    width: 128px;
+    height: 128px;
+
+    @include respond-from(sm) {
+        width: 200px;
+        height: 200px;
     }
 }

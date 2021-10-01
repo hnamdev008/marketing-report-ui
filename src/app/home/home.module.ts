@@ -5,19 +5,19 @@ import { Route, RouterModule } from '@angular/router';
 import { UIModule } from '@core/components/ui.module';
 
 const routes: Route[] = [
-  {
-    path: '',
-    component: HomeComponent
-  }
+    {
+        path: '',
+        component: HomeComponent
+    }
 ];
 
 @NgModule({
-  declarations: [HomeComponent],
-  imports: [
-    CommonModule,
-    UIModule,
-    RouterModule.forChild(routes)
-  ],
-  providers: []
+    declarations: [HomeComponent],
+    imports: [
+        CommonModule,
+        UIModule,
+        RouterModule.forChild(routes)
+    ],
+    providers: []
 })
 export class HomeModule { }
