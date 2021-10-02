@@ -37,7 +37,7 @@
             </div>
             <div class="home__section__content d-flex flex-column">
                 <div class="home__section__content__header d-flex flex-row align-items-center">
-                    <img class="img-fluid" src="./assets/icons/human.svg" alt="human" />
+                    <img class="img-fluid" src="./assets/icons/human.svg" alt="" />
                     <h3 class="home__section__content__header__title ms-2">
                         Accessibility
                     </h3>
@@ -66,7 +66,7 @@
                 <td class="home__section__information__body__level">
                     <div class="d-flex align-items-center">
                         <span class="home__section__information__body__level__number">{{i+1}}.</span>
-                        <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="icon">
+                        <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
                         <span class="home__section__information__body__level__text">{{data.level.text}}</span>
                     </div>
                 </td>
@@ -84,7 +84,7 @@
                         <span>{{data.pages.value}}</span>
                         <img class="home__section__information__body__page__box__icon ms-3"
                         [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
-                        alt="arrow" (click)="onShowDetail(data, i)" />
+                        alt="" (click)="onShowDetail(data, i)" />
                     </div>
                 </td>
             </tbody>
@@ -98,7 +98,7 @@
                 <div class="home__section__information__body__level" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
                     <tr class="d-flex align-items-center">
                         <span class="home__section__information__body__level__number">{{i+1}}.</span>
-                        <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="icon">
+                        <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
                         <span class="home__section__information__body__level__text">{{data.level.text}}</span>
                     </tr>
                 </div>
@@ -124,7 +124,7 @@
                             <span>{{data.pages.value}}</span>
                             <img class="home__section__information__body__page__box__icon ms-3"
                             [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
-                            alt="arrow" (click)="onShowDetail(data, i)" />
+                            alt="" (click)="onShowDetail(data, i)" />
                         </div>
                     </div>
                 </tr>
@@ -142,7 +142,7 @@
                     [totalPage]="currentDetail?.detail?.totalPage" [page]="currentDetail?.pages?.value"></app-progress-bar>
                 </div>
                 <img class="home__section__detail__right__progress__icon ms-3" src="./assets/icons/down-arrow.svg"
-                    alt="arrow" />
+                    alt="" />
             </div>
         </div>
         <table class="table home__section__items row">
@@ -181,7 +181,7 @@
             </div>
             <div class="home__section__content d-flex flex-column">
                 <div class="home__section__content__header d-flex flex-row align-items-center">
-                    <img class="img-fluid" src="./assets/icons/checkbox.svg" alt="Check box" />
+                    <img class="img-fluid" src="./assets/icons/checkbox.svg" alt="" />
                     <h3 class="home__section__content__header__title ms-2">
                         Quality Assurance
                     </h3>
@@ -210,7 +210,7 @@
                 <td class="home__section__information__body__level">
                     <div class="d-flex align-items-center">
                         <span class="home__section__information__body__level__number">{{i+1}}.</span>
-                        <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="icon">
+                        <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
                         <span class="home__section__information__body__level__text">{{data.level.text}}</span>
                     </div>
                 </td>
@@ -228,7 +228,7 @@
                         <span>{{data.pages.value}}</span>
                         <img class="home__section__information__body__page__box__icon ms-3"
                         [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
-                        alt="arrow" (click)="onShowDetail(data, i)" />
+                        alt="" (click)="onShowDetail(data, i)" />
                     </div>
                 </td>
             </tbody>
@@ -242,7 +242,7 @@
                 <div class="home__section__information__body__level" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
                     <tr class="d-flex align-items-center">
                         <span class="home__section__information__body__level__number">{{i+1}}.</span>
-                        <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="icon">
+                        <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
                         <span class="home__section__information__body__level__text">{{data.level.text}}</span>
                     </tr>
                 </div>
@@ -268,7 +268,7 @@
                             <span>{{data.pages.value}}</span>
                             <img class="home__section__information__body__page__box__icon ms-3"
                             [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
-                            alt="arrow" (click)="onShowDetail(data, i)" />
+                            alt="" (click)="onShowDetail(data, i)" />
                         </div>
                     </div>
                 </tr>
@@ -276,7 +276,7 @@
                 <div class="home__section__information__bottom column d-flex align-items-center">
                     <span class="home__section__information__header__level__readability text-center">Readability Level</span>
                     <span class="home__section__information__header__level__college text-center d-flex align-items-center justify-content-center">College
-                    <img class="home__section__information__header__level__img img-fluid" src="./assets/icons/eye.svg" alt="eye" />
+                    <img class="home__section__information__header__level__img img-fluid" src="./assets/icons/eye.svg" alt="" />
                     </span>
                 </div>
             </tbody>
@@ -293,7 +293,7 @@
                     [totalPage]="currentDetail?.detail?.totalPage" [page]="currentDetail?.pages?.value"></app-progress-bar>
                 </div>
                 <img class="home__section__detail__right__progress__icon ms-3" src="./assets/icons/down-arrow.svg"
-                    alt="arrow" />
+                    alt="" />
             </div>
         </div>
         <table class="table home__section__items row">
@@ -332,7 +332,7 @@
             </div>
             <div class="home__section__content d-flex flex-column">
                 <div class="home__section__content__header d-flex flex-row align-items-center">
-                    <img class="img-fluid" src="./assets/icons/search.svg" alt="Search" />
+                    <img class="img-fluid" src="./assets/icons/search.svg" alt="" />
                     <h3 class="home__section__content__header__title ms-2">
                         SEO
                     </h3>
@@ -361,7 +361,7 @@
                 <td class="home__section__information__body__level">
                     <div class="d-flex align-items-center">
                         <span class="home__section__information__body__level__number">{{i+1}}.</span>
-                        <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="icon">
+                        <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
                         <span class="home__section__information__body__level__text">{{data.level.text}}</span>
                     </div>
                 </td>
@@ -379,7 +379,7 @@
                         <span>{{data.pages.value}}</span>
                         <img class="home__section__information__body__page__box__icon ms-3"
                         [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
-                        alt="arrow" (click)="onShowDetail(data, i)" />
+                        alt="" (click)="onShowDetail(data, i)" />
                     </div>
                 </td>
             </tbody>
@@ -393,7 +393,7 @@
                 <div class="home__section__information__body__level" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
                     <tr class="d-flex align-items-center">
                         <span class="home__section__information__body__level__number">{{i+1}}.</span>
-                        <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="icon">
+                        <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
                         <span class="home__section__information__body__level__text">{{data.level.text}}</span>
                     </tr>
                 </div>
@@ -419,7 +419,7 @@
                             <span>{{data.pages.value}}</span>
                             <img class="home__section__information__body__page__box__icon ms-3"
                             [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
-                            alt="arrow" (click)="onShowDetail(data, i)" />
+                            alt="" (click)="onShowDetail(data, i)" />
                         </div>
                     </div>
                 </tr>
@@ -437,7 +437,7 @@
                     [totalPage]="currentDetail?.detail?.totalPage" [page]="currentDetail?.pages?.value"></app-progress-bar>
                 </div>
                 <img class="home__section__detail__right__progress__icon ms-3" src="./assets/icons/down-arrow.svg"
-                    alt="arrow" />
+                    alt="" />
             </div>
         </div>
         <table class="table home__section__items row">
@@ -476,7 +476,7 @@
             </div>
             <div class="home__section__content d-flex flex-column">
                 <div class="home__section__content__header d-flex flex-row align-items-center">
-                    <img class="img-fluid" src="./assets/icons/content.svg" alt="Content" />
+                    <img class="img-fluid" src="./assets/icons/content.svg" alt="" />
                     <h3 class="home__section__content__header__title ms-2">
                         Content Policy
                     </h3>
@@ -505,7 +505,7 @@
                 <td class="home__section__information__body__level">
                     <div class="d-flex align-items-center">
                         <span class="home__section__information__body__level__number">{{i+1}}.</span>
-                        <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="icon">
+                        <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
                         <span class="home__section__information__body__level__text">{{data.level.text}}</span>
                     </div>
                 </td>
@@ -523,7 +523,7 @@
                         <span>{{data.pages.value}}</span>
                         <img class="home__section__information__body__page__box__icon ms-3"
                         [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
-                        alt="arrow" (click)="onShowDetail(data, i)" />
+                        alt="" (click)="onShowDetail(data, i)" />
                     </div>
                 </td>
             </tbody>
@@ -537,7 +537,7 @@
                 <div class="home__section__information__body__level" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
                     <tr class="d-flex align-items-center">
                         <span class="home__section__information__body__level__number">{{i+1}}.</span>
-                        <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="icon">
+                        <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
                         <span class="home__section__information__body__level__text">{{data.level.text}}</span>
                     </tr>
                 </div>
@@ -563,7 +563,7 @@
                             <span>{{data.pages.value}}</span>
                             <img class="home__section__information__body__page__box__icon ms-3"
                             [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
-                            alt="arrow" (click)="onShowDetail(data, i)" />
+                            alt="" (click)="onShowDetail(data, i)" />
                         </div>
                     </div>
                 </tr>
@@ -581,7 +581,7 @@
                     [totalPage]="currentDetail?.detail?.totalPage" [page]="currentDetail?.pages?.value"></app-progress-bar>
                 </div>
                 <img class="home__section__detail__right__progress__icon ms-3" src="./assets/icons/down-arrow.svg"
-                    alt="arrow" />
+                    alt="" />
             </div>
         </div>
         <table class="table home__section__items row">
@@ -620,7 +620,7 @@
             </div>
             <div class="home__section__content d-flex flex-column">
                 <div class="home__section__content__header d-flex flex-row align-items-center">
-                    <img class="img-fluid" src="./assets/icons/privacy.svg" alt="Privacy" />
+                    <img class="img-fluid" src="./assets/icons/privacy.svg" alt="" />
                     <h3 class="home__section__content__header__title ms-2">
                         Data Privacy
                     </h3>
@@ -649,7 +649,7 @@
                 <td class="home__section__information__body__level">
                     <div class="d-flex align-items-center">
                         <span class="home__section__information__body__level__number">{{i+1}}.</span>
-                        <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="icon">
+                        <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
                         <span class="home__section__information__body__level__text">{{data.level.text}}</span>
                     </div>
                 </td>
@@ -667,7 +667,7 @@
                         <span>{{data.pages.value}}</span>
                         <img class="home__section__information__body__page__box__icon ms-3"
                         [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
-                        alt="arrow" (click)="onShowDetail(data, i)" />
+                        alt="" (click)="onShowDetail(data, i)" />
                     </div>
                 </td>
             </tbody>
@@ -681,7 +681,7 @@
                 <div class="home__section__information__body__level" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
                     <tr class="d-flex align-items-center">
                         <span class="home__section__information__body__level__number">{{i+1}}.</span>
-                        <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="icon">
+                        <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
                         <span class="home__section__information__body__level__text">{{data.level.text}}</span>
                     </tr>
                 </div>
@@ -707,7 +707,7 @@
                             <span>{{data.pages.value}}</span>
                             <img class="home__section__information__body__page__box__icon ms-3"
                             [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
-                            alt="arrow" (click)="onShowDetail(data, i)" />
+                            alt="" (click)="onShowDetail(data, i)" />
                         </div>
                     </div>
                 </tr>
@@ -725,7 +725,7 @@
                     [totalPage]="currentDetail?.detail?.totalPage" [page]="currentDetail?.pages?.value"></app-progress-bar>
                 </div>
                 <img class="home__section__detail__right__progress__icon ms-3" src="./assets/icons/down-arrow.svg"
-                    alt="arrow" />
+                    alt="" />
             </div>
         </div>
         <table class="table home__section__items row">
@@ -764,7 +764,7 @@
             </div>
             <div class="home__section__content d-flex flex-column">
                 <div class="home__section__content__header d-flex flex-row align-items-center">
-                    <img class="img-fluid" src="./assets/icons/performance.svg" alt="Performance" />
+                    <img class="img-fluid" src="./assets/icons/performance.svg" alt="" />
                     <h3 class="home__section__content__header__title ms-2">
                         Performance
                     </h3>
@@ -793,7 +793,7 @@
                 <td class="home__section__information__body__level">
                     <div class="d-flex align-items-center">
                         <span class="home__section__information__body__level__number">{{i+1}}.</span>
-                        <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="icon">
+                        <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
                         <span class="home__section__information__body__level__text">{{data.level.text}}</span>
                     </div>
                 </td>
@@ -811,7 +811,7 @@
                         <span>{{data.pages.value}}</span>
                         <img class="home__section__information__body__page__box__icon ms-3"
                         [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
-                        alt="arrow" (click)="onShowDetail(data, i)" />
+                        alt="" (click)="onShowDetail(data, i)" />
                     </div>
                 </td>
             </tbody>
@@ -825,7 +825,7 @@
                 <div class="home__section__information__body__level" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
                     <tr class="d-flex align-items-center">
                         <span class="home__section__information__body__level__number">{{i+1}}.</span>
-                        <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="icon">
+                        <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
                         <span class="home__section__information__body__level__text">{{data.level.text}}</span>
                     </tr>
                 </div>
@@ -851,7 +851,7 @@
                             <span>{{data.pages.value}}</span>
                             <img class="home__section__information__body__page__box__icon ms-3"
                             [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
-                            alt="arrow" (click)="onShowDetail(data, i)" />
+                            alt="" (click)="onShowDetail(data, i)" />
                         </div>
                     </div>
                 </tr>
@@ -869,7 +869,7 @@
                     [totalPage]="currentDetail?.detail?.totalPage" [page]="currentDetail?.pages?.value"></app-progress-bar>
                 </div>
                 <img class="home__section__detail__right__progress__icon ms-3" src="./assets/icons/down-arrow.svg"
-                    alt="arrow" />
+                    alt="" />
             </div>
         </div>
         <table class="table home__section__items row">
