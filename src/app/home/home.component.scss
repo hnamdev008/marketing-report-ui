@@ -29,17 +29,19 @@
 
                 &__title {
                     width: fit-content;
-                    line-height: 80px;
-                    font-size: 72px;
+                    line-height: 40px;
+                    font-size: 36px;
                     font-weight: bold;
                     margin-bottom: 60px;
+
+                    @include respond-from(sm) {
+                        font-size: 60px;
+                        line-height: 70px;
+                    }
                     
                     @include respond-from(md) {
-                        font-size: 36px;
                         margin-top: 30px;
                         margin-bottom: 40px;
-                        width: 200px;
-                        line-height: 50px;
                     }
                 }
 
@@ -491,6 +493,7 @@
 
                         &__link {
                             cursor: pointer;
+                            color: #003CF4;
 
                             &__icon {
                                 width: 15px;
