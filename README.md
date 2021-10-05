@@ -45,3 +45,5 @@ Design file : https://xd.adobe.com/view/ef4ebb5a-d0c1-41ad-a7a7-7c0e4de702ff-ba1
 Please be aware that for now the signup page should not be a part of this project
 
 The HTML need to be wcag2.1 aa compliant. 
+
+
