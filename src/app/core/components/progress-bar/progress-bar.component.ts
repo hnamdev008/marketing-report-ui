@@ -13,6 +13,7 @@ export class ProgressBarComponent implements OnInit {
     @Input() bottomText = true;
     @Input() valueMax!: number;
     @Input() valueNow!: number;
+    @Input() label!: string;
     @Input() totalPage!: number;
     @Input() page!: number;
 
