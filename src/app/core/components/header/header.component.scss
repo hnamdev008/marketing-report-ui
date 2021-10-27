@@ -1,28 +1,24 @@
 @import "src/app/core/styles/styles.scss";
 
 .header {
-    height: 40px;
+    height: 63px;
     display: flex;
     justify-content: space-between;
-    margin-top: 15px;
+    align-items: center;
+
+    @include respond-from(sm) {
+        height: 113px;
+    }
 
     &__btn {
+        height: 42px;
+        width: auto;
         background-color: #052942;
         color: #ffffff;
         font-size: 14px;
-        display: none;
+    } 
 
-        @include respond-from(sm) {
-            display: initial;
-        }
-    }
-
-    &__menu {
-        width: 32px;
-        height: auto;
-
-        @include respond-from(sm) {
-            display: none;
-        }
+    &__logo {
+        height: 46px;
     }
 }
