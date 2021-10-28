@@ -3,7 +3,7 @@
 
 .home {
     &__section {
-        margin: 100px 0;
+        margin: 50px 0;
 
         @include respond-from(sm) {
             margin-top: 70px 0;
@@ -23,38 +23,41 @@
             &__left {
                 @include respond-from (md) {
                     width: 45%;
-                    padding: 0 60px 0 60px;
+                    padding: 0 30px 0 60px;
                     text-align: left;
                 }
 
                 &__title {
                     width: fit-content;
-                    line-height: 80px;
+                    line-height: 50px;
                     font-size: 50px;
                     font-weight: bold;
-                    margin-bottom: 60px;
+                    margin-bottom: 30px;
                     
-                    @include respond-from(md) {
-                        font-size: 36px;
-                        margin-top: 30px;
-                        margin-bottom: 40px;
-                        width: 200px;
-                        line-height: 50px;
+                    @include respond-from(sm) {
+                        font-size: 72px;
+                        width: auto;
+                        line-height: 70px;
+                    }
+
+                    @include respond-to(lg) {
+                        font-size: 72px;
+                        width: auto;
+                        line-height: 70px;
                     }
                 }
 
                 &__desc {
-                    margin-bottom: 30px;
+                    margin: 10px 0;
                     
-                    @include respond-from(md) {
+                    @include respond-to(md) {
                         margin-top: 30px;
-                        margin-bottom: 60px;
                         font-size: $font-sm;
                     }
                 }
 
                 &__detail {
-                    margin-top: 30px;
+                    margin-top: 20px;
                 }
             }
 
@@ -63,8 +66,17 @@
 
                 @include respond-from(md) {
                     width: 50%;
-                    padding: 0 30px;
                 }
+
+                @include respond-to(lg) {
+                    padding: 0 50px;
+                }
+            }
+
+            &__url {
+                color: $c-blue-whale;
+                margin-left: 6px;
+                cursor: pointer;
             }
         }
 
@@ -588,6 +600,6 @@ td, tr, th {
     border: none;
 }
 
-// .table>:not(caption)>*>* {
-//     padding: 0;
-// }
+p {
+    margin: 0;
+}
