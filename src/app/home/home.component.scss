@@ -27,6 +27,10 @@
                     text-align: left;
                 }
 
+                @include respond-to(lg) {
+                    padding-right: 110px;
+                }
+
                 &__title {
                     width: fit-content;
                     line-height: 50px;
@@ -48,7 +52,7 @@
                 }
 
                 &__desc {
-                    margin: 10px 0;
+                    margin: 20px 0;
                     
                     @include respond-to(md) {
                         margin-top: 30px;
@@ -57,7 +61,7 @@
                 }
 
                 &__detail {
-                    margin-top: 20px;
+                    margin-top: 10px;
                 }
             }
 
@@ -585,6 +589,12 @@
 .p-left {
     @include respond-from(md) {
         padding-left: 60px;
+    }
+}
+
+.w-sm-60 {
+    @include respond-to(sm) {
+        width: 60%;
     }
 }
 
