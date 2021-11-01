@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="home__section__banner__right text-center">
-                <img class="img-fluid" src="./assets/images/banner.png" alt="Banner" />
+                <img class="img-fluid" src="./assets/images/banner.png" alt="" />
             </div>
         </div>
     </section>
@@ -46,15 +46,15 @@
                     </h3>
                 </div>
                 <p class="home__section__content__des">
-                    Great job! You are performing better than 80% of companies in your industry in accessibility.
+                    Our Accessibility module helps you to evaluate how easily accessible your website is for people with different backgrounds, including various disabilities.
                 </p>
                 <div class="home__section__content__note is-hide">
-                    Would like to see more from your report and how to fix it? Learn more
+                    Would like to see more from your report and how to fix its? Learn more
                     <a href="" class="home__section__content__note__link">here</a>
                 </div>
             </div>
             <div class="home__section__content__note">
-                Would like to see more from your report and how to fix it? Learn more
+                Would like to see more from your report and how to fix its? <br>Learn more
                 <span class="home__section__content__note__link">here</span>
             </div>
         </div>
@@ -62,14 +62,14 @@
         <table class="table home__section__information" *ngIf="innerWidth >= 768">
             <thead>
                 <tr class="home__section__information__header row">     
-                    <th class="home__section__information__header__level text-center p-t-20">Level A Accessibility Checks</th>
+                    <th class="home__section__information__header__level text-center p-t-20">Accessibility Checks</th>
                     <th class="home__section__information__header__domain text-center p-t-20">Domain compliance</th>
                     <th class="home__section__information__header__page text-center p-t-20">Affects Pages</th>
                 </tr>
             </thead>
             <tbody class="home__section__information__body row" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
                 <tr class="d-flex ">
-                    <td class="home__section__information__body__level">
+                    <td class="d-flex align-items-center home__section__information__body__level">
                         <div class="d-flex align-items-center">
                             <span class="home__section__information__body__level__number">{{i+1}}.</span>
                             <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
@@ -100,11 +100,11 @@
         <table class="home__section__information" *ngIf="innerWidth < 768">
             <thead>
                 <tr class="home__section__information__header row">
-                    <th class="home__section__information__header__level text-center">Level A Accessibility Checks</th>
+                    <th class="home__section__information__header__level text-center">Accessibility Checks</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="home__section__information__body__level" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
+                <tr class="d-flex align-items-center home__section__information__body__level" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
                     <td class="d-flex align-items-center">
                         <span class="home__section__information__body__level__number">{{i+1}}.</span>
                         <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
@@ -199,7 +199,7 @@
                     </h3>
                 </div>
                 <p class="home__section__content__des">
-                    Great job! You are performing better than 80% of companies in your industry in accessibility.
+                    Our QA module will help you find and fix issues like broken links and misspellings across your domain.
                 </p>
                 <div class="home__section__content__note is-hide">
                     Would like to see more from your report and how to fix it? Learn more
@@ -207,7 +207,7 @@
                 </div>
             </div>
             <div class="home__section__content__note">
-                Would like to see more from your report and how to fix it? Learn more
+                Would like to see more from your report and how to fix it? <br>Learn more
                 <span class="home__section__content__note__link">here</span>
             </div>
         </div>
@@ -215,14 +215,14 @@
         <table class="table home__section__information" *ngIf="innerWidth >= 768">
             <thead>
                 <tr class="home__section__information__header row">     
-                    <th class="home__section__information__header__level text-center p-t-20">Level A Accessibility Checks</th>
+                    <th class="home__section__information__header__level text-center p-t-20">Accessibility Checks</th>
                     <th class="home__section__information__header__domain text-center p-t-20">Domain compliance</th>
                     <th class="home__section__information__header__page text-center p-t-20">Affects Pages</th>
                 </tr>
             </thead>
             <tbody class="home__section__information__body row" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
                 <tr class="d-flex ">
-                    <td class="home__section__information__body__level">
+                    <td class="d-flex align-items-center home__section__information__body__level">
                         <div class="d-flex align-items-center">
                             <span class="home__section__information__body__level__number">{{i+1}}.</span>
                             <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
@@ -253,11 +253,11 @@
         <table class="home__section__information" *ngIf="innerWidth < 768">
             <thead>
                 <tr class="home__section__information__header row">
-                    <th class="home__section__information__header__level text-center">Level A Accessibility Checks</th>
+                    <th class="home__section__information__header__level text-center">Accessibility Checks</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="home__section__information__body__level" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
+                <tr class="d-flex align-items-center home__section__information__body__level" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
                     <td class="d-flex align-items-center">
                         <span class="home__section__information__body__level__number">{{i+1}}.</span>
                         <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
@@ -358,7 +358,7 @@
                     </h3>
                 </div>
                 <p class="home__section__content__des">
-                    Great job! You are performing better than 80% of companies in your industry in accessibility.
+                    Optimize your website for search engines with the Monsido SEO module.
                 </p>
                 <div class="home__section__content__note is-hide">
                     Would like to see more from your report and how to fix it? Learn more
@@ -374,14 +374,14 @@
         <table class="table home__section__information" *ngIf="innerWidth >= 768">
             <thead>
                 <tr class="home__section__information__header row">     
-                    <th class="home__section__information__header__level text-center p-t-20">Level A Accessibility Checks</th>
+                    <th class="home__section__information__header__level text-center p-t-20">Accessibility Checks</th>
                     <th class="home__section__information__header__domain text-center p-t-20">Domain compliance</th>
                     <th class="home__section__information__header__page text-center p-t-20">Affects Pages</th>
                 </tr>
             </thead>
             <tbody class="home__section__information__body row" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
                 <tr class="d-flex ">
-                    <td class="home__section__information__body__level">
+                    <td class="d-flex align-items-center home__section__information__body__level">
                         <div class="d-flex align-items-center">
                             <span class="home__section__information__body__level__number">{{i+1}}.</span>
                             <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
@@ -412,164 +412,11 @@
         <table class="home__section__information" *ngIf="innerWidth < 768">
             <thead>
                 <tr class="home__section__information__header row">
-                    <th class="home__section__information__header__level text-center">Level A Accessibility Checks</th>
+                    <th class="home__section__information__header__level text-center">Accessibility Checks</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="home__section__information__body__level" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
-                    <td class="d-flex align-items-center">
-                        <span class="home__section__information__body__level__number">{{i+1}}.</span>
-                        <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
-                        <span class="home__section__information__body__level__text">{{data.level.text}}</span>
-                    </td>
-                </tr>
-            </tbody>
-
-            <thead>
-                <tr class="home__section__information__header text-center row">
-                    <th class="home__section__information__header__domain">Domain compliance</th>
-                    <th class="home__section__information__header__page">Affects Pages</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="d-flex" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
-                    <td class="home__section__information__body__domain justify-content-center align-items-center">
-                        <div class="home__section__information__body__domain__progress">
-                            <app-progress-bar [label]="'Progress bar showing how many pages there is compliant'" [bottomText]="false" [valueMax]="100"
-                            [valueNow]="data.domain.percent">
-                            </app-progress-bar>
-                        </div>
-                        <span class="home__section__information__body__domain__percent">{{data.domain.percent}}%</span>
-                    </td>
-                    <td class="home__section__information__body__page justify-content-center align-items-center">
-                        <div class="home__section__information__body__page__box text-center"
-                            [class.highlight]="currentRowIndex === i">
-                            <span>{{data.pages.value}}</span>
-                            <img class="home__section__information__body__page__box__icon ms-3"
-                            [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
-                            alt="" (click)="onShowDetail(data, i)" />
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="home__section__detail row justify-content-between align-items-center">
-            <div class="home__section__detail__left  align-items-center">
-                <span class="home__section__detail__left__title">{{currentDetail?.level?.text}}
-                </span>
-                <p class="home__section__detail__left__found">{{currentDetail?.pages?.value}} pages found</p>
-            </div>
-            <div class="home__section__detail__right d-flex align-items-center">
-                <div class="home__section__detail__right__progress ">
-                    <app-progress-bar [label]="'Progress bar showing how many pages there is compliant'" [valueMax]="100" [valueNow]="currentDetail.detail.percent"
-                    [totalPage]="currentDetail?.detail?.totalPage" [page]="currentDetail?.pages?.value"></app-progress-bar>
-                </div>
-                <img class="home__section__detail__right__progress__icon ms-3" src="./assets/icons/down-arrow.svg"
-                    alt="" />
-            </div>
-        </div>
-        <table class="table home__section__items row">
-            <thead>
-                <tr class="home__section__items__header d-flex">
-                    <th class="home__section__items__header__title">Title and URL</th>
-                    <th class="home__section__items__header__priority">Priority</th>
-                </tr>
-            </thead>
-            <tbody class="home__section__items__list row">
-                <tr *ngFor="let item of currentDetail?.detail?.items" class="home__section__items__list__item d-flex">
-                    <td class="home__section__items__list__item__left">
-                        <div class="home__section__items__list__item__left__title">{{item.name}}</div>
-                        <div class="home__section__items__list__item__left__link d-flex align-items-center">
-                            <img class="home__section__items__list__item__left__link__icon" src="./assets/icons/open-link.png" alt="">
-                            <span class="home__section__items__list__item__left__link__url ms-2">{{item.url}}</span>
-                        </div>
-                    </td>
-                    <td class="home__section__items__list__item__right align-items-center">
-                        <div [style.visibility]="item.moreFunc ? 'visible' : 'hidden'"
-                            class="home__section__items__list__item__right__more">more function?</div>
-                        <div class="home__section__items__list__item__right__priority">
-                            <div [class]="'home__section__items__list__item__right__priority__box '  + getBoxColor(item.priority)">
-                                {{item.priority}}
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-    <!-- Content Policy -->
-    <section class="home__section container-fluid">
-        <div class="row p-left">
-            <div class="home__section__circular-progress">
-                <app-circular-progress-bar [value]="97.7"></app-circular-progress-bar>
-            </div>
-            <div class="home__section__content d-flex flex-column">
-                <div class="home__section__content__header d-flex flex-row align-items-center">
-                    <img class="img-fluid" src="./assets/icons/content.svg" alt="" />
-                    <h3 class="home__section__content__header__title ms-2">
-                        Content Policy
-                    </h3>
-                </div>
-                <p class="home__section__content__des">
-                    Great job! You are performing better than 80% of companies in your industry in accessibility.
-                </p>
-                <div class="home__section__content__note is-hide">
-                    Would like to see more from your report and how to fix it? Learn more
-                    <span class="home__section__content__note__link">here</span>
-                </div>
-            </div>
-            <div class="home__section__content__note">
-                Would like to see more from your report and how to fix it? Learn more
-                <span class="home__section__content__note__link">here</span>
-            </div>
-        </div>
-        <!-- Large Tablet, Laptop, Desktop -->
-        <table class="table home__section__information" *ngIf="innerWidth >= 768">
-            <thead>
-                <tr class="home__section__information__header row">     
-                    <th class="home__section__information__header__level text-center p-t-20">Level A Accessibility Checks</th>
-                    <th class="home__section__information__header__domain text-center p-t-20">Domain compliance</th>
-                    <th class="home__section__information__header__page text-center p-t-20">Affects Pages</th>
-                </tr>
-            </thead>
-            <tbody class="home__section__information__body row" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
-                <tr class="d-flex ">
-                    <td class="home__section__information__body__level">
-                        <div class="d-flex align-items-center">
-                            <span class="home__section__information__body__level__number">{{i+1}}.</span>
-                            <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
-                            <span class="home__section__information__body__level__text">{{data.level.text}}</span>
-                        </div>
-                    </td>
-                    <td class="home__section__information__body__domain justify-content-center align-items-center">
-                        <div class="home__section__information__body__domain__progress">
-                            <app-progress-bar [label]="'Progress bar showing how many pages there is compliant'" [bottomText]="false" [valueMax]="100"
-                            [valueNow]="data.domain.percent">
-                            </app-progress-bar>
-                        </div>
-                        <span class="home__section__information__body__domain__percent">{{data.domain.percent}}%</span>
-                    </td>
-                    <td class="home__section__information__body__page justify-content-center align-items-center">
-                        <div class="home__section__information__body__page__box text-center"
-                            [class.highlight]="currentRowIndex === i">
-                            <span>{{data.pages.value}}</span>
-                            <img class="home__section__information__body__page__box__icon ms-3"
-                            [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
-                            alt="" (click)="onShowDetail(data, i)" />
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <!-- Mobile, Small Tablet -->
-        <table class="home__section__information" *ngIf="innerWidth < 768">
-            <thead>
-                <tr class="home__section__information__header row">
-                    <th class="home__section__information__header__level text-center">Level A Accessibility Checks</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="home__section__information__body__level" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
+                <tr class="d-flex align-items-center home__section__information__body__level" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
                     <td class="d-flex align-items-center">
                         <span class="home__section__information__body__level__number">{{i+1}}.</span>
                         <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
@@ -664,15 +511,15 @@
                     </h3>
                 </div>
                 <p class="home__section__content__des">
-                    Great job! You are performing better than 80% of companies in your industry in accessibility.
+                    Choose between diferent data regulations relevant for your geographical location and scan your website for any privacy breeches.
                 </p>
                 <div class="home__section__content__note is-hide">
-                    Would like to see more from your report and how to fix it? Learn more
+                    Would like to see more from your report and how to fix its issues? Learn more
                     <span class="home__section__content__note__link">here</span>
                 </div>
             </div>
             <div class="home__section__content__note">
-                Would like to see more from your report and how to fix it? Learn more
+                Would like to see more from your report and how to fix its issues?<br>Learn more
                 <span class="home__section__content__note__link">here</span>
             </div>
         </div>
@@ -680,14 +527,14 @@
         <table class="table home__section__information" *ngIf="innerWidth >= 768">
             <thead>
                 <tr class="home__section__information__header row">     
-                    <th class="home__section__information__header__level text-center p-t-20">Level A Accessibility Checks</th>
+                    <th class="home__section__information__header__level text-center p-t-20">Accessibility Checks</th>
                     <th class="home__section__information__header__domain text-center p-t-20">Domain compliance</th>
                     <th class="home__section__information__header__page text-center p-t-20">Affects Pages</th>
                 </tr>
             </thead>
             <tbody class="home__section__information__body row" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
                 <tr class="d-flex ">
-                    <td class="home__section__information__body__level">
+                    <td class="d-flex align-items-center home__section__information__body__level">
                         <div class="d-flex align-items-center">
                             <span class="home__section__information__body__level__number">{{i+1}}.</span>
                             <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
@@ -718,11 +565,11 @@
         <table class="home__section__information" *ngIf="innerWidth < 768">
             <thead>
                 <tr class="home__section__information__header row">
-                    <th class="home__section__information__header__level text-center">Level A Accessibility Checks</th>
+                    <th class="home__section__information__header__level text-center">Accessibility Checks</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="home__section__information__body__level" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
+                <tr class="d-flex align-items-center home__section__information__body__level" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
                     <td class="d-flex align-items-center">
                         <span class="home__section__information__body__level__number">{{i+1}}.</span>
                         <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
@@ -817,15 +664,16 @@
                     </h3>
                 </div>
                 <p class="home__section__content__des">
-                    Great job! You are performing better than 80% of companies in your industry in accessibility.
+                    See the overall Performance level of the homepage of your domain. 
+                    Performance is measured by pages and identifies elements that slow your page down, therefore leading to bad experience for your customers.
                 </p>
                 <div class="home__section__content__note is-hide">
-                    Would like to see more from your report and how to fix it? Learn more
+                    Would like to see more from your report and how to fix its? Learn more
                     <span class="home__section__content__note__link">here</span>
                 </div>
             </div>
             <div class="home__section__content__note">
-                Would like to see more from your report and how to fix it? Learn more
+                Would like to see more from your report and how to fix its?<br>Learn more
                 <span class="home__section__content__note__link">here</span>
             </div>
         </div>
@@ -833,14 +681,14 @@
         <table class="table home__section__information" *ngIf="innerWidth >= 768">
             <thead>
                 <tr class="home__section__information__header row">     
-                    <th class="home__section__information__header__level text-center p-t-20">Level A Accessibility Checks</th>
+                    <th class="home__section__information__header__level text-center p-t-20">Accessibility Checks</th>
                     <th class="home__section__information__header__domain text-center p-t-20">Domain compliance</th>
                     <th class="home__section__information__header__page text-center p-t-20">Affects Pages</th>
                 </tr>
             </thead>
             <tbody class="home__section__information__body row" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
                 <tr class="d-flex ">
-                    <td class="home__section__information__body__level">
+                    <td class="d-flex align-items-center home__section__information__body__level">
                         <div class="d-flex align-items-center">
                             <span class="home__section__information__body__level__number">{{i+1}}.</span>
                             <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
@@ -871,11 +719,11 @@
         <table class="home__section__information" *ngIf="innerWidth < 768">
             <thead>
                 <tr class="home__section__information__header row">
-                    <th class="home__section__information__header__level text-center">Level A Accessibility Checks</th>
+                    <th class="home__section__information__header__level text-center">Accessibility Checks</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="home__section__information__body__level" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
+                <tr class="d-flex align-items-center home__section__information__body__level" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
                     <td class="d-flex align-items-center">
                         <span class="home__section__information__body__level__number">{{i+1}}.</span>
                         <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">

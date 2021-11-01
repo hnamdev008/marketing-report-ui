@@ -12,5 +12,5 @@
 </div>
 <div *ngIf="bottomText" class="progress__bottom d-flex justify-content-between">
     <p >{{totalPage}} Pages <strong>{{valueNow}}</strong>% in compliance</p>
-    <p class="opacity-blur">{{page}} Pages ({{100 - this.valueNow | number: '1.0-2'}}%) to fix</p>
+    <p >{{page}} Pages ({{100 - this.valueNow | number: '1.0-2'}}%) to fix</p>
 </div>
