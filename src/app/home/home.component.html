@@ -804,4 +804,38 @@
             </tbody>
         </table>
     </section>
+    <!-- Promote -->
+    <section class="home__section container-fluid">
+        <!-- Mobile -->
+        <div class="home__section__promote" *ngIf="innerWidth <= 480">
+            <h1 class="home__section__promote__title">Want to see your full report?</h1>
+            <div class="home__section__promote__img">
+                <img class="img-fluild" src="./assets/icons/laptop.svg" alt="">
+            </div>
+            <p class="home__section__promote__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna Alice.</p>
+            <button class="btn home__section__promote__btn">Book a Demo</button>
+        </div>
+
+        <div class="home__section__promote" *ngIf="innerWidth > 480 && innerWidth <= 992">
+            <div class="d-flex align-items-center">
+                <h1 class="home__section__promote__title">Want to see your full report?</h1>
+                <div class="home__section__promote__img">
+                    <img class="img-fluild" src="./assets/icons/laptop.svg" alt="">
+                </div>
+            </div>
+            <p class="home__section__promote__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna Alice.</p>
+            <button class="btn home__section__promote__btn">Book a Demo</button>
+        </div>
+
+        <div class="home__section__promote d-flex flex-row" *ngIf="innerWidth > 992">
+            <div class="home__section__promote__left">
+                <h1 class="home__section__promote__title">Want to see your full report?</h1>
+                <p class="home__section__promote__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna Alice.</p>
+                <button class="btn home__section__promote__btn">Book a Demo</button>
+            </div>
+            <div class="home__section__promote__img">
+                <img class="img-fluild" src="./assets/icons/laptop.svg" alt="">
+            </div>
+        </div>
+    </section>
 </div>
