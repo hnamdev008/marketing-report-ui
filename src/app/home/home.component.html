@@ -11,8 +11,8 @@
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna Alice.
                 </p>
                 <span class="d-flex">
-                    <img src="./assets/icons/open-link.svg" alt="">
-                    <a href="https://monsido.com/" target="_blank" class="home__section__banner__url">https://www.monsido.com</a>
+                <img src="./assets/icons/open-link.svg" alt="">
+                <a href="https://monsido.com/" target="_blank" class="home__section__banner__url">https://www.monsido.com</a>
                 </span>
                 <div class="w-sm-60 home__section__banner__left__detail d-flex justify-content-between">
                     <p>Time of Scan: </p>
@@ -61,125 +61,158 @@
         <!-- Large Tablet, Laptop, Desktop -->
         <table class="table home__section__information" *ngIf="innerWidth >= 768">
             <thead>
-                <tr class="home__section__information__header row">     
+                <tr class="home__section__information__header row">
                     <th class="home__section__information__header__level text-center p-t-20">Accessibility Checks</th>
                     <th class="home__section__information__header__domain text-center p-t-20">Domain compliance</th>
                     <th class="home__section__information__header__page text-center p-t-20">Affects Pages</th>
                 </tr>
             </thead>
-            <tbody class="home__section__information__body row" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
-                <tr class="d-flex ">
-                    <td class="d-flex align-items-center home__section__information__body__level">
-                        <div class="d-flex align-items-center">
-                            <span class="home__section__information__body__level__number">{{i+1}}.</span>
-                            <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
-                            <span class="home__section__information__body__level__text">{{data.level.text}}</span>
-                        </div>
-                    </td>
-                    <td class="home__section__information__body__domain justify-content-center align-items-center">
-                        <div class="home__section__information__body__domain__progress">
-                            <app-progress-bar [label]="'Progress bar showing how many pages there is compliant'" [bottomText]="false" [valueMax]="100"
-                            [valueNow]="data.domain.percent">
-                            </app-progress-bar>
-                        </div>
-                        <span class="home__section__information__body__domain__percent">{{data.domain.percent}}%</span>
-                    </td>
-                    <td class="home__section__information__body__page justify-content-center align-items-center">
-                        <div class="home__section__information__body__page__box text-center"
-                            [class.highlight]="currentRowIndex === i">
-                            <span>{{data.pages.value}}</span>
-                            <img class="home__section__information__body__page__box__icon ms-3"
-                            [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
-                            alt="" (click)="onShowDetail(data, i)" />
-                        </div>
+            <tbody class="home__section__information__body row">
+                <tr class="d-flex" >
+                    <td>
+                        <accordion [collapsing]="collapsing" (indexChange)="changeIndex($event, 'accessibility')">
+                            <accordion-item *ngFor="let data of ACCESSIBILY_DATA; let i = index">
+                                <ng-template accordionHeader let-toggle="toggle">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="w-55 d-flex align-items-center">
+                                            <span class="home__section__information__body__level__number">{{i+1}}.</span>
+                                            <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
+                                            <span class="home__section__information__body__level__text">{{data.level.text}}</span>
+                                        </div>
+                                        <div class="w-30 home__section__information__body__domain justify-content-center align-items-center">
+                                            <div class="home__section__information__body__domain__progress">
+                                                <app-progress-bar [label]="'Progress bar showing how many pages there is compliant'" [bottomText]="false" [valueMax]="100"
+                                                [valueNow]="data.level.compliance">
+                                                </app-progress-bar>
+                                            </div>
+                                            <span class="home__section__information__body__domain__percent">{{data.level.compliance}}%</span>
+                                        </div>
+                                        <div class="w-15 home__section__information__body__page justify-content-center align-items-center">
+                                            <div class="home__section__information__body__page__box text-center"
+                                                [class.highlight]="currentAccessibiltyIndex === i">
+                                                <span>{{data.level.page}}</span>
+                                                <img class="home__section__information__body__page__box__icon ms-3"
+                                                [src]="'./assets/icons/down-arrow-bold.svg'"
+                                                [class.rotate-180]="currentAccessibiltyIndex === i"
+                                                alt="" (click)="toggle()" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                                <ng-template accordionContent>
+                                    <div class="home__section__detail align-items-center">
+                                        <div class="home__section__detail__right d-flex align-items-center mt-4">
+                                            <div class="home__section__detail__right__progress">
+                                                <app-progress-bar [label]="'Progress bar showing how many pages there is compliant'" [valueMax]="100" [valueNow]="currentDetail.detail.percent"
+                                                [totalPage]="currentDetail?.detail?.totalPage" [page]="currentDetail?.pages?.value"></app-progress-bar>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <table class="table home__section__items d-flex flex-column mt-4">
+                                        <thead>
+                                            <tr class="home__section__items__header d-flex">
+                                                <th class="w-80 home__section__items__header__title">Title and URL</th>
+                                                <th class="w-20 justify-content-center home__section__items__header__priority">Priority</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="home__section__items__list row">
+                                            <tr *ngFor="let item of currentDetail?.detail?.items" class="home__section__items__list__item d-flex">
+                                                <td class="w-80">
+                                                    <div class="home__section__items__list__item__left__title">{{item.name}}</div>
+                                                    <div class="home__section__items__list__item__left__link d-flex align-items-center">
+                                                        <img class="home__section__items__list__item__left__link__icon" src="./assets/icons/open-link.png" alt="">
+                                                        <span class="home__section__items__list__item__left__link__url ms-2">{{item.url}}</span>
+                                                    </div>
+                                                </td>
+                                                <td class="w-20 d-flex justify-content-center align-items-center">
+                                                    <div class="home__section__items__list__item__right__priority">
+                                                        <div [class]="'home__section__items__list__item__right__priority__box '  + getBoxColor(item.priority)">
+                                                            {{item.priority}}
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p class="home__section__items__list__item__note">Want to see the status of more pages? <a href="https://go.monsido.com/demo" target="_blank">Book a demo</a></p>
+                                </ng-template>
+                            </accordion-item>
+                        </accordion>
                     </td>
                 </tr>
             </tbody>
         </table>
         <!-- Mobile, Small Tablet -->
-        <table class="home__section__information" *ngIf="innerWidth < 768">
+        <table class="table home__section__information" *ngIf="innerWidth < 768">
             <thead>
                 <tr class="home__section__information__header row">
                     <th class="home__section__information__header__level text-center">Accessibility Checks</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="d-flex align-items-center home__section__information__body__level" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
-                    <td class="d-flex align-items-center">
-                        <span class="home__section__information__body__level__number">{{i+1}}.</span>
-                        <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
-                        <span class="home__section__information__body__level__text">{{data.level.text}}</span>
-                    </td>
-                </tr>
-            </tbody>
-
-            <thead>
-                <tr class="home__section__information__header text-center row">
-                    <th class="home__section__information__header__domain">Domain compliance</th>
                     <th class="home__section__information__header__page">Affects Pages</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="d-flex" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
-                    <td class="home__section__information__body__domain justify-content-center align-items-center">
-                        <div class="home__section__information__body__domain__progress">
-                            <app-progress-bar [label]="'Progress bar showing how many pages there is compliant'" [bottomText]="false" [valueMax]="100"
-                            [valueNow]="data.domain.percent">
-                            </app-progress-bar>
-                        </div>
-                        <span class="home__section__information__body__domain__percent">{{data.domain.percent}}%</span>
-                    </td>
-                    <td class="home__section__information__body__page justify-content-center align-items-center">
-                        <div class="home__section__information__body__page__box text-center"
-                            [class.highlight]="currentRowIndex === i">
-                            <span>{{data.pages.value}}</span>
-                            <img class="home__section__information__body__page__box__icon ms-3"
-                            [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
-                            alt="" (click)="onShowDetail(data, i)" />
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="home__section__detail row justify-content-between align-items-center">
-            <div class="home__section__detail__left  align-items-center">
-                <span class="home__section__detail__left__title">{{currentDetail?.level?.text}}
-                </span>
-                <p class="home__section__detail__left__found">{{currentDetail?.pages?.value}} pages found</p>
-            </div>
-            <div class="home__section__detail__right d-flex align-items-center">
-                <div class="home__section__detail__right__progress ">
-                    <app-progress-bar [label]="'Progress bar showing how many pages there is compliant'" [valueMax]="100" [valueNow]="currentDetail.detail.percent"
-                    [totalPage]="currentDetail?.detail?.totalPage" [page]="currentDetail?.pages?.value"></app-progress-bar>
-                </div>
-                <img class="home__section__detail__right__progress__icon ms-3" src="./assets/icons/down-arrow.svg"
-                    alt="" />
-            </div>
-        </div>
-        <table class="table home__section__items row">
-            <thead>
-                <tr class="home__section__items__header d-flex">
-                    <th class="home__section__items__header__title">Title and URL</th>
-                    <th class="home__section__items__header__priority">Priority</th>
-                </tr>
-            </thead>
-            <tbody class="home__section__items__list row">
-                <tr *ngFor="let item of currentDetail?.detail?.items" class="home__section__items__list__item d-flex">
-                    <td class="home__section__items__list__item__left">
-                        <div class="home__section__items__list__item__left__title">{{item.name}}</div>
-                        <div class="home__section__items__list__item__left__link d-flex align-items-center">
-                            <img class="home__section__items__list__item__left__link__icon" src="./assets/icons/open-link.png" alt="">
-                            <span class="home__section__items__list__item__left__link__url ms-2">{{item.url}}</span>
-                        </div>
-                    </td>
-                    <td class="home__section__items__list__item__right align-items-center">
-                        <div [style.visibility]="item.moreFunc ? 'visible' : 'hidden'"
-                            class="home__section__items__list__item__right__more">more function?</div>
-                        <div class="home__section__items__list__item__right__priority">
-                            <div [class]="'home__section__items__list__item__right__priority__box '  + getBoxColor(item.priority)">
-                                {{item.priority}}
-                            </div>
-                        </div>
+                <tr class="d-flex align-items-center">
+                    <td>
+                        <accordion [collapsing]="collapsing" (indexChange)="changeIndex($event, 'accessibility')">
+                            <accordion-item  *ngFor="let data of ACCESSIBILY_DATA; let i = index">
+                                <ng-template accordionHeader let-toggle="toggle">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <td class="home__section__information__body__level d-flex align-items-center">
+                                            <span class="home__section__information__body__level__number">{{i+1}}.</span>
+                                            <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
+                                            <span class="home__section__information__body__level__text">{{data.level.text}}</span>
+                                        </td>
+                                        <div class="home__section__information__body__page justify-content-center align-items-center">
+                                            <div class="home__section__information__body__page__box text-center"
+                                                [class.highlight]="currentAccessibiltyIndex === i">
+                                                <span>{{data.level.page}}</span>
+                                                <img class="home__section__information__body__page__box__icon ms-3"
+                                                [class.rotate-180]="currentAccessibiltyIndex === i"
+                                                [src]="'./assets/icons/down-arrow-bold.svg'"
+                                                alt="" (click)="toggle()" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                                <ng-template accordionContent>
+                                    <div class="home__section__detail align-items-center">
+                                        <div class="home__section__detail__right d-flex align-items-center mt-4">
+                                            <div class="home__section__detail__right__progress">
+                                                <app-progress-bar [label]="'Progress bar showing how many pages there is compliant'" [valueMax]="100" [valueNow]="currentDetail.detail.percent"
+                                                [totalPage]="currentDetail?.detail?.totalPage" [page]="currentDetail?.pages?.value"></app-progress-bar>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <table class="table home__section__items d-flex flex-column">
+                                        <thead>
+                                            <tr class="home__section__items__header d-flex">
+                                                <th class="w-70 home__section__items__header__title">Title and URL</th>
+                                                <th class="w-30 justify-content-center home__section__items__header__priority">Priority</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="home__section__items__list row">
+                                            <tr *ngFor="let item of currentDetail?.detail?.items" class="home__section__items__list__item d-flex">
+                                                <td class="w-70">
+                                                    <div class="home__section__items__list__item__left__title">{{item.name}}</div>
+                                                    <div class="home__section__items__list__item__left__link d-flex align-items-center">
+                                                        <img class="home__section__items__list__item__left__link__icon" src="./assets/icons/open-link.png" alt="">
+                                                        <span class="home__section__items__list__item__left__link__url ms-2">{{item.url}}</span>
+                                                    </div>
+                                                </td>
+                                                <td class="w-30 d-flex justify-content-center align-items-center">
+                                                    <div class="home__section__items__list__item__right__priority">
+                                                        <div [class]="'home__section__items__list__item__right__priority__box '  + getBoxColor(item.priority)">
+                                                            {{item.priority}}
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p class="home__section__items__list__item__note">Want to see the status of more pages? <a href="https://go.monsido.com/demo" target="_blank">Book a demo</a></p>
+                                </ng-template>
+                            </accordion-item>
+                        </accordion>
                     </td>
                 </tr>
             </tbody>
@@ -214,132 +247,153 @@
         <!-- Large Tablet, Laptop, Desktop -->
         <table class="table home__section__information" *ngIf="innerWidth >= 768">
             <thead>
-                <tr class="home__section__information__header row">     
-                    <th class="home__section__information__header__level text-center p-t-20">Accessibility Checks</th>
-                    <th class="home__section__information__header__domain text-center p-t-20">Domain compliance</th>
-                    <th class="home__section__information__header__page text-center p-t-20">Affects Pages</th>
+                <tr class="home__section__information__header d-flex align-items-center">
+                    <th class="home__section__information__header__level qa p-t-20">QA Checks</th>
+                    <th class="home__section__information__header__issues qa text-center p-t-20">Issues</th>
+                    <th class="home__section__information__header__domain qa text-center p-t-20">Domain compliance</th>
+                    <th class="home__section__information__header__page qa text-center p-t-20">Affects Pages</th>
                 </tr>
             </thead>
-            <tbody class="home__section__information__body row" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
-                <tr class="d-flex ">
-                    <td class="d-flex align-items-center home__section__information__body__level">
-                        <div class="d-flex align-items-center">
-                            <span class="home__section__information__body__level__number">{{i+1}}.</span>
-                            <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
-                            <span class="home__section__information__body__level__text">{{data.level.text}}</span>
-                        </div>
+            <tbody class="home__section__information__body row">
+                <tr class="d-flex">
+                    <td class="w-100">
+                        <accordion [collapsing]="collapsing" (indexChange)="changeIndex($event, 'quality_assurance')">
+                            <accordion-item  *ngFor="let data of QA_DATA; let i = index">
+                                <ng-template accordionHeader let-toggle="toggle">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="home__section__information__body__level qa d-flex align-items-center">
+                                            <span class="home__section__information__body__level__number">{{i+1}}.</span>
+                                            <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
+                                            <span class="home__section__information__body__level__text">{{data.level.text}}</span>
+                                        </div>
+                                        <span class="home__section__information__body__issues qa">{{data.level.issues}}</span>
+                                        <div class="home__section__information__body__domain qa justify-content-center align-items-center">
+                                            <div class="home__section__information__body__domain__progress">
+                                                <app-progress-bar [label]="'Progress bar showing how many pages there is compliant'" [bottomText]="false" [valueMax]="100"
+                                                [valueNow]="data.level.compliance">
+                                                </app-progress-bar>
+                                            </div>
+                                            <span class="home__section__information__body__domain__percent">{{data.level.compliance}}%</span>
+                                        </div>
+                                        <div class="home__section__information__body__page qa align-items-center">
+                                            <div class="home__section__information__body__page__box text-center"
+                                                [class.highlight]="currentQualityAssuranceIndex === i">
+                                                <span>{{data.level.pages}}</span>
+                                                <img class="home__section__information__body__page__box__icon ms-3"
+                                                [class.rotate-180]="currentQualityAssuranceIndex === i"
+                                                [src]="'./assets/icons/down-arrow-bold.svg'"
+                                                alt="" (click)="toggle()" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                                <ng-template accordionContent>
+                                    <div class="home__section__detail align-items-center">
+                                        <div class="home__section__detail__right d-flex align-items-center mt-4">
+                                            <div class="home__section__detail__right__progress">
+                                                <app-progress-bar [label]="'Progress bar showing how many pages there is compliant'" [valueMax]="100" [valueNow]="currentDetail.detail.percent"
+                                                [totalPage]="currentDetail?.detail?.totalPage" [page]="currentDetail?.pages?.value"></app-progress-bar>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <table class="table home__section__items d-flex flex-column mt-4">
+                                        <thead>
+                                            <tr class="home__section__items__header d-flex">
+                                                <th class="w-75">Broken Link</th>
+                                                <th class="w-25 text-right">Pages</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="home__section__items__list row">
+                                            <tr *ngFor="let item of currentQADetail.level?.detail?.items" class="home__section__items__list__item d-flex">
+                                                <td class="w-75">
+                                                    {{item.url}}
+                                                </td>
+                                                <td class="w-25 text-right">
+                                                    {{item.pages}}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p class="home__section__items__list__item__note">Want to see the status of more pages? <a href="https://go.monsido.com/demo" target="_blank">Book a demo</a></p>
+                                </ng-template>
+                            </accordion-item>
+                        </accordion>
                     </td>
-                    <td class="home__section__information__body__domain justify-content-center align-items-center">
-                        <div class="home__section__information__body__domain__progress">
-                            <app-progress-bar [label]="'Progress bar showing how many pages there is compliant'" [bottomText]="false" [valueMax]="100"
-                            [valueNow]="data.domain.percent">
-                            </app-progress-bar>
-                        </div>
-                        <span class="home__section__information__body__domain__percent">{{data.domain.percent}}%</span>
-                    </td>
-                    <td class="home__section__information__body__page justify-content-center align-items-center">
-                        <div class="home__section__information__body__page__box text-center"
-                            [class.highlight]="currentRowIndex === i">
-                            <span>{{data.pages.value}}</span>
-                            <img class="home__section__information__body__page__box__icon ms-3"
-                            [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
-                            alt="" (click)="onShowDetail(data, i)" />
-                        </div>
-                    </td>
+                </tr>
+                <tr class="home__section__information__bottom column d-flex align-items-center">
+                    <div class="w-40 d-flex justify-content-between">
+                        <td class="home__section__information__header__level__readability text-center text-bold">Readability Level</td>
+                        <td class="home__section__information__header__level__college text-center d-flex align-items-center justify-content-center">College
+                            <img class="home__section__information__header__level__img img-fluid" src="./assets/icons/eye.svg" alt="" />
+                        </td>
+                    </div>
                 </tr>
             </tbody>
         </table>
         <!-- Mobile, Small Tablet -->
-        <table class="home__section__information" *ngIf="innerWidth < 768">
+        <table class="table home__section__information" *ngIf="innerWidth < 768">
             <thead>
                 <tr class="home__section__information__header row">
                     <th class="home__section__information__header__level text-center">Accessibility Checks</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="d-flex align-items-center home__section__information__body__level" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
-                    <td class="d-flex align-items-center">
-                        <span class="home__section__information__body__level__number">{{i+1}}.</span>
-                        <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
-                        <span class="home__section__information__body__level__text">{{data.level.text}}</span>
-                    </td>
-                </tr>
-            </tbody>
-
-            <thead>
-                <tr class="home__section__information__header text-center row">
-                    <th class="home__section__information__header__domain">Domain compliance</th>
                     <th class="home__section__information__header__page">Affects Pages</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="d-flex" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
-                    <td class="home__section__information__body__domain justify-content-center align-items-center">
-                        <div class="home__section__information__body__domain__progress">
-                            <app-progress-bar [label]="'Progress bar showing how many pages there is compliant'" [bottomText]="false" [valueMax]="100"
-                            [valueNow]="data.domain.percent">
-                            </app-progress-bar>
-                        </div>
-                        <span class="home__section__information__body__domain__percent">{{data.domain.percent}}%</span>
-                    </td>
-                    <td class="home__section__information__body__page justify-content-center align-items-center">
-                        <div class="home__section__information__body__page__box text-center"
-                            [class.highlight]="currentRowIndex === i">
-                            <span>{{data.pages.value}}</span>
-                            <img class="home__section__information__body__page__box__icon ms-3"
-                            [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
-                            alt="" (click)="onShowDetail(data, i)" />
-                        </div>
+                <tr class="d-flex">
+                    <td class="w-100">
+                        <accordion [collapsing]="collapsing" (indexChange)="changeIndex($event, 'quality_assurance')">
+                            <accordion-item *ngFor="let data of QA_DATA; let i = index">
+                                <ng-template accordionHeader let-toggle="toggle">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="home__section__information__body__level qa d-flex align-items-center">
+                                            <span class="home__section__information__body__level__number">{{i+1}}.</span>
+                                            <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
+                                            <span class="home__section__information__body__level__text">{{data.level.text}}</span>
+                                        </div>
+                                        <div class="home__section__information__body__page qa align-items-center">
+                                            <div class="home__section__information__body__page__box text-center"
+                                                [class.highlight]="currentQualityAssuranceIndex === i">
+                                                <span>{{data.level.pages}}</span>
+                                                <img class="home__section__information__body__page__box__icon ms-3"
+                                                [class.rotate-180]="currentQualityAssuranceIndex === i"
+                                                [src]="'./assets/icons/down-arrow-bold.svg'"
+                                                alt="" (click)="toggle()" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                                <ng-template accordionContent>
+                                    <table class="table home__section__items d-flex flex-column">
+                                        <thead>
+                                            <tr class="home__section__items__header d-flex">
+                                                <th class="w-75">Broken Link</th>
+                                                <th class="w-25 text-right">Pages</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="home__section__items__list row">
+                                            <tr *ngFor="let item of currentQADetail.level?.detail?.items" class="home__section__items__list__item d-flex">
+                                                <td class="w-75">
+                                                    {{item.url}}
+                                                </td>
+                                                <td class="w-25 text-right">
+                                                    {{item.pages}}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p class="home__section__items__list__item__note">Want to see the status of more pages? <a href="https://go.monsido.com/demo" target="_blank">Book a demo</a></p>
+                                </ng-template>
+                            </accordion-item>
+                        </accordion>
                     </td>
                 </tr>
                 <tr class="home__section__information__bottom column d-flex align-items-center">
-                    <td class="home__section__information__header__level__readability text-center">Readability Level</td>
-                    <td class="home__section__information__header__level__college text-center d-flex align-items-center justify-content-center">College
-                        <img class="home__section__information__header__level__img img-fluid" src="./assets/icons/eye.svg" alt="" />
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="home__section__detail row justify-content-between align-items-center">
-            <div class="home__section__detail__left  align-items-center">
-                <span class="home__section__detail__left__title">{{currentDetail?.level?.text}}
-                </span>
-                <p class="home__section__detail__left__found">{{currentDetail?.pages?.value}} pages found</p>
-            </div>
-            <div class="home__section__detail__right d-flex align-items-center">
-                <div class="home__section__detail__right__progress ">
-                    <app-progress-bar [label]="'Progress bar showing how many pages there is compliant'" [valueMax]="100" [valueNow]="currentDetail.detail.percent"
-                    [totalPage]="currentDetail?.detail?.totalPage" [page]="currentDetail?.pages?.value"></app-progress-bar>
-                </div>
-                <img class="home__section__detail__right__progress__icon ms-3" src="./assets/icons/down-arrow.svg"
-                    alt="" />
-            </div>
-        </div>
-        <table class="table home__section__items row">
-            <thead>
-                <tr class="home__section__items__header d-flex">
-                    <th class="home__section__items__header__title">Title and URL</th>
-                    <th class="home__section__items__header__priority">Priority</th>
-                </tr>
-            </thead>
-            <tbody class="home__section__items__list row">
-                <tr *ngFor="let item of currentDetail?.detail?.items" class="home__section__items__list__item d-flex">
-                    <td class="home__section__items__list__item__left">
-                        <div class="home__section__items__list__item__left__title">{{item.name}}</div>
-                        <div class="home__section__items__list__item__left__link d-flex align-items-center">
-                            <img class="home__section__items__list__item__left__link__icon" src="./assets/icons/open-link.png" alt="">
-                            <span class="home__section__items__list__item__left__link__url ms-2">{{item.url}}</span>
-                        </div>
-                    </td>
-                    <td class="home__section__items__list__item__right align-items-center">
-                        <div [style.visibility]="item.moreFunc ? 'visible' : 'hidden'"
-                            class="home__section__items__list__item__right__more">more function?</div>
-                        <div class="home__section__items__list__item__right__priority">
-                            <div [class]="'home__section__items__list__item__right__priority__box '  + getBoxColor(item.priority)">
-                                {{item.priority}}
-                            </div>
-                        </div>
-                    </td>
+                    <div class="w-100 d-flex justify-content-between">
+                        <td class="home__section__information__header__level__readability text-center">Readability Level</td>
+                        <td class="home__section__information__header__level__college text-center d-flex align-items-center justify-content-center">College
+                            <img class="home__section__information__header__level__img img-fluid" src="./assets/icons/eye.svg" alt="" />
+                        </td>
+                    </div>
                 </tr>
             </tbody>
         </table>
@@ -373,125 +427,127 @@
         <!-- Large Tablet, Laptop, Desktop -->
         <table class="table home__section__information" *ngIf="innerWidth >= 768">
             <thead>
-                <tr class="home__section__information__header row">     
-                    <th class="home__section__information__header__level text-center p-t-20">Accessibility Checks</th>
+                <tr class="home__section__information__header row">
+                    <th class="home__section__information__header__level text-center p-t-20">SEO Checks</th>
                     <th class="home__section__information__header__domain text-center p-t-20">Domain compliance</th>
                     <th class="home__section__information__header__page text-center p-t-20">Affects Pages</th>
                 </tr>
             </thead>
-            <tbody class="home__section__information__body row" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
-                <tr class="d-flex ">
-                    <td class="d-flex align-items-center home__section__information__body__level">
-                        <div class="d-flex align-items-center">
-                            <span class="home__section__information__body__level__number">{{i+1}}.</span>
-                            <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
-                            <span class="home__section__information__body__level__text">{{data.level.text}}</span>
-                        </div>
-                    </td>
-                    <td class="home__section__information__body__domain justify-content-center align-items-center">
-                        <div class="home__section__information__body__domain__progress">
-                            <app-progress-bar [label]="'Progress bar showing how many pages there is compliant'" [bottomText]="false" [valueMax]="100"
-                            [valueNow]="data.domain.percent">
-                            </app-progress-bar>
-                        </div>
-                        <span class="home__section__information__body__domain__percent">{{data.domain.percent}}%</span>
-                    </td>
-                    <td class="home__section__information__body__page justify-content-center align-items-center">
-                        <div class="home__section__information__body__page__box text-center"
-                            [class.highlight]="currentRowIndex === i">
-                            <span>{{data.pages.value}}</span>
-                            <img class="home__section__information__body__page__box__icon ms-3"
-                            [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
-                            alt="" (click)="onShowDetail(data, i)" />
-                        </div>
+            <tbody class="home__section__information__body row">
+                <tr class="d-flex align-items-center" >
+                    <td class="w-100">
+                        <accordion [collapsing]="collapsing" (indexChange)="changeIndex($event, 'seo')">
+                            <accordion-item *ngFor="let data of SEO_DATA; let i = index">
+                                <ng-template accordionHeader let-toggle="toggle">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="w-55 d-flex align-items-center">
+                                            <span class="home__section__information__body__level__number">{{i+1}}.</span>
+                                            <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
+                                            <span class="home__section__information__body__level__text">{{data.level.text}}</span>
+                                        </div>
+                                        <div class="w-30 home__section__information__body__domain justify-content-center align-items-center">
+                                            <div class="home__section__information__body__domain__progress">
+                                                <app-progress-bar [label]="'Progress bar showing how many pages there is compliant'" [bottomText]="false" [valueMax]="100"
+                                                [valueNow]="data.level.compliance">
+                                                </app-progress-bar>
+                                            </div>
+                                            <span class="home__section__information__body__domain__percent">{{data.level.compliance}}%</span>
+                                        </div>
+                                        <div class="w-15 home__section__information__body__page justify-content-center align-items-center">
+                                            <div class="home__section__information__body__page__box text-center"
+                                                [class.highlight]="currentSEOIndex === i">
+                                                <span>{{data.level.pages}}</span>
+                                                <img class="home__section__information__body__page__box__icon ms-3"
+                                                [class.rotate-180]="currentSEOIndex === i"
+                                                [src]="'./assets/icons/down-arrow-bold.svg'"
+                                                alt="" (click)="toggle()" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                                <ng-template accordionContent>
+                                    <table class="table home__section__items d-flex flex-column mt-4">
+                                        <thead>
+                                            <tr class="home__section__items__header d-flex">
+                                                <th class="w-20">Image</th>
+                                                <th class="w-70">Image Path</th>
+                                                <th class="w-10">Pages</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="home__section__items__list row">
+                                            <tr *ngFor="let item of currentSEODetail?.level.detail?.items" class="home__section__items__list__item d-flex align-items-center">
+                                                <td class="w-20">
+                                                    <img class="home__section__items__list__img" [src]="item.image" alt="" />
+                                                </td>
+                                                <td class="w-70 word-break">{{item.path}}</td>
+                                                <td class="w-10 text-center">{{item.pages}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p class="home__section__items__list__item__note">Want to see more issues? <a href="https://go.monsido.com/demo" target="_blank">Book a demo</a></p>
+                                </ng-template>
+                            </accordion-item>
+                        </accordion>
                     </td>
                 </tr>
             </tbody>
         </table>
         <!-- Mobile, Small Tablet -->
-        <table class="home__section__information" *ngIf="innerWidth < 768">
+        <table class="table home__section__information" *ngIf="innerWidth < 768">
             <thead>
                 <tr class="home__section__information__header row">
-                    <th class="home__section__information__header__level text-center">Accessibility Checks</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="d-flex align-items-center home__section__information__body__level" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
-                    <td class="d-flex align-items-center">
-                        <span class="home__section__information__body__level__number">{{i+1}}.</span>
-                        <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
-                        <span class="home__section__information__body__level__text">{{data.level.text}}</span>
-                    </td>
-                </tr>
-            </tbody>
-
-            <thead>
-                <tr class="home__section__information__header text-center row">
-                    <th class="home__section__information__header__domain">Domain compliance</th>
+                    <th class="home__section__information__header__level text-center">SEO Checks</th>
                     <th class="home__section__information__header__page">Affects Pages</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="d-flex" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
-                    <td class="home__section__information__body__domain justify-content-center align-items-center">
-                        <div class="home__section__information__body__domain__progress">
-                            <app-progress-bar [label]="'Progress bar showing how many pages there is compliant'" [bottomText]="false" [valueMax]="100"
-                            [valueNow]="data.domain.percent">
-                            </app-progress-bar>
-                        </div>
-                        <span class="home__section__information__body__domain__percent">{{data.domain.percent}}%</span>
-                    </td>
-                    <td class="home__section__information__body__page justify-content-center align-items-center">
-                        <div class="home__section__information__body__page__box text-center"
-                            [class.highlight]="currentRowIndex === i">
-                            <span>{{data.pages.value}}</span>
-                            <img class="home__section__information__body__page__box__icon ms-3"
-                            [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
-                            alt="" (click)="onShowDetail(data, i)" />
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="home__section__detail row justify-content-between align-items-center">
-            <div class="home__section__detail__left  align-items-center">
-                <span class="home__section__detail__left__title">{{currentDetail?.level?.text}}
-                </span>
-                <p class="home__section__detail__left__found">{{currentDetail?.pages?.value}} pages found</p>
-            </div>
-            <div class="home__section__detail__right d-flex align-items-center">
-                <div class="home__section__detail__right__progress ">
-                    <app-progress-bar [label]="'Progress bar showing how many pages there is compliant'" [valueMax]="100" [valueNow]="currentDetail.detail.percent"
-                    [totalPage]="currentDetail?.detail?.totalPage" [page]="currentDetail?.pages?.value"></app-progress-bar>
-                </div>
-                <img class="home__section__detail__right__progress__icon ms-3" src="./assets/icons/down-arrow.svg"
-                    alt="" />
-            </div>
-        </div>
-        <table class="table home__section__items row">
-            <thead>
-                <tr class="home__section__items__header d-flex">
-                    <th class="home__section__items__header__title">Title and URL</th>
-                    <th class="home__section__items__header__priority">Priority</th>
-                </tr>
-            </thead>
-            <tbody class="home__section__items__list row">
-                <tr *ngFor="let item of currentDetail?.detail?.items" class="home__section__items__list__item d-flex">
-                    <td class="home__section__items__list__item__left">
-                        <div class="home__section__items__list__item__left__title">{{item.name}}</div>
-                        <div class="home__section__items__list__item__left__link d-flex align-items-center">
-                            <img class="home__section__items__list__item__left__link__icon" src="./assets/icons/open-link.png" alt="">
-                            <span class="home__section__items__list__item__left__link__url ms-2">{{item.url}}</span>
-                        </div>
-                    </td>
-                    <td class="home__section__items__list__item__right align-items-center">
-                        <div [style.visibility]="item.moreFunc ? 'visible' : 'hidden'"
-                            class="home__section__items__list__item__right__more">more function?</div>
-                        <div class="home__section__items__list__item__right__priority">
-                            <div [class]="'home__section__items__list__item__right__priority__box '  + getBoxColor(item.priority)">
-                                {{item.priority}}
-                            </div>
-                        </div>
+                <tr class="d-flex align-items-center">
+                    <td class="w-100">
+                        <accordion [collapsing]="collapsing" (indexChange)="changeIndex($event, 'seo')">
+                            <accordion-item *ngFor="let data of SEO_DATA; let i = index">
+                                <ng-template accordionHeader let-toggle="toggle">
+                                    <div class="d-flex align-items-center hover-polar">
+                                        <div class="d-flex align-items-center home__section__information__body__level privacy">
+                                            <div class="d-flex">
+                                                <span class="home__section__information__body__level__number">{{i+1}}.</span>
+                                                <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
+                                            </div>
+                                            <span class="home__section__information__body__level__text">{{data.level.text}}</span>
+                                        </div>
+                                        <div class="w-15 home__section__information__body__page privacy justify-content-center align-items-center">
+                                            <div class="home__section__information__body__page__box text-center"
+                                                [class.highlight]="currentSEOIndex === i">
+                                                <span>{{data.level.pages}}</span>
+                                                <img class="home__section__information__body__page__box__icon ms-3"
+                                                [class.rotate-180]="currentSEOIndex === i"
+                                                [src]="'./assets/icons/down-arrow-bold.svg'"
+                                                alt="" (click)="toggle()" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                                <ng-template accordionContent>
+                                    <table class="table home__section__items d-flex flex-column">
+                                        <thead>
+                                            <tr class="home__section__items__header d-flex">
+                                                <th class="w-90">Image</th>
+                                                <th class="w-10">Pages</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="home__section__items__list row">
+                                            <tr *ngFor="let item of currentSEODetail?.level.detail?.items" class="home__section__items__list__item d-flex align-items-center">
+                                                <td class="w-90 d-block">
+                                                    <img class="home__section__items__list__img" [src]="item.image" alt="" />
+                                                    <p class="word-break font-xs">{{item.path}}</p>
+                                                </td>
+                                                <td class="w-10 text-center">{{item.pages}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p class="home__section__items__list__item__note">Want to see more issues? <a href="https://go.monsido.com/demo" target="_blank">Book a demo</a></p>
+                                </ng-template>
+                            </accordion-item>
+                        </accordion>
                     </td>
                 </tr>
             </tbody>
@@ -514,7 +570,7 @@
                     Choose between diferent data regulations relevant for your geographical location and scan your website for any privacy breeches.
                 </p>
                 <div class="home__section__content__note is-hide">
-                    Would like to see more from your report and how to fix its issues? Learn more
+                    Would like to see more from your report and how to fix it? Learn more
                     <span class="home__section__content__note__link">here</span>
                 </div>
             </div>
@@ -526,125 +582,127 @@
         <!-- Large Tablet, Laptop, Desktop -->
         <table class="table home__section__information" *ngIf="innerWidth >= 768">
             <thead>
-                <tr class="home__section__information__header row">     
-                    <th class="home__section__information__header__level text-center p-t-20">Accessibility Checks</th>
-                    <th class="home__section__information__header__domain text-center p-t-20">Domain compliance</th>
-                    <th class="home__section__information__header__page text-center p-t-20">Affects Pages</th>
+                <tr class="home__section__information__header d-flex align-items-center">
+                    <th class="home__section__information__header__level privacy w-45 text-center p-t-20">Data Privacy Checks</th>
+                    <th class="home__section__information__header__severity w-15 text-center p-t-20">Severity</th>
+                    <th class="home__section__information__header__domain privacy w-30 text-center p-t-20">Domain compliance</th>
+                    <th class="home__section__information__header__page privacy w-15 text-center p-t-20">Affects Pages</th>
                 </tr>
             </thead>
-            <tbody class="home__section__information__body row" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
-                <tr class="d-flex ">
-                    <td class="d-flex align-items-center home__section__information__body__level">
-                        <div class="d-flex align-items-center">
-                            <span class="home__section__information__body__level__number">{{i+1}}.</span>
-                            <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
-                            <span class="home__section__information__body__level__text">{{data.level.text}}</span>
-                        </div>
-                    </td>
-                    <td class="home__section__information__body__domain justify-content-center align-items-center">
-                        <div class="home__section__information__body__domain__progress">
-                            <app-progress-bar [label]="'Progress bar showing how many pages there is compliant'" [bottomText]="false" [valueMax]="100"
-                            [valueNow]="data.domain.percent">
-                            </app-progress-bar>
-                        </div>
-                        <span class="home__section__information__body__domain__percent">{{data.domain.percent}}%</span>
-                    </td>
-                    <td class="home__section__information__body__page justify-content-center align-items-center">
-                        <div class="home__section__information__body__page__box text-center"
-                            [class.highlight]="currentRowIndex === i">
-                            <span>{{data.pages.value}}</span>
-                            <img class="home__section__information__body__page__box__icon ms-3"
-                            [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
-                            alt="" (click)="onShowDetail(data, i)" />
-                        </div>
+            <tbody class="home__section__information__body row">
+                <tr class="d-flex align-items-center">
+                    <td class="w-100">
+                        <accordion [collapsing]="collapsing" (indexChange)="changeIndex($event, 'privacy')">
+                            <accordion-item *ngFor="let data of PRIVACY_DATA; let i = index">
+                                <ng-template accordionHeader let-toggle="toggle">
+                                    <div class="d-flex align-items-center hover-polar">
+                                        <div class="home__section__information__body__level privacy">
+                                            <span class="home__section__information__body__level__number">{{i+1}}.</span>
+                                            <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
+                                            <span class="home__section__information__body__level__text">{{data.level.text}}</span>
+                                        </div>
+                                        <div class="d-flex justify-content-center home__section__items__list__item__right__priority severity">
+                                            <div [class]="'home__section__items__list__item__right__priority__box '  + getBoxColor(data.level.severity)">
+                                                {{data.level.severity}}
+                                            </div>
+                                        </div>
+                                        <div class="home__section__information__body__domain privacy w-30">
+                                            <div class="home__section__information__body__domain__progress">
+                                                <app-progress-bar [label]="'Progress bar showing how many pages there is compliant'" [bottomText]="false" [valueMax]="100"
+                                                [valueNow]="data.level.compliance">
+                                                </app-progress-bar>
+                                            </div>
+                                            <span class="home__section__information__body__domain__percent">{{data.level.compliance}}%</span>
+                                        </div>
+                                        <div class="w-15 home__section__information__body__page privacy justify-content-center align-items-center">
+                                            <div class="home__section__information__body__page__box text-center"
+                                                [class.highlight]="currentPrivacyIndex === i">
+                                                <span>{{data.level.pages}}</span>
+                                                <img class="home__section__information__body__page__box__icon ms-3"
+                                                [class.rotate-180]="currentPrivacyIndex === i"
+                                                [src]="'./assets/icons/down-arrow-bold.svg'"
+                                                alt="" (click)="toggle()" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                                <ng-template accordionContent>
+                                    <table class="table home__section__items d-flex flex-column mt-4">
+                                        <thead>
+                                            <tr class="w-100 home__section__items__header d-flex">
+                                                <th class="w-90">Check issues</th>
+                                                <th class="w-10">Pages</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="home__section__items__list row">
+                                            <tr *ngFor="let item of currentPrivacyDetail?.level.detail?.items" class="home__section__items__list__item d-flex align-items-center">
+                                                <td class="w-90">{{item.issue}}</td>
+                                                <td class="w-10 text-center text-bold">{{item.pages}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p class="home__section__items__list__item__note">Want to see more issues? <a href="https://go.monsido.com/demo" target="_blank">Book a demo</a></p>
+                                </ng-template>
+                            </accordion-item>
+                        </accordion>
                     </td>
                 </tr>
             </tbody>
         </table>
         <!-- Mobile, Small Tablet -->
-        <table class="home__section__information" *ngIf="innerWidth < 768">
+        <table class="table home__section__information" *ngIf="innerWidth < 768">
             <thead>
                 <tr class="home__section__information__header row">
-                    <th class="home__section__information__header__level text-center">Accessibility Checks</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="d-flex align-items-center home__section__information__body__level" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
-                    <td class="d-flex align-items-center">
-                        <span class="home__section__information__body__level__number">{{i+1}}.</span>
-                        <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
-                        <span class="home__section__information__body__level__text">{{data.level.text}}</span>
-                    </td>
-                </tr>
-            </tbody>
-
-            <thead>
-                <tr class="home__section__information__header text-center row">
-                    <th class="home__section__information__header__domain">Domain compliance</th>
+                    <th class="home__section__information__header__level text-center">Data Privacy Checks</th>
                     <th class="home__section__information__header__page">Affects Pages</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="d-flex" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
-                    <td class="home__section__information__body__domain justify-content-center align-items-center">
-                        <div class="home__section__information__body__domain__progress">
-                            <app-progress-bar [label]="'Progress bar showing how many pages there is compliant'" [bottomText]="false" [valueMax]="100"
-                            [valueNow]="data.domain.percent">
-                            </app-progress-bar>
-                        </div>
-                        <span class="home__section__information__body__domain__percent">{{data.domain.percent}}%</span>
-                    </td>
-                    <td class="home__section__information__body__page justify-content-center align-items-center">
-                        <div class="home__section__information__body__page__box text-center"
-                            [class.highlight]="currentRowIndex === i">
-                            <span>{{data.pages.value}}</span>
-                            <img class="home__section__information__body__page__box__icon ms-3"
-                            [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
-                            alt="" (click)="onShowDetail(data, i)" />
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="home__section__detail row justify-content-between align-items-center">
-            <div class="home__section__detail__left  align-items-center">
-                <span class="home__section__detail__left__title">{{currentDetail?.level?.text}}
-                </span>
-                <p class="home__section__detail__left__found">{{currentDetail?.pages?.value}} pages found</p>
-            </div>
-            <div class="home__section__detail__right d-flex align-items-center">
-                <div class="home__section__detail__right__progress ">
-                    <app-progress-bar [label]="'Progress bar showing how many pages there is compliant'" [valueMax]="100" [valueNow]="currentDetail.detail.percent"
-                    [totalPage]="currentDetail?.detail?.totalPage" [page]="currentDetail?.pages?.value"></app-progress-bar>
-                </div>
-                <img class="home__section__detail__right__progress__icon ms-3" src="./assets/icons/down-arrow.svg"
-                    alt="" />
-            </div>
-        </div>
-        <table class="table home__section__items row">
-            <thead>
-                <tr class="home__section__items__header d-flex">
-                    <th class="home__section__items__header__title">Title and URL</th>
-                    <th class="home__section__items__header__priority">Priority</th>
-                </tr>
-            </thead>
-            <tbody class="home__section__items__list row">
-                <tr *ngFor="let item of currentDetail?.detail?.items" class="home__section__items__list__item d-flex">
-                    <td class="home__section__items__list__item__left">
-                        <div class="home__section__items__list__item__left__title">{{item.name}}</div>
-                        <div class="home__section__items__list__item__left__link d-flex align-items-center">
-                            <img class="home__section__items__list__item__left__link__icon" src="./assets/icons/open-link.png" alt="">
-                            <span class="home__section__items__list__item__left__link__url ms-2">{{item.url}}</span>
-                        </div>
-                    </td>
-                    <td class="home__section__items__list__item__right align-items-center">
-                        <div [style.visibility]="item.moreFunc ? 'visible' : 'hidden'"
-                            class="home__section__items__list__item__right__more">more function?</div>
-                        <div class="home__section__items__list__item__right__priority">
-                            <div [class]="'home__section__items__list__item__right__priority__box '  + getBoxColor(item.priority)">
-                                {{item.priority}}
-                            </div>
-                        </div>
+                <tr class="d-flex align-items-center" >
+                    <td class="w-100">
+                        <accordion [collapsing]="collapsing" (indexChange)="changeIndex($event, 'privacy')">
+                            <accordion-item *ngFor="let data of PRIVACY_DATA; let i = index">
+                                <ng-template accordionHeader let-toggle="toggle">
+                                    <div class="d-flex align-items-center hover-polar">
+                                        <div class="d-flex align-items-center home__section__information__body__level privacy">
+                                            <div class="d-flex">
+                                                <span class="home__section__information__body__level__number">{{i+1}}.</span>
+                                                <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
+                                            </div>
+                                            <span class="home__section__information__body__level__text">{{data.level.text}}</span>
+                                        </div>
+                                        <div class="w-15 home__section__information__body__page privacy justify-content-center align-items-center">
+                                            <div class="home__section__information__body__page__box text-center"
+                                                [class.highlight]="currentPrivacyIndex === i">
+                                                <span>{{data.level.pages}}</span>
+                                                <img class="home__section__information__body__page__box__icon ms-3"
+                                                [class.rotate-180]="currentPrivacyIndex === i"
+                                                [src]="'./assets/icons/down-arrow-bold.svg'"
+                                                [class.rotate-180]="currentPrivacyIndex === i"
+                                                alt="" (click)="toggle()" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                                <ng-template accordionContent>
+                                    <table class="table home__section__items d-flex flex-column">
+                                        <thead>
+                                            <tr class="w-100 home__section__items__header d-flex">
+                                                <th class="w-90">Check issues</th>
+                                                <th class="w-10">Pages</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="home__section__items__list row">
+                                            <tr *ngFor="let item of currentPrivacyDetail?.level.detail?.items" class="home__section__items__list__item d-flex align-items-center">
+                                                <td class="w-90">{{item.issue}}</td>
+                                                <td class="w-10 text-center text-bold">{{item.pages}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p class="home__section__items__list__item__note">Want to see more issues? <a href="https://go.monsido.com/demo" target="_blank">Book a demo</a></p>
+                                </ng-template>
+                            </accordion-item>
+                        </accordion>
                     </td>
                 </tr>
             </tbody>
@@ -677,132 +735,44 @@
                 <span class="home__section__content__note__link">here</span>
             </div>
         </div>
-        <!-- Large Tablet, Laptop, Desktop -->
-        <table class="table home__section__information" *ngIf="innerWidth >= 768">
-            <thead>
-                <tr class="home__section__information__header row">     
-                    <th class="home__section__information__header__level text-center p-t-20">Accessibility Checks</th>
-                    <th class="home__section__information__header__domain text-center p-t-20">Domain compliance</th>
-                    <th class="home__section__information__header__page text-center p-t-20">Affects Pages</th>
-                </tr>
-            </thead>
-            <tbody class="home__section__information__body row" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
-                <tr class="d-flex ">
-                    <td class="d-flex align-items-center home__section__information__body__level">
-                        <div class="d-flex align-items-center">
-                            <span class="home__section__information__body__level__number">{{i+1}}.</span>
-                            <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
-                            <span class="home__section__information__body__level__text">{{data.level.text}}</span>
-                        </div>
-                    </td>
-                    <td class="home__section__information__body__domain justify-content-center align-items-center">
-                        <div class="home__section__information__body__domain__progress">
-                            <app-progress-bar [label]="'Progress bar showing how many pages there is compliant'" [bottomText]="false" [valueMax]="100"
-                            [valueNow]="data.domain.percent">
-                            </app-progress-bar>
-                        </div>
-                        <span class="home__section__information__body__domain__percent">{{data.domain.percent}}%</span>
-                    </td>
-                    <td class="home__section__information__body__page justify-content-center align-items-center">
-                        <div class="home__section__information__body__page__box text-center"
-                            [class.highlight]="currentRowIndex === i">
-                            <span>{{data.pages.value}}</span>
-                            <img class="home__section__information__body__page__box__icon ms-3"
-                            [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
-                            alt="" (click)="onShowDetail(data, i)" />
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <!-- Mobile, Small Tablet -->
-        <table class="home__section__information" *ngIf="innerWidth < 768">
-            <thead>
-                <tr class="home__section__information__header row">
-                    <th class="home__section__information__header__level text-center">Accessibility Checks</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="d-flex align-items-center home__section__information__body__level" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
-                    <td class="d-flex align-items-center">
-                        <span class="home__section__information__body__level__number">{{i+1}}.</span>
-                        <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
-                        <span class="home__section__information__body__level__text">{{data.level.text}}</span>
-                    </td>
-                </tr>
-            </tbody>
-
-            <thead>
-                <tr class="home__section__information__header text-center row">
-                    <th class="home__section__information__header__domain">Domain compliance</th>
-                    <th class="home__section__information__header__page">Affects Pages</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="d-flex" *ngFor="let data of ACCESSIBILY_DATA; let i = index">
-                    <td class="home__section__information__body__domain justify-content-center align-items-center">
-                        <div class="home__section__information__body__domain__progress">
-                            <app-progress-bar [label]="'Progress bar showing how many pages there is compliant'" [bottomText]="false" [valueMax]="100"
-                            [valueNow]="data.domain.percent">
-                            </app-progress-bar>
-                        </div>
-                        <span class="home__section__information__body__domain__percent">{{data.domain.percent}}%</span>
-                    </td>
-                    <td class="home__section__information__body__page justify-content-center align-items-center">
-                        <div class="home__section__information__body__page__box text-center"
-                            [class.highlight]="currentRowIndex === i">
-                            <span>{{data.pages.value}}</span>
-                            <img class="home__section__information__body__page__box__icon ms-3"
-                            [src]=" currentRowIndex === i ? './assets/icons/down-arrow-bold.svg' : './assets/icons/down-arrow.svg'"
-                            alt="" (click)="onShowDetail(data, i)" />
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="home__section__detail row justify-content-between align-items-center">
-            <div class="home__section__detail__left  align-items-center">
-                <span class="home__section__detail__left__title">{{currentDetail?.level?.text}}
-                </span>
-                <p class="home__section__detail__left__found">{{currentDetail?.pages?.value}} pages found</p>
+        <hr>
+        <div class="home__section__performance-level d-flex justify-content-between">
+            <div class="d-flex home__section__performance-level__item">
+                <div class="marbles level-short"></div>
+                <p class="m-l-20">90 - 100 Short</p>
             </div>
-            <div class="home__section__detail__right d-flex align-items-center">
-                <div class="home__section__detail__right__progress ">
-                    <app-progress-bar [label]="'Progress bar showing how many pages there is compliant'" [valueMax]="100" [valueNow]="currentDetail.detail.percent"
-                    [totalPage]="currentDetail?.detail?.totalPage" [page]="currentDetail?.pages?.value"></app-progress-bar>
-                </div>
-                <img class="home__section__detail__right__progress__icon ms-3" src="./assets/icons/down-arrow.svg"
-                    alt="" />
+            <div class="d-flex home__section__performance-level__item">
+                <div class="marbles level-medium"></div>
+                <p class="m-l-20">90 - 100 Medium</p>
+            </div>
+            <div class="d-flex home__section__performance-level__item">
+                <div class="marbles level-long"></div>
+                <p class="m-l-20">0 - 49 Long</p>
             </div>
         </div>
-        <table class="table home__section__items row">
-            <thead>
-                <tr class="home__section__items__header d-flex">
-                    <th class="home__section__items__header__title">Title and URL</th>
-                    <th class="home__section__items__header__priority">Priority</th>
-                </tr>
-            </thead>
-            <tbody class="home__section__items__list row">
-                <tr *ngFor="let item of currentDetail?.detail?.items" class="home__section__items__list__item d-flex">
-                    <td class="home__section__items__list__item__left">
-                        <div class="home__section__items__list__item__left__title">{{item.name}}</div>
-                        <div class="home__section__items__list__item__left__link d-flex align-items-center">
-                            <img class="home__section__items__list__item__left__link__icon" src="./assets/icons/open-link.png" alt="">
-                            <span class="home__section__items__list__item__left__link__url ms-2">{{item.url}}</span>
-                        </div>
-                    </td>
-                    <td class="home__section__items__list__item__right align-items-center">
-                        <div [style.visibility]="item.moreFunc ? 'visible' : 'hidden'"
-                            class="home__section__items__list__item__right__more">more function?</div>
-                        <div class="home__section__items__list__item__right__priority">
-                            <div [class]="'home__section__items__list__item__right__priority__box '  + getBoxColor(item.priority)">
-                                {{item.priority}}
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="d-flex flex-wrap justify-content-between m-t-20">
+            <div class="home__section__performance-detail d-flex align-items-center">
+                <div class="border purple-heart"></div>
+                <div class="m-l-20">
+                    <p>First Contentful Paint (FCP)</p>
+                    <p class="home__section__performance-detail__measure">AVG: 3,094 ms</p>
+                </div>
+            </div>
+            <div class="home__section__performance-detail d-flex align-items-center">
+                <div class="border wivid-tangerine"></div>
+                <div class="m-l-20">
+                    <p>First Contentful Paint (FCP)</p>
+                    <p class="home__section__performance-detail__measure">AVG: 3,094 ms</p>
+                </div>
+            </div>
+            <div class="home__section__performance-detail d-flex align-items-center">
+                <div class="border scooter"></div>
+                <div class="m-l-20">
+                    <p>First Contentful Paint (FCP)</p>
+                    <p class="home__section__performance-detail__measure">AVG: 3,094 ms</p>
+                </div>
+            </div>
+        </div>
     </section>
     <!-- Promote -->
     <section class="home__section container-fluid">
@@ -815,7 +785,6 @@
             <p class="home__section__promote__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna Alice.</p>
             <button class="btn home__section__promote__btn">Book a Demo</button>
         </div>
-
         <div class="home__section__promote" *ngIf="innerWidth > 480 && innerWidth <= 992">
             <div class="d-flex align-items-center">
                 <h1 class="home__section__promote__title">Want to see your full report?</h1>
@@ -826,7 +795,6 @@
             <p class="home__section__promote__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna Alice.</p>
             <button class="btn home__section__promote__btn">Book a Demo</button>
         </div>
-
         <div class="home__section__promote d-flex flex-row" *ngIf="innerWidth > 992">
             <div class="home__section__promote__left">
                 <h1 class="home__section__promote__title">Want to see your full report?</h1>

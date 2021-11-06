@@ -1,0 +1,67 @@
+
+.no-wrap {
+  flex-wrap: nowrap;
+}
+
+.p-left {
+  @include respond-from(md) {
+      padding-left: 60px;
+  }
+}
+
+.w-sm-60 {
+  @include respond-to(sm) {
+      width: 60%;
+  }
+}
+
+.b-r {
+  border-right: 2px solid #eeeeee;
+}
+
+.hover-polar {
+  &:hover,
+  &:active {
+      background-color: $c-polar;
+  }
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.word-break {
+  word-break: break-all;
+}
+
+.word-no-break {
+  word-break: keep-all;
+}
+
+.m-l-20 {
+  margin-left: 20px;
+}
+
+.m-t-20 {
+  margin-top: 20px;
+}
+
+.m-t-40 {
+  margin-top: 40px;
+}
+
+.font-xs {
+  font-size: $font-xs;
+}
