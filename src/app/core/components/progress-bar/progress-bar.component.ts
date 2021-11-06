@@ -28,7 +28,7 @@ export class ProgressBarComponent implements OnInit {
             this.backgroundColor = C_DANGER;
         }
 
-        if (50 < this.valueNow && this.valueMax <= 90 ) {
+        if (50 < this.valueNow && this.valueNow <= 90 ) {
             this.backgroundColor = C_WARNING;
         }
 

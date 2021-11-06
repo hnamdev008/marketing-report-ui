@@ -1,4 +1,3 @@
-// @import "../core/styles/styles.scss";
 @import "~src/app/core/styles/styles.scss";
 
 .home {
@@ -6,18 +5,17 @@
         margin: 50px 0;
 
         @include respond-from(sm) {
-            margin-top: 70px 0;
+            margin: 100px 0;
         }
 
-        &__banner {            
+        &__banner {
             @include respond-from(md) {
                 display: flex;
                 margin: 0 auto;
             }
 
-
             &__left {
-                @include respond-from (md) {
+                @include respond-from(md) {
                     width: 45%;
                     padding: 0 30px 0 60px;
                     text-align: left;
@@ -33,7 +31,7 @@
                     font-size: 50px;
                     font-weight: bold;
                     margin-bottom: 30px;
-                    
+
                     @include respond-from(sm) {
                         font-size: 72px;
                         width: auto;
@@ -49,7 +47,7 @@
 
                 &__desc {
                     margin: 20px 0;
-                    
+
                     @include respond-to(md) {
                         margin-top: 30px;
                         font-size: $font-sm;
@@ -62,7 +60,6 @@
             }
 
             &__right {
-                box-shadow: 0px 3px 35px $c-cornflower-blue;
                 margin-top: 30px;
 
                 @include respond-from(md) {
@@ -71,6 +68,10 @@
 
                 @include respond-to(lg) {
                     padding: 0 50px;
+                }
+
+                img {
+                    box-shadow: 0px 3px 35px $c-cornflower-blue;
                 }
             }
 
@@ -85,16 +86,16 @@
             width: 40%;
             padding: 0;
 
-            @include respond-from(sm) {
+            @include respond-from(md) {
                 width: fit-content;
             }
         }
 
         &__content {
             width: 60%;
+            padding: 0;
 
             @include respond-from(md) {
-                margin-bottom: 60px;
                 width: 70%;
                 margin-left: 35px;
             }
@@ -104,14 +105,10 @@
 
                 &__title {
                     margin: unset;
-                    font-size: $font-sm;
                     font-weight: normal;
+                    font-size: 16px;
 
                     @include respond-from(sm) {
-                        font-size: 2 * $font-xs;
-                    }
-
-                    @include respond-from(md) {
                         font-size: 38px;
                     }
                 }
@@ -125,14 +122,14 @@
             }
 
             &__des {
-                font-size: 14px;
+                font-size: 16px;
                 margin-bottom: 30px;
 
                 @include respond-to(xs) {
-                    padding-right: 25px;
+                    font-size: 14px;
                 }
 
-                @include respond-from(sm) {
+                @include respond-from(md) {
                     font-size: $font-sm;
                     width: 75%;
                 }
@@ -141,6 +138,12 @@
             &__note {
                 font-size: 12px;
                 margin-bottom: 40px;
+                margin-top: 10px;
+                padding: 0;
+
+                @include respond-from(sm) {
+                    font-size: 14px;
+                }
 
                 &__link {
                     text-decoration: underline;
@@ -157,7 +160,6 @@
 
                     @include respond-from(sm) {
                         display: initial;
-                        font-size: $font-xs;
                     }
                 }
             }
@@ -167,14 +169,35 @@
             &__header {
                 @include respond-from(md) {
                     height: 50px;
+                    margin-top: 20px;
                 }
-                
+
                 &__level {
-                    width: 100%;
+                    font-size: 14px;
+                    width: 70%;
                     opacity: 0.7;
 
                     @include respond-from(sm) {
-                        width: calc(55% - 1px);
+                        font-size: 16px;
+                        width: 55%;
+                        text-align: left;
+                    }
+
+                    &.qa {
+                        text-align: center;
+                        width: 60%;
+
+                        @include respond-to(sm) {
+                            width: 70%;
+                        }
+                    }
+
+                    &.privacy {
+                        width: 70%;
+
+                        @include respond-to(sm) {
+                            width: 65%;
+                        }
                     }
 
                     &__img {
@@ -184,62 +207,104 @@
                     }
 
                     &__readability {
-                        font-size: 12px;
+                        font-size: 14px;
                         width: 60%;
                     }
 
                     &__college {
-                        font-size: 12px;
+                        font-size: 14px;
                         width: 40%;
                     }
                 }
 
                 &__domain {
                     opacity: 0.7;
-                    width: calc(60% - 2px);
+                    width: 60%;
 
                     @include respond-from(sm) {
                         display: initial;
-                        width: calc(30% - 7px);
+                        width: 30%;
+                    }
+
+                    &.qa {
+                        @include respond-to(sm) {
+                            width: 70%;
+                            display: none;
+                        }
+                    }
+
+                    &.privacy {
+                        @include respond-to(sm) {
+                            display: none;
+                        }
+                    }
+                }
+
+                &__severity {
+                    width: 20%;
+                }
+
+                &__issues {
+                    width: 5%;
+
+                    @include respond-from(sm) {
+                        width: 15%;
                     }
                 }
 
                 &__page {
                     opacity: 0.7;
-                    width: 40%;
+                    width: 30%;
+                    font-size: 14px;
+                    text-align: center;
 
                     @include respond-from(sm) {
                         width: 15%;
-                        display: initial;
+                        font-size: 16px;
+                        display: flex;
+                        justify-content: center;
+                    }
+
+                    &.qa {
+                        @include respond-to(sm) {
+                            width: 15%;
+                        }
                     }
                 }
             }
 
             &__bottom {
                 border-top: 2px solid $c-gallery;
-                border-bottom: 2px solid $c-gallery;
                 height: 60px;
                 width: 100%;
                 color: $c-black;
-
-                @include respond-from(md) {
-                    border-right: 2px solid $c-gallery;
-                    border-bottom: 2px solid $c-gallery;
-                    width: calc(55% + 3px);
-                }
             }
 
             &__body {
                 cursor: pointer;
 
-                &:hover, &:active {
-                    background-color: $c-polar;
-                }
                 &__level {
-                    width: 100%;
+                    width: 70%;
+                    font-size: 14px;
+
+                    @include respond-from(sm) {
+                        font-size: 16px;
+                    }
 
                     @include respond-from(md) {
                         width: 55%;
+                    }
+
+                    &.qa {
+                        width: 70%;
+                    }
+
+                    &.privacy {
+                        width: 70%;
+
+                        @include respond-to(sm) {
+                            width: 65%;
+                        }
                     }
                 }
 
@@ -250,12 +315,57 @@
                         display: flex;
                         width: 30%;
                     }
+
+                    &.qa,
+                    &.privacy {
+                        display: flex;
+                        justify-content: center;
+
+                        @include respond-to(sm) {
+                            display: none;
+                        }
+                    }
+                }
+
+                &__issues {
+                    width: 5%;
+                    text-align: center;
+
+                    &.qa {
+                        @include respond-to(sm) {
+                            width: 15%;
+                        }
+                    }
+                }
+
+                &__severity {
+                    width: 15%;
+
+                    @include respond-to(sm) {
+                        width: 20%;
+                    }
                 }
 
                 &__page {
-                    width: 40%;
+                    width: 30%;
+                    font-size: 14px;
+
+                    &.qa,
+                    &.privacy {
+                        justify-content: center;
+
+                        @include respond-to(sm) {
+                            width: 15%;
+                            justify-content: center;
+                        }
+                    }
+
+                    @include respond-from(sm) {
+                        font-size: 16px;
+                    }
 
                     @include respond-from(md) {
+                        justify-content: center;
                         display: flex;
                         width: 15%;
                     }
@@ -266,22 +376,13 @@
                 text-align: left;
                 letter-spacing: 0px;
                 border-top: 2px solid $c-gallery;
-                
+
                 &__level,
                 &__domain,
                 &__page {
                     opacity: 1;
                     color: #052942;
                     padding: 20px 0;
-                }
-
-                &__domain {
-                    border-right: 2px solid $c-gallery;
-
-                    @include respond-from(sm) {
-                        border-right: 2px solid $c-gallery;
-                        border-left: 2px solid $c-gallery;
-                    }
                 }
             }
 
@@ -301,10 +402,6 @@
                         width: 55%;
                     }
 
-                    @include respond-from(md) {
-                        padding-left: 60px;
-                    }
-
                     &__number {
                         opacity: 0.4;
                     }
@@ -315,8 +412,12 @@
                     }
 
                     &__text {
-                        margin-left: 31px;
+                        margin-left: 10px;
                         color: $c-blue-whale;
+
+                        @include respond-from(sm) {
+                            margin-left: 31px;
+                        }
                     }
                 }
 
@@ -324,13 +425,10 @@
                     width: 60%;
                     display: flex;
                     flex-wrap: nowrap;
-                    border-right: 2px solid $c-gallery;
                     padding: 0 20px;
 
                     @include respond-from(sm) {
                         width: 30%;
-                        border-left: 2px solid $c-gallery;
-                        border-right: 2px solid $c-gallery;
                     }
 
                     &__progress {
@@ -354,7 +452,7 @@
 
                 &__page {
                     display: flex;
-                    width: 40%;
+                    width: 30%;
 
                     @include respond-from(sm) {
                         width: 15%;
@@ -387,13 +485,10 @@
                         }
                     }
                 }
-
             }
         }
 
         &__detail {
-            display: none;
-
             @include respond-from(sm) {
                 display: flex;
             }
@@ -420,11 +515,11 @@
 
             &__right {
                 width: 100%;
+                justify-content: end;
 
                 @include respond-from(md) {
-                    width: 50%;
+                    width: 100%;
                     padding-right: 1%;
-                    justify-content: flex-end;
                 }
 
                 @include respond-from(lg) {
@@ -432,7 +527,6 @@
                 }
 
                 &__progress {
-                    width: 85%;
                     max-width: 465px;
                     height: 18px;
 
@@ -461,34 +555,38 @@
         }
 
         &__items {
-            padding-top: 27px;
             display: none;
 
             @include respond-from(md) {
                 display: flex;
+                margin-top: 10px;
             }
 
             &__header {
-                margin-top: 60px;
+                margin-top: 40px;
 
                 @include respond-from(sm) {
-                    width: 88%;
                     justify-content: space-between;
                 }
 
                 @include respond-from(md) {
                     width: 100%;
                     margin-top: inherit;
-                    padding-left: 145px;
-                    padding-right: 4%;
                 }
 
-                @include respond-from(lg) {
-                    padding-right: 4.5em;
+                &__title,
+                &__priority {
+                    font-size: 12px;
+
+                    @include respond-from(sm) {
+                        font-size: 16px;
+                    }
                 }
 
                 &__priority {
-                    display: none;
+                    @include respond-to(xs) {
+                        text-align: center;
+                    }
 
                     @include respond-from(sm) {
                         display: flex;
@@ -497,19 +595,14 @@
             }
 
             &__list {
-                padding-left: 30px;
-
-                @include respond-from(md) {
-                    padding-left: initial;
+                &__img {
+                    width: 100px;
+                    height: 70px;
+                    background-size: cover;
                 }
 
                 &__item {
                     border-top: 1px solid #eeeeee;
-                    padding: 10px 0;
-
-                    @include respond-from(md) {
-                        padding-left: 80px;
-                    }
 
                     &__left {
                         @include respond-from(md) {
@@ -518,11 +611,19 @@
 
                         &__title {
                             font-weight: bold;
-                            font-size: $font-sm;
+                            font-size: 14px;
+
+                            @include respond-from(sm) {
+                                font-size: $font-sm;
+                            }
                         }
 
                         &__link {
                             cursor: pointer;
+
+                            @include respond-to(xs) {
+                                font-size: 12px;
+                            }
 
                             &__icon {
                                 width: 15px;
@@ -552,42 +653,58 @@
                             padding-right: 3em;
                         }
 
-                        &__more {
-                            display: none;
-
-                            @include respond-from(md) {
-                                display: initial;
-                            }
-                        }
-
                         &__priority {
                             @include respond-from(md) {
                                 justify-content: flex-end;
                             }
 
+                            &.severity {
+                                width: 20%;
+                            }
+
                             &__box {
+                                @include respond-to(xs) {
+                                    font-size: 14px;
+                                    text-align: center;
+                                }
+
                                 font-size: $font-md;
                                 font-weight: bold;
                                 border: 3px;
-                                padding: 2px 15px;
+                                padding: 2px 10px;
                             }
 
                             .box--low {
                                 color: $c-keppel;
+                                width: 60px;
                                 background-color: $c-spray;
                             }
 
                             .box--high {
                                 color: $c-tall-poppy;
+                                width: 67px;
                                 background-color: $c-vivid-tangerine;
-                                transform: translateX(7%);
                             }
 
                             .box--medium {
                                 color: $c-indochine;
                                 background-color: $c-bright-sun;
-                                transform: translateX(20%);
+                                width: 100px;
                             }
+                        }
+                    }
+
+                    &__note {
+                        text-align: center;
+                        font-size: 12px;
+
+                        @include respond-from(sm) {
+                            text-align: right;
+                            font-size: 14px;
+                        }
+
+                        > a {
+                            color: $c-blue-whale;
                         }
                     }
                 }
@@ -646,7 +763,7 @@
             &__desc {
                 margin: 20px 0;
                 font-size: 14px;
-                color: #021B2C;
+                color: #021b2c;
 
                 @include respond-from(sm) {
                     font-size: 16px;
@@ -663,36 +780,89 @@
                 background-color: #052942;
                 color: #ffffff;
                 font-size: 14px;
-            } 
+            }
+        }
+
+        &__performance-level {
+            flex-direction: column;
+
+            &__item {
+                margin: 10px 0;
+                flex-wrap: wrap;
+                width: 100%;
+
+                @include respond-from(sm) {
+                    width: cacl(100% / 3);
+                }
+            }
+
+            @include respond-from(sm) {
+                flex-direction: row;
+            }
+
+            .marbles {
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+
+                &.level-short {
+                    background-color: $c-gobin;
+                }
+
+                &.level-medium {
+                    background-color: $c-bright-sun;
+                }
+
+                &.level-long {
+                    background-color: $c-valencia;
+                }
+            }
+        }
+
+        &__performance-detail {
+            width: 100%;
+            margin: 20px 0;
+
+            @include respond-to(sm) {
+                width: 50%;
+            }
+
+            @include respond-from(md) {
+                width: calc(100% / 3);
+            }
+
+            .border {
+                width: 10px;
+                height: 100px;
+                border-radius: 8px;
+
+                &.purple-heart {
+                    background-color: $c-purple-heart;
+                }
+
+                &.wivid-tangerine {
+                    background-color: $c-vivid-tangerine;
+                }
+
+                &.scooter {
+                    background-color: $c-scooter;
+                }
+            }
+
+            &__measure {
+                font-size: 38px;
+            }
         }
     }
-}
-
-.no-wrap {
-    flex-wrap: nowrap;
-}
-
-.p-left {
-    @include respond-from(md) {
-        padding-left: 60px;
-    }
-}
-
-.w-sm-60 {
-    @include respond-to(sm) {
-        width: 60%;
-    }
-}
-
-.b-r {
-    border-right: 2px solid #eeeeee;
 }
 
 th {
     font-weight: normal;
 }
 
-td, tr, th {
+td,
+tr,
+th {
     border: none;
 }
 
