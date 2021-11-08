@@ -3,6 +3,13 @@ export enum PriorityEnum {
     medium = 'medium',
     high = 'high',
 }
+export enum SectionEnum {
+    accessibility = 'accessibility',
+    quality_assurance = 'quality_assurance',
+    seo = 'seo',
+    privacy = 'privacy',
+    performance = 'performance',
+}
 
 export const ACCESSIBILY_DATA = [
     {

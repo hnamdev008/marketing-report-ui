@@ -32,7 +32,7 @@ export class AccordionComponent {
    * In collapsing mode, toggling one would collapse others
    */
   @Input() collapsing = true;
-  @Output() indexChange = new EventEmitter<number>();
+  @Output() indexChange = new EventEmitter<number | null>();
 
   @ContentChildren(AccordionItem) items!: QueryList<AccordionItem>;
 
@@ -48,13 +48,16 @@ export class AccordionComponent {
   toggleState = (index: number) => {
     if (this.expanded.has(index)) {
       this.expanded.delete(index);
+
+      this.indexChange.emit(null);
     } else {
       if (this.collapsing) {
         this.expanded.clear();
       }
       this.expanded.add(index);
+
+      this.indexChange.emit(index);
     }
 
-    this.indexChange.emit(index);
   }
 }
