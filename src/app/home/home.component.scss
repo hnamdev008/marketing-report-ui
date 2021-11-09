@@ -5,7 +5,7 @@
         margin: 50px 0;
 
         @include respond-from(sm) {
-            margin: 100px 0;
+            margin: 140px 0;
         }
 
         &__banner {
@@ -64,6 +64,7 @@
 
                 @include respond-from(md) {
                     width: 50%;
+                    margin: 0;
                 }
 
                 @include respond-to(lg) {
@@ -148,7 +149,7 @@
                 &__link {
                     text-decoration: underline;
                     letter-spacing: 0px;
-                    color: $c-scooter;
+                    color: $c-blue-ribbon;
                 }
 
                 @include respond-from(sm) {
@@ -167,6 +168,10 @@
 
         &__information {
             &__header {
+                @include respond-to(xs) {
+                    margin: 0;
+                }
+
                 @include respond-from(md) {
                     height: 50px;
                     margin-top: 20px;
@@ -176,27 +181,35 @@
                     font-size: 14px;
                     width: 70%;
                     opacity: 0.7;
+                    padding-top: 20px;
 
                     @include respond-from(sm) {
                         font-size: 16px;
-                        width: 55%;
+                        width: 50%;
                         text-align: left;
                     }
 
                     &.qa {
-                        text-align: center;
-                        width: 60%;
+                        width: 55%;
+
+                        @include respond-from(sm) {
+                            padding-left: 7rem;
+                        }
 
                         @include respond-to(sm) {
-                            width: 70%;
+                            width: 65%;
                         }
                     }
 
                     &.privacy {
-                        width: 70%;
+                        width: 45%;
+
+                        @include respond-from(sm) {
+                            padding-left: 7rem;
+                        }
 
                         @include respond-to(sm) {
-                            width: 65%;
+                            width: 60%;
                         }
                     }
 
@@ -237,18 +250,26 @@
                         @include respond-to(sm) {
                             display: none;
                         }
+
+                        @include respond-from(md) {
+                            width: 20%;
+                        }
                     }
                 }
 
                 &__severity {
-                    width: 20%;
+                    width: 15%;
                 }
 
                 &__issues {
                     width: 5%;
 
-                    @include respond-from(sm) {
+                    @include respond-to(sm) {
                         width: 15%;
+                    }
+
+                    @include respond-from(md) {
+                        width: 5%;
                     }
                 }
 
@@ -259,15 +280,15 @@
                     text-align: center;
 
                     @include respond-from(sm) {
-                        width: 15%;
+                        width: 20%;
                         font-size: 16px;
                         display: flex;
                         justify-content: center;
                     }
 
-                    &.qa {
+                    &.qa, &.privacy {
                         @include respond-to(sm) {
-                            width: 15%;
+                            width: 20%;
                         }
                     }
                 }
@@ -277,6 +298,7 @@
                 border-top: 2px solid $c-gallery;
                 height: 60px;
                 width: 100%;
+                padding: 0;
                 color: $c-black;
             }
 
@@ -284,7 +306,7 @@
                 cursor: pointer;
 
                 &__level {
-                    width: 70%;
+                    width: 65%;
                     font-size: 14px;
 
                     @include respond-from(sm) {
@@ -292,18 +314,26 @@
                     }
 
                     @include respond-from(md) {
-                        width: 55%;
+                        width: 50%;
                     }
 
                     &.qa {
-                        width: 70%;
+                        width: 55%;
+
+                        @include respond-to(sm) {
+                            width: 65%;
+                        }
                     }
 
                     &.privacy {
                         width: 70%;
 
                         @include respond-to(sm) {
-                            width: 65%;
+                            width: 60%;
+                        }
+
+                        @include respond-from(md) {
+                            width: 45%;
                         }
                     }
                 }
@@ -323,6 +353,12 @@
 
                         @include respond-to(sm) {
                             display: none;
+                        }
+                    }
+
+                    &.privacy {
+                        @include respond-from(md) {
+                            width: 20%;
                         }
                     }
                 }
@@ -355,7 +391,7 @@
                         justify-content: center;
 
                         @include respond-to(sm) {
-                            width: 15%;
+                            width: 20%;
                             justify-content: center;
                         }
                     }
@@ -367,7 +403,7 @@
                     @include respond-from(md) {
                         justify-content: center;
                         display: flex;
-                        width: 15%;
+                        width: 20%;
                     }
                 }
             }
@@ -384,6 +420,15 @@
                     color: #052942;
                     padding: 20px 0;
                 }
+
+                &__level {
+                    text-align: center;
+
+                    @include respond-from(sm) {
+                        text-align: left;
+                        padding-left: 8rem;
+                    }
+                }
             }
 
             &__body {
@@ -399,7 +444,7 @@
 
                 &__level {
                     @include respond-from(sm) {
-                        width: 55%;
+                        width: 50%;
                     }
 
                     &__number {
@@ -455,7 +500,7 @@
                     width: 30%;
 
                     @include respond-from(sm) {
-                        width: 15%;
+                        width: 20%;
                     }
 
                     &__box {
@@ -474,10 +519,14 @@
 
                         &__icon {
                             position: absolute;
-                            right: -35px;
+                            right: -25px;
                             top: 13px;
                             cursor: pointer;
                             height: 15px;
+
+                            @include respond-from(sm) {
+                                right: -35px;
+                            }
                         }
 
                         &.highlight {
@@ -564,9 +613,12 @@
 
             &__header {
                 margin-top: 40px;
+                font-size: 14px;
+                
 
                 @include respond-from(sm) {
                     justify-content: space-between;
+                    font-size: 16px;
                 }
 
                 @include respond-from(md) {
@@ -595,6 +647,8 @@
             }
 
             &__list {
+                padding: 0 0.5rem;
+
                 &__img {
                     width: 100px;
                     height: 70px;
@@ -602,7 +656,12 @@
                 }
 
                 &__item {
+                    font-size: 14px;
                     border-top: 1px solid #eeeeee;
+
+                    @include respond-from(sm) {
+                        font-size: 16px;
+                    }
 
                     &__left {
                         @include respond-from(md) {
@@ -660,6 +719,10 @@
 
                             &.severity {
                                 width: 20%;
+
+                                @include respond-from(sm) {
+                                    width: 15%;
+                                }
                             }
 
                             &__box {
@@ -669,25 +732,24 @@
                                 }
 
                                 font-size: $font-md;
-                                font-weight: bold;
+                                font-weight: medium;
                                 border: 3px;
                                 padding: 2px 10px;
+                                color: $c-blue-whale;
+                                text-align: center;
                             }
 
                             .box--low {
-                                color: $c-keppel;
                                 width: 60px;
                                 background-color: $c-spray;
                             }
 
                             .box--high {
-                                color: $c-tall-poppy;
                                 width: 67px;
                                 background-color: $c-vivid-tangerine;
                             }
 
                             .box--medium {
-                                color: $c-indochine;
                                 background-color: $c-bright-sun;
                                 width: 100px;
                             }
@@ -864,6 +926,10 @@ td,
 tr,
 th {
     border: none;
+}
+
+td, tr, th {
+    padding: 0;
 }
 
 p {
