@@ -65,3 +65,9 @@
 .font-xs {
   font-size: $font-xs;
 }
+
+.p-l-3-sm {
+  @include respond-from(sm) {
+      padding-left: 3rem !important;
+  }
+}
