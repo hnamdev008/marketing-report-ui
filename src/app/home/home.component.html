@@ -62,7 +62,7 @@
         <table class="table home__section__information" *ngIf="innerWidth >= 768">
             <thead>
                 <tr class="home__section__information__header row">
-                    <th class="home__section__information__header__level text-center p-t-20">Accessibility Checks</th>
+                    <th class="home__section__information__header__level">Accessibility Checks</th>
                     <th class="home__section__information__header__domain text-center p-t-20">Domain compliance</th>
                     <th class="home__section__information__header__page text-center p-t-20">Affects Pages</th>
                 </tr>
@@ -73,8 +73,8 @@
                         <accordion [collapsing]="collapsing" (indexChange)="changeIndex($event, 'accessibility')">
                             <accordion-item *ngFor="let data of ACCESSIBILY_DATA; let i = index">
                                 <ng-template accordionHeader let-toggle="toggle">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div class="w-55 d-flex align-items-center">
+                                    <div class="d-flex align-items-center justify-content-between" (click)="toggle()" >
+                                        <div class="w-50 p-l-3-sm d-flex align-items-center">
                                             <span class="home__section__information__body__level__number">{{i+1}}.</span>
                                             <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
                                             <span class="home__section__information__body__level__text">{{data.level.text}}</span>
@@ -94,7 +94,7 @@
                                                 <img class="home__section__information__body__page__box__icon ms-3"
                                                 [src]="'./assets/icons/down-arrow-bold.svg'"
                                                 [class.rotate-180]="currentAccessibiltyIndex === i"
-                                                alt="" (click)="toggle()" />
+                                                alt="" />
                                             </div>
                                         </div>
                                     </div>
@@ -152,11 +152,11 @@
             </thead>
             <tbody>
                 <tr class="d-flex align-items-center">
-                    <td>
+                    <td class="home__section__detail">
                         <accordion [collapsing]="collapsing" (indexChange)="changeIndex($event, 'accessibility')">
                             <accordion-item  *ngFor="let data of ACCESSIBILY_DATA; let i = index">
                                 <ng-template accordionHeader let-toggle="toggle">
-                                    <div class="d-flex align-items-center justify-content-between">
+                                    <div class="d-flex align-items-center justify-content-between" (click)="toggle()" >
                                         <td class="home__section__information__body__level d-flex align-items-center">
                                             <span class="home__section__information__body__level__number">{{i+1}}.</span>
                                             <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
@@ -169,7 +169,7 @@
                                                 <img class="home__section__information__body__page__box__icon ms-3"
                                                 [class.rotate-180]="currentAccessibiltyIndex === i"
                                                 [src]="'./assets/icons/down-arrow-bold.svg'"
-                                                alt="" (click)="toggle()" />
+                                                alt=""/>
                                             </div>
                                         </div>
                                     </div>
@@ -260,8 +260,8 @@
                         <accordion [collapsing]="collapsing" (indexChange)="changeIndex($event, 'quality_assurance')">
                             <accordion-item  *ngFor="let data of QA_DATA; let i = index">
                                 <ng-template accordionHeader let-toggle="toggle">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div class="home__section__information__body__level qa d-flex align-items-center">
+                                    <div class="d-flex align-items-center justify-content-between" (click)="toggle()" >
+                                        <div class="p-l-3-sm home__section__information__body__level qa d-flex align-items-center">
                                             <span class="home__section__information__body__level__number">{{i+1}}.</span>
                                             <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
                                             <span class="home__section__information__body__level__text">{{data.level.text}}</span>
@@ -282,7 +282,7 @@
                                                 <img class="home__section__information__body__page__box__icon ms-3"
                                                 [class.rotate-180]="currentQualityAssuranceIndex === i"
                                                 [src]="'./assets/icons/down-arrow-bold.svg'"
-                                                alt="" (click)="toggle()" />
+                                                alt=""/>
                                             </div>
                                         </div>
                                     </div>
@@ -344,7 +344,7 @@
                         <accordion [collapsing]="collapsing" (indexChange)="changeIndex($event, 'quality_assurance')">
                             <accordion-item *ngFor="let data of QA_DATA; let i = index">
                                 <ng-template accordionHeader let-toggle="toggle">
-                                    <div class="d-flex align-items-center justify-content-between">
+                                    <div class="d-flex align-items-center justify-content-between" (click)="toggle()" >
                                         <div class="home__section__information__body__level qa d-flex align-items-center">
                                             <span class="home__section__information__body__level__number">{{i+1}}.</span>
                                             <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
@@ -357,7 +357,7 @@
                                                 <img class="home__section__information__body__page__box__icon ms-3"
                                                 [class.rotate-180]="currentQualityAssuranceIndex === i"
                                                 [src]="'./assets/icons/down-arrow-bold.svg'"
-                                                alt="" (click)="toggle()" />
+                                                alt=""/>
                                             </div>
                                         </div>
                                     </div>
@@ -428,7 +428,7 @@
         <table class="table home__section__information" *ngIf="innerWidth >= 768">
             <thead>
                 <tr class="home__section__information__header row">
-                    <th class="home__section__information__header__level text-center p-t-20">SEO Checks</th>
+                    <th class="home__section__information__header__level">SEO Checks</th>
                     <th class="home__section__information__header__domain text-center p-t-20">Domain compliance</th>
                     <th class="home__section__information__header__page text-center p-t-20">Affects Pages</th>
                 </tr>
@@ -439,8 +439,8 @@
                         <accordion [collapsing]="collapsing" (indexChange)="changeIndex($event, 'seo')">
                             <accordion-item *ngFor="let data of SEO_DATA; let i = index">
                                 <ng-template accordionHeader let-toggle="toggle">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div class="w-55 d-flex align-items-center">
+                                    <div class="d-flex align-items-center justify-content-between" (click)="toggle()" >
+                                        <div class="w-50 p-l-3-sm d-flex align-items-center">
                                             <span class="home__section__information__body__level__number">{{i+1}}.</span>
                                             <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
                                             <span class="home__section__information__body__level__text">{{data.level.text}}</span>
@@ -460,12 +460,12 @@
                                                 <img class="home__section__information__body__page__box__icon ms-3"
                                                 [class.rotate-180]="currentSEOIndex === i"
                                                 [src]="'./assets/icons/down-arrow-bold.svg'"
-                                                alt="" (click)="toggle()" />
+                                                alt="" />
                                             </div>
                                         </div>
                                     </div>
                                 </ng-template>
-                                <ng-template accordionContent>
+                                <ng-template accordionContent style="margin-top: -24px;">
                                     <table class="table home__section__items d-flex flex-column mt-4">
                                         <thead>
                                             <tr class="home__section__items__header d-flex">
@@ -506,7 +506,7 @@
                         <accordion [collapsing]="collapsing" (indexChange)="changeIndex($event, 'seo')">
                             <accordion-item *ngFor="let data of SEO_DATA; let i = index">
                                 <ng-template accordionHeader let-toggle="toggle">
-                                    <div class="d-flex align-items-center hover-polar">
+                                    <div class="d-flex align-items-center hover-polar" (click)="toggle()" >
                                         <div class="d-flex align-items-center home__section__information__body__level privacy">
                                             <div class="d-flex">
                                                 <span class="home__section__information__body__level__number">{{i+1}}.</span>
@@ -521,7 +521,7 @@
                                                 <img class="home__section__information__body__page__box__icon ms-3"
                                                 [class.rotate-180]="currentSEOIndex === i"
                                                 [src]="'./assets/icons/down-arrow-bold.svg'"
-                                                alt="" (click)="toggle()" />
+                                                alt=""/>
                                             </div>
                                         </div>
                                     </div>
@@ -583,10 +583,10 @@
         <table class="table home__section__information" *ngIf="innerWidth >= 768">
             <thead>
                 <tr class="home__section__information__header d-flex align-items-center">
-                    <th class="home__section__information__header__level privacy w-45 text-center p-t-20">Data Privacy Checks</th>
+                    <th class="home__section__information__header__level privacy w-45">Data Privacy Checks</th>
                     <th class="home__section__information__header__severity w-15 text-center p-t-20">Severity</th>
                     <th class="home__section__information__header__domain privacy w-30 text-center p-t-20">Domain compliance</th>
-                    <th class="home__section__information__header__page privacy w-15 text-center p-t-20">Affects Pages</th>
+                    <th class="home__section__information__header__page privacy w-20 text-center p-t-20">Affects Pages</th>
                 </tr>
             </thead>
             <tbody class="home__section__information__body row">
@@ -595,8 +595,8 @@
                         <accordion [collapsing]="collapsing" (indexChange)="changeIndex($event, 'privacy')">
                             <accordion-item *ngFor="let data of PRIVACY_DATA; let i = index">
                                 <ng-template accordionHeader let-toggle="toggle">
-                                    <div class="d-flex align-items-center hover-polar">
-                                        <div class="home__section__information__body__level privacy">
+                                    <div class="d-flex align-items-center hover-polar" (click)="toggle()" >
+                                        <div class="p-l-3-sm home__section__information__body__level privacy">
                                             <span class="home__section__information__body__level__number">{{i+1}}.</span>
                                             <img [src]="data.level.icon" class="home__section__information__body__level__icon ms-2" alt="">
                                             <span class="home__section__information__body__level__text">{{data.level.text}}</span>
@@ -621,7 +621,7 @@
                                                 <img class="home__section__information__body__page__box__icon ms-3"
                                                 [class.rotate-180]="currentPrivacyIndex === i"
                                                 [src]="'./assets/icons/down-arrow-bold.svg'"
-                                                alt="" (click)="toggle()" />
+                                                alt=""/>
                                             </div>
                                         </div>
                                     </div>
@@ -663,7 +663,7 @@
                         <accordion [collapsing]="collapsing" (indexChange)="changeIndex($event, 'privacy')">
                             <accordion-item *ngFor="let data of PRIVACY_DATA; let i = index">
                                 <ng-template accordionHeader let-toggle="toggle">
-                                    <div class="d-flex align-items-center hover-polar">
+                                    <div class="d-flex align-items-center hover-polar" (click)="toggle()" >
                                         <div class="d-flex align-items-center home__section__information__body__level privacy">
                                             <div class="d-flex">
                                                 <span class="home__section__information__body__level__number">{{i+1}}.</span>
@@ -679,7 +679,7 @@
                                                 [class.rotate-180]="currentPrivacyIndex === i"
                                                 [src]="'./assets/icons/down-arrow-bold.svg'"
                                                 [class.rotate-180]="currentPrivacyIndex === i"
-                                                alt="" (click)="toggle()" />
+                                                alt=""/>
                                             </div>
                                         </div>
                                     </div>
