@@ -41,9 +41,9 @@
             <div class="home__section__content d-flex flex-column">
                 <div class="home__section__content__header d-flex flex-row align-items-center">
                     <img class="img-fluid" src="./assets/icons/human.svg" alt="" />
-                    <h3 class="home__section__content__header__title ms-2">
+                    <h2 class="home__section__content__header__title ms-2">
                         Accessibility
-                    </h3>
+                    </h2>
                 </div>
                 <p class="home__section__content__des">
                     Our Accessibility module helps you to evaluate how easily accessible your website is for people with different backgrounds, including various disabilities.
@@ -111,13 +111,13 @@
                                     <table class="table home__section__items d-flex flex-column mt-4">
                                         <thead>
                                             <tr class="home__section__items__header d-flex">
-                                                <th class="w-80 home__section__items__header__title">Title and URL</th>
+                                                <th class="w-80 home__section__items__header__title p-l-3-sm">Title and URL</th>
                                                 <th class="w-20 justify-content-center home__section__items__header__priority">Priority</th>
                                             </tr>
                                         </thead>
                                         <tbody class="home__section__items__list row">
                                             <tr *ngFor="let item of currentDetail?.detail?.items" class="home__section__items__list__item d-flex">
-                                                <td class="w-80">
+                                                <td class="w-80 p-l-3-sm">
                                                     <div class="home__section__items__list__item__left__title">{{item.name}}</div>
                                                     <div class="home__section__items__list__item__left__link d-flex align-items-center">
                                                         <img class="home__section__items__list__item__left__link__icon" src="./assets/icons/open-link.png" alt="">
@@ -227,9 +227,9 @@
             <div class="home__section__content d-flex flex-column">
                 <div class="home__section__content__header d-flex flex-row align-items-center">
                     <img class="img-fluid" src="./assets/icons/checkbox.svg" alt="" />
-                    <h3 class="home__section__content__header__title ms-2">
+                    <h2 class="home__section__content__header__title ms-2">
                         Quality Assurance
-                    </h3>
+                    </h2>
                 </div>
                 <p class="home__section__content__des">
                     Our QA module will help you find and fix issues like broken links and misspellings across your domain.
@@ -299,13 +299,13 @@
                                     <table class="table home__section__items d-flex flex-column mt-4">
                                         <thead>
                                             <tr class="home__section__items__header d-flex">
-                                                <th class="w-75">Broken Link</th>
+                                                <th class="w-75 p-l-3-sm">Broken Link</th>
                                                 <th class="w-25 text-right">Pages</th>
                                             </tr>
                                         </thead>
                                         <tbody class="home__section__items__list row">
                                             <tr *ngFor="let item of currentQADetail.level?.detail?.items" class="home__section__items__list__item d-flex">
-                                                <td class="w-75">
+                                                <td class="w-75 p-l-3-sm">
                                                     {{item.url}}
                                                 </td>
                                                 <td class="w-25 text-right">
@@ -407,9 +407,9 @@
             <div class="home__section__content d-flex flex-column">
                 <div class="home__section__content__header d-flex flex-row align-items-center">
                     <img class="img-fluid" src="./assets/icons/search.svg" alt="" />
-                    <h3 class="home__section__content__header__title ms-2">
+                    <h2 class="home__section__content__header__title ms-2">
                         SEO
-                    </h3>
+                    </h2>
                 </div>
                 <p class="home__section__content__des">
                     Optimize your website for search engines with the Monsido SEO module.
@@ -466,17 +466,17 @@
                                     </div>
                                 </ng-template>
                                 <ng-template accordionContent style="margin-top: -24px;">
-                                    <table class="table home__section__items d-flex flex-column mt-4">
+                                    <table class="table home__section__items d-flex flex-column">
                                         <thead>
-                                            <tr class="home__section__items__header d-flex">
-                                                <th class="w-20">Image</th>
+                                            <tr class="home__section__items__header d-flex mt-4">
+                                                <th class="w-20 p-l-3-sm">Image</th>
                                                 <th class="w-70">Image Path</th>
                                                 <th class="w-10">Pages</th>
                                             </tr>
                                         </thead>
                                         <tbody class="home__section__items__list row">
                                             <tr *ngFor="let item of currentSEODetail?.level.detail?.items" class="home__section__items__list__item d-flex align-items-center">
-                                                <td class="w-20">
+                                                <td class="w-20 p-l-3-sm">
                                                     <img class="home__section__items__list__img" [src]="item.image" alt="" />
                                                 </td>
                                                 <td class="w-70 word-break">{{item.path}}</td>
@@ -562,9 +562,9 @@
             <div class="home__section__content d-flex flex-column">
                 <div class="home__section__content__header d-flex flex-row align-items-center">
                     <img class="img-fluid" src="./assets/icons/privacy.svg" alt="" />
-                    <h3 class="home__section__content__header__title ms-2">
+                    <h2 class="home__section__content__header__title ms-2">
                         Data Privacy
-                    </h3>
+                    </h2>
                 </div>
                 <p class="home__section__content__des">
                     Choose between diferent data regulations relevant for your geographical location and scan your website for any privacy breeches.
@@ -627,16 +627,16 @@
                                     </div>
                                 </ng-template>
                                 <ng-template accordionContent>
-                                    <table class="table home__section__items d-flex flex-column mt-4">
+                                    <table class="table home__section__items d-flex flex-column">
                                         <thead>
-                                            <tr class="w-100 home__section__items__header d-flex">
-                                                <th class="w-90">Check issues</th>
+                                            <tr class="w-100 home__section__items__header d-flex mt-4">
+                                                <th class="w-90 p-l-3-sm">Check issues</th>
                                                 <th class="w-10">Pages</th>
                                             </tr>
                                         </thead>
                                         <tbody class="home__section__items__list row">
                                             <tr *ngFor="let item of currentPrivacyDetail?.level.detail?.items" class="home__section__items__list__item d-flex align-items-center">
-                                                <td class="w-90">{{item.issue}}</td>
+                                                <td class="w-90 p-l-3-sm">{{item.issue}}</td>
                                                 <td class="w-10 text-center text-bold">{{item.pages}}</td>
                                             </tr>
                                         </tbody>
@@ -717,9 +717,9 @@
             <div class="home__section__content d-flex flex-column">
                 <div class="home__section__content__header d-flex flex-row align-items-center">
                     <img class="img-fluid" src="./assets/icons/performance.svg" alt="" />
-                    <h3 class="home__section__content__header__title ms-2">
+                    <h2 class="home__section__content__header__title ms-2">
                         Performance
-                    </h3>
+                    </h2>
                 </div>
                 <p class="home__section__content__des">
                     See the overall Performance level of the homepage of your domain. 
@@ -755,21 +755,21 @@
                 <div class="border purple-heart"></div>
                 <div class="m-l-20">
                     <p>First Contentful Paint (FCP)</p>
-                    <p class="home__section__performance-detail__measure">AVG: 3,094 ms</p>
+                    <p class="home__section__performance-detail__measure">AVG: 3.094 ms</p>
                 </div>
             </div>
             <div class="home__section__performance-detail d-flex align-items-center">
                 <div class="border wivid-tangerine"></div>
                 <div class="m-l-20">
                     <p>First Contentful Paint (FCP)</p>
-                    <p class="home__section__performance-detail__measure">AVG: 3,094 ms</p>
+                    <p class="home__section__performance-detail__measure">AVG: 3.094 ms</p>
                 </div>
             </div>
             <div class="home__section__performance-detail d-flex align-items-center">
                 <div class="border scooter"></div>
                 <div class="m-l-20">
                     <p>First Contentful Paint (FCP)</p>
-                    <p class="home__section__performance-detail__measure">AVG: 3,094 ms</p>
+                    <p class="home__section__performance-detail__measure">AVG: 3.094 ms</p>
                 </div>
             </div>
         </div>
