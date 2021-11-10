@@ -84,7 +84,5 @@ export class HomeComponent implements OnInit {
             default:
                 break;
         }
-
-        console.log(index, section);
     }
 }
