@@ -85,4 +85,11 @@ export class HomeComponent implements OnInit {
                 break;
         }
     }
+
+    bookDemo(): void {
+        window.open(
+            'https://go.monsido.com/demo?utm_source=report-page&utm_medium=sticky-bar-cta&utm_content=book-a-demo&utm_campaign=snapshot-report-flow',
+            '_blank'
+        );
+    }
 }
