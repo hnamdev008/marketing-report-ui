@@ -33,21 +33,21 @@
     </section>
     <!-- Accessibility -->
     <section class="home__section container-fluid">
-        <div class="row p-left p-left">
+        <div class="row p-left">
             <div class="home__section__circular-progress">
                 <app-circular-progress-bar [value]="97.7"></app-circular-progress-bar>
             </div>
             <div class="home__section__content d-flex flex-column">
                 <div class="home__section__content__header d-flex flex-row align-items-center">
                     <img class="img-fluid" src="./assets/icons/human.svg" alt="" />
-                    <h2 class="home__section__content__header__title ms-2">
+                    <h2 class="home__section__content__header__title m-l-20">
                         Web Accessibility
                     </h2>
                 </div>
                 <p class="home__section__content__des">
                     Your score reflects how accessible your website is for your audience, including visitors with disabilities. We’ve scanned your pages for accessibility errors according to WCAG 2.1 testing criteria.                </p>
                 <div class="home__section__content__note is-hide">
-                    WLearn more about Web Accessibility 
+                    Learn more about Web Accessibility 
                     <a href="https://monsido.com/platform/web-accessibility" target="_blank" class="home__section__content__note__link">here</a>
                 </div>
             </div>
@@ -99,7 +99,7 @@
                                 </ng-template>
                                 <ng-template accordionContent>
                                     <div class="home__section__detail align-items-center">
-                                        <div class="home__section__detail__right d-flex align-items-center mt-4">
+                                        <div class="home__section__detail__right d-flex align-items-center mt-30 mb-30">
                                             <div class="home__section__detail__right__progress">
                                                 <app-progress-bar [label]="'Progress bar showing how many pages there is compliant'" [valueMax]="100" [valueNow]="currentDetail.detail.percent"
                                                 [totalPage]="currentDetail?.detail?.totalPage" [page]="currentDetail?.pages?.value"></app-progress-bar>
@@ -110,7 +110,11 @@
                                         <thead>
                                             <tr class="home__section__items__header d-flex">
                                                 <th class="w-80 home__section__items__header__title p-l-3-sm">Title and URL</th>
-                                                <th class="w-20 justify-content-center home__section__items__header__priority">Priority</th>
+                                                <th class="w-20 justify-content-center home__section__items__header__priority">Priority
+                                                    <span class="d-flex ms-1">
+                                                        <img src="./assets/icons/question-circle.svg" alt="" />
+                                                    </span>
+                                                </th>
                                             </tr>
                                         </thead>
                                         <tbody class="home__section__items__list row">
@@ -174,7 +178,7 @@
                                 </ng-template>
                                 <ng-template accordionContent>
                                     <div class="home__section__detail align-items-center">
-                                        <div class="home__section__detail__right d-flex align-items-center mt-4">
+                                        <div class="home__section__detail__right d-flex align-items-center mt-30 mb-30">
                                             <div class="home__section__detail__right__progress">
                                                 <app-progress-bar [label]="'Progress bar showing how many pages there is compliant'" [valueMax]="100" [valueNow]="currentDetail.detail.percent"
                                                 [totalPage]="currentDetail?.detail?.totalPage" [page]="currentDetail?.pages?.value"></app-progress-bar>
@@ -225,12 +229,12 @@
             <div class="home__section__content d-flex flex-column">
                 <div class="home__section__content__header d-flex flex-row align-items-center">
                     <img class="img-fluid" src="./assets/icons/checkbox.svg" alt="" />
-                    <h2 class="home__section__content__header__title ms-2">
+                    <h2 class="home__section__content__header__title m-l-20">
                         Quality Assurance
                     </h2>
                 </div>
                 <p class="home__section__content__des">
-                    Your Quality Assurance Score reveals how many issues such as broken links and misspellings were found on the pages scanned.
+                    Your Quality Assurance score reveals how many issues, such as broken links and misspellings, were found on the pages scanned.
                 </p>
                 <div class="home__section__content__note is-hide">
                     Learn more about Quality Assurance 
@@ -287,7 +291,7 @@
                                 </ng-template>
                                 <ng-template accordionContent>
                                     <div class="home__section__detail align-items-center">
-                                        <div class="home__section__detail__right d-flex align-items-center mt-4">
+                                        <div class="home__section__detail__right d-flex align-items-center mt-30 mb-30">
                                             <div class="home__section__detail__right__progress">
                                                 <app-progress-bar [label]="'Progress bar showing how many pages there is compliant'" [valueMax]="100" [valueNow]="currentDetail.detail.percent"
                                                 [totalPage]="currentDetail?.detail?.totalPage" [page]="currentDetail?.pages?.value"></app-progress-bar>
@@ -319,7 +323,7 @@
                     </td>
                 </tr>
                 <tr class="home__section__information__bottom column d-flex align-items-center">
-                    <div class="w-40 d-flex justify-content-between">
+                    <div class="w-40 d-flex justify-content-between pointer">
                         <td class="home__section__information__header__level__readability text-center text-bold">Readability Level</td>
                         <td class="home__section__information__header__level__college text-center d-flex align-items-center justify-content-center">College
                             <img class="home__section__information__header__level__img img-fluid" src="./assets/icons/eye.svg" alt="" />
@@ -386,7 +390,7 @@
                     </td>
                 </tr>
                 <tr class="home__section__information__bottom column d-flex align-items-center">
-                    <div class="w-100 d-flex justify-content-between">
+                    <div class="w-100 d-flex justify-content-between pointer">
                         <td class="home__section__information__header__level__readability text-center">Readability Level</td>
                         <td class="home__section__information__header__level__college text-center d-flex align-items-center justify-content-center">College
                             <img class="home__section__information__header__level__img img-fluid" src="./assets/icons/eye.svg" alt="" />
@@ -405,12 +409,12 @@
             <div class="home__section__content d-flex flex-column">
                 <div class="home__section__content__header d-flex flex-row align-items-center">
                     <img class="img-fluid" src="./assets/icons/search.svg" alt="" />
-                    <h2 class="home__section__content__header__title ms-2">
+                    <h2 class="home__section__content__header__title m-l-20">
                         SEO
                     </h2>
                 </div>
                 <p class="home__section__content__des">
-                    Your SEO Score indicates how optimized the pages scanned are for search engines and whether they follow best practices such as including header tags.
+                    Your SEO score indicates how optimized the pages scanned are for search engines and whether they follow best practices such as including header tags.
                 </p>
                 <div class="home__section__content__note is-hide">
                     Learn more about SEO 
@@ -538,7 +542,7 @@
                                                     <img class="home__section__items__list__img" [src]="item.image" alt="" />
                                                     <p class="word-break font-xs">{{item.path}}</p>
                                                 </td>
-                                                <td class="w-10 text-center">{{item.pages}}</td>
+                                                <td class="w-10 text-right">{{item.pages}}</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -560,12 +564,12 @@
             <div class="home__section__content d-flex flex-column">
                 <div class="home__section__content__header d-flex flex-row align-items-center">
                     <img class="img-fluid" src="./assets/icons/privacy.svg" alt="" />
-                    <h2 class="home__section__content__header__title ms-2">
+                    <h2 class="home__section__content__header__title m-l-20">
                         Data Privacy
                     </h2>
                 </div>
                 <p class="home__section__content__des">
-                    Your Data Privacy Score measures whether any potential privacy breaches based on sensitive information were detected anywhere on the pages scanned.
+                    Your Data Privacy score measures whether any potential privacy breaches based on sensitive information were detected anywhere on the pages scanned.
                 </p>
                 <div class="home__section__content__note is-hide">
                     Learn more about Data Privacy 
@@ -693,7 +697,7 @@
                                         <tbody class="home__section__items__list row">
                                             <tr *ngFor="let item of currentPrivacyDetail?.level.detail?.items" class="home__section__items__list__item d-flex align-items-center">
                                                 <td class="w-90">{{item.issue}}</td>
-                                                <td class="w-10 text-center text-bold">{{item.pages}}</td>
+                                                <td class="w-10 text-right text-bold">{{item.pages}}</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -715,12 +719,12 @@
             <div class="home__section__content d-flex flex-column">
                 <div class="home__section__content__header d-flex flex-row align-items-center">
                     <img class="img-fluid" src="./assets/icons/performance.svg" alt="" />
-                    <h2 class="home__section__content__header__title ms-2">
+                    <h2 class="home__section__content__header__title m-l-20">
                         Performance
                     </h2>
                 </div>
                 <p class="home__section__content__des">
-                    Your Performance Score highlights how quickly your site loads for visitors based on network speed, location, and device used.
+                    Your Performance score highlights how quickly your site loads for visitors based on network speed, location, and device used.
                 </p>
                 <div class="home__section__content__note is-hide">
                     Learn more about Performance Insights 
@@ -733,21 +737,21 @@
             </div>
         </div>
         <hr>
-        <div class="home__section__performance-level d-flex justify-content-between">
+        <div class="home__section__performance-level p-left d-flex justify-content-between">
             <div class="d-flex home__section__performance-level__item">
                 <div class="marbles level-short"></div>
                 <p class="m-l-20">90 - 100 Short</p>
             </div>
             <div class="d-flex home__section__performance-level__item">
                 <div class="marbles level-medium"></div>
-                <p class="m-l-20">90 - 100 Medium</p>
+                <p class="m-l-20">50 - 89 Medium</p>
             </div>
             <div class="d-flex home__section__performance-level__item">
                 <div class="marbles level-long"></div>
                 <p class="m-l-20">0 - 49 Long</p>
             </div>
         </div>
-        <div class="d-flex flex-wrap justify-content-between m-t-20">
+        <div class="p-left d-flex flex-wrap justify-content-between m-t-20">
             <div class="home__section__performance-detail d-flex align-items-center">
                 <div class="border purple-heart"></div>
                 <div class="m-l-20">
