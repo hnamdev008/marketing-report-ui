@@ -14,8 +14,14 @@
         height: 42px;
         width: 161px;
         background-color: #052942;
+        border: 2px solid #052942;
         color: #ffffff;
-        font-size: 14px;
+        font-size: 17px;
+
+        &:hover {
+            background-color: white;
+            color: #052942;
+        }
     } 
 
     &__logo {

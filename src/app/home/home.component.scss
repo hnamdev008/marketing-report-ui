@@ -95,6 +95,7 @@
         &__content {
             width: 60%;
             padding: 0;
+            padding-left: 2px;
 
             @include respond-from(md) {
                 width: 70%;
@@ -103,6 +104,10 @@
 
             &__header {
                 margin-bottom: 20px;
+
+                @include respond-from(sm) {
+                    margin-bottom: 30px;
+                }
 
                 &__title {
                     margin: unset;
@@ -124,7 +129,7 @@
 
             &__des {
                 font-size: 16px;
-                margin-bottom: 30px;
+                margin-bottom: 20px;
 
                 @include respond-to(xs) {
                     font-size: 14px;
@@ -214,8 +219,6 @@
                     }
 
                     &__img {
-                        width: 20px;
-                        height: auto;
                         margin-left: 10px;
                     }
 
@@ -286,7 +289,8 @@
                         justify-content: center;
                     }
 
-                    &.qa, &.privacy {
+                    &.qa,
+                    &.privacy {
                         @include respond-to(sm) {
                             width: 20%;
                         }
@@ -295,10 +299,9 @@
             }
 
             &__bottom {
-                border-top: 2px solid $c-gallery;
-                height: 60px;
+                border-top: 2px solid #d3d3d3;
                 width: 100%;
-                padding: 0;
+                padding: 15px 0;
                 color: $c-black;
             }
 
@@ -365,7 +368,7 @@
 
                 &__issues {
                     width: 5%;
-                    text-align: center;
+                    text-align: right;
 
                     &.qa {
                         @include respond-to(sm) {
@@ -411,7 +414,7 @@
             &__header {
                 text-align: left;
                 letter-spacing: 0px;
-                border-top: 2px solid $c-gallery;
+                border-top: 2px solid #d3d3d3;
 
                 &__level,
                 &__domain,
@@ -426,7 +429,7 @@
 
                     @include respond-from(sm) {
                         text-align: left;
-                        padding-left: 8rem;
+                        padding-left: 121px;
                     }
                 }
             }
@@ -439,7 +442,7 @@
                 }
 
                 &:last-child {
-                    border-bottom: 2px solid $c-gallery;
+                    border-bottom: 2px solid #d3d3d3;
                 }
 
                 &__level {
@@ -613,7 +616,6 @@
             &__header {
                 margin-top: 40px;
                 font-size: 14px;
-                
 
                 @include respond-from(sm) {
                     justify-content: space-between;
@@ -656,7 +658,7 @@
 
                 &__item {
                     font-size: 14px;
-                    border-top: 1px solid #eeeeee;
+                    border-top: 1px solid #d3d3d3;
 
                     @include respond-from(sm) {
                         font-size: 16px;
@@ -758,6 +760,7 @@
                     &__note {
                         text-align: center;
                         font-size: 12px;
+                        margin-bottom: 15px;
 
                         @include respond-from(sm) {
                             text-align: right;
@@ -839,8 +842,14 @@
                 height: 42px;
                 width: 164px;
                 background-color: #052942;
+                border: 2px solid #052942;
                 color: #ffffff;
-                font-size: 14px;
+                font-size: 17px;
+
+                &:hover {
+                    background-color: white;
+                    color: #052942;
+                }
             }
         }
 
@@ -917,6 +926,7 @@
     }
 }
 
+
 th {
     font-weight: normal;
 }
@@ -927,10 +937,18 @@ th {
     border: none;
 }
 
-td, tr, th {
+td,
+tr,
+th {
     padding: 0;
 }
 
 p {
     margin: 0;
+}
+
+tr {
+    @include respond-from(sm) {
+        padding: 10px 0;
+    }
 }
