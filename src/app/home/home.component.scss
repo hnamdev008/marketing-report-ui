@@ -926,7 +926,45 @@
     }
 }
 
+.tooltipCustom {
+    position: relative;
+    display: inline-block;
+}
 
+.tooltipCustom ~ .tooltiptext {
+    width: 200px;
+
+    visibility: hidden;
+    background-color: #052942;
+    color: #fff;
+    text-align: center;
+    border-radius: 16px;
+    padding: 16px;
+    position: absolute;
+    z-index: 1;
+    transform: translateX(-78%);
+    bottom: 190%;
+
+    @include respond-from(sm) {
+        width: 240px;
+        padding: 20px;
+        bottom: 165%;
+    }
+}
+
+.tooltipCustom ~ .tooltiptext::after {
+    content: "";
+    position: absolute;
+    bottom: -16px;
+    right: 20%;
+    border-width: 16px;
+    border-style: solid;
+    border-color: transparent #052942 transparent transparent;
+}
+
+.tooltipCustom:hover ~ .tooltiptext {
+    visibility: visible;
+}
 th {
     font-weight: normal;
 }
